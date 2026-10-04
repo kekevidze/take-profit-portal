@@ -8,7 +8,7 @@ This app is a **single Node web service** plus **one PostgreSQL database**. Prod
 
 | Step | Command | Result |
 |------|---------|--------|
-| Build | `npm ci && npm run render:verify` | Typecheck + Vite client build + `dist/server.cjs` |
+| Build | `npm ci --include=dev && npm run render:verify` | Install build-time types, typecheck, build the Vite client, and bundle `dist/server.cjs` |
 | Start | `npm start` → `node dist/server.cjs` | Express on `PORT` (set by Render), serves `dist/` + `/api/*` |
 | Health | `GET /api/health` | `{ "ok": true }` — used by Render health checks |
 

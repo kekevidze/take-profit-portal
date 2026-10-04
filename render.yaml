@@ -3,7 +3,7 @@ services:
     name: take-profit-portal
     runtime: node
     plan: free
-    buildCommand: npm ci && npm run render:verify
+    buildCommand: npm ci --include=dev && npm run render:verify
     startCommand: npm start
     healthCheckPath: /api/health
     autoDeploy: true
