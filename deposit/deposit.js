@@ -632,21 +632,7 @@ function setupFormListeners() {
           });
           if (res.ok) {
             const data = await res.json();
-            // If merged is true, the active session was merged into an existing CRM lead
-            if (data.merged && data.session) {
-              // Unsubscribe from old anonymous session and switch to existing lead session
-              realtimeService.publishConnection(sessionId, 'offline');
-              sessionId = data.session.id;
-              currentSession = data.session;
-              localStorage.setItem('anon_visitor_id', sessionId);
-              
-              // Prefill the form with the existing lead's actual details!
-              prefillClientData();
-              
-              // Publish online for the new active session
-              realtimeService.publishConnection(sessionId, 'online');
-              sessionService.logTimelineEvent(sessionId, 'Client Reconnected after Anonymous session merge');
-            } else if (data.session) {
+            if (data.session) {
               currentSession = data.session;
             }
           }
@@ -965,25 +951,11 @@ async function handlePaymentSubmit() {
     btn.classList.remove('btn-loading');
 
     if (isLocalFallback || (response && !response.ok)) {
-      console.warn('Payment API failed or was declined. Falling back to secure local checkout completion.');
-      const orderNumber = await allocateCheckoutOrderNumber(sessionId);
-      const orderLabel = orderNumber != null ? String(orderNumber) : '—';
-      const rawCard = $('#cardNumber').value.replace(/\s/g, '');
-      const mockMasked = '•••• •••• •••• ' + rawCard.slice(-4);
-
-      await sessionService.updateSession(sessionId, {
-        status: 'Completed',
-        progress: { completed: fields.length, total: fields.length, percent: 100 },
-        activity: 'Transaction completed successfully!'
-      });
-      if (orderNumber != null) {
-        await sessionService.logTimelineEvent(
-          sessionId,
-          `Payment Completed | Order #${orderNumber}`
-        );
-      }
-
-      showSuccessModal(orderLabel, mockMasked);
+      console.warn('Payment API failed or was declined. No success state was recorded.');
+      showFatalError(
+        'Payment not completed',
+        'We could not save this transaction. No successful deposit was recorded. Please contact your account manager and try again.'
+      );
       return;
     }
 
@@ -994,15 +966,11 @@ async function handlePaymentSubmit() {
       tdsOverlay.classList.remove('show');
     }
     btn.classList.remove('btn-loading');
-    console.warn('An unexpected checkout exception occurred. Completing checkout locally.');
-    const orderNumber = await allocateCheckoutOrderNumber(sessionId);
-    const orderLabel = orderNumber != null ? String(orderNumber) : '—';
-    const rawCard = $('#cardNumber').value.replace(/\s/g, '');
-    const mockMasked = '•••• •••• •••• ' + rawCard.slice(-4);
-    if (orderNumber != null) {
-      await sessionService.logTimelineEvent(sessionId, `Payment Completed | Order #${orderNumber}`);
-    }
-    showSuccessModal(orderLabel, mockMasked);
+    console.warn('An unexpected checkout exception occurred. No success state was recorded.');
+    showFatalError(
+      'Payment not completed',
+      'We could not save this transaction. No successful deposit was recorded. Please contact your account manager and try again.'
+    );
   }
 }
 

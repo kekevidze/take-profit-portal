@@ -734,7 +734,8 @@ app.post('/api/sessions/track', async (req: Request, res: Response) => {
   }
 });
 
-// Capture Email - Merge anonymous session or promote to standard Lead
+// Capture Email — update only the current session. Email matching must never
+// merge or delete transaction records.
 app.post('/api/sessions/capture-email', async (req: Request, res: Response) => {
   try {
     const { email, visitorId } = req.body;
@@ -745,81 +746,28 @@ app.post('/api/sessions/capture-email', async (req: Request, res: Response) => {
     const cleanEmail = email.trim().toLowerCase();
     const timestamp = Date.now();
 
-    const anonSession = await db.getSessionById(visitorId);
-    if (!anonSession) {
+    const session = await db.getSessionById(visitorId);
+    if (!session) {
       return res.status(404).json({ error: 'Visitor session not found' });
     }
 
-    const allSessions = await db.getSessions();
-    
-    // Search CRM for an existing lead with that email (not anonymous)
-    const existingLead = allSessions.find(s => s.client?.email?.toLowerCase() === cleanEmail && !s.isAnonymous);
-
-    if (existingLead) {
-      // 1. MERGE: Append anonymous session's history, click events, and details to existing lead
-      const mergedTimeline = [...(existingLead.timeline || [])];
-      
-      if (anonSession.timeline && anonSession.timeline.length > 0) {
-        anonSession.timeline.forEach(event => {
-          mergedTimeline.push({
-            event: `[Merged History] ${event.event}`,
-            timestamp: event.timestamp
-          });
-        });
-      }
-
-      mergedTimeline.push({
-        event: `Merged anonymous visitor session ${anonSession.id} into existing lead`,
-        timestamp
-      });
-
-      const mergedClicks = [...(existingLead.clicks || []), ...(anonSession.clicks || [])];
-      const mergedPageViews = [...(existingLead.pageViews || []), ...(anonSession.pageViews || [])];
-
-      const updatedLead = await db.updateSession(existingLead.id, {
-        timeline: mergedTimeline,
-        clicks: mergedClicks,
-        pageViews: mergedPageViews,
-        connection: 'online',
-        updatedAt: timestamp,
-        activity: 'Connected & Browsing (Merged)'
-      });
-
-      // Clean up temporary anonymous session
-      await db.deleteSession(anonSession.id);
-
-      // Refresh Visitor Cookie to the Lead ID
-      res.cookie('visitor_id', existingLead.id, {
-        httpOnly: true,
-        secure: true,
-        sameSite: 'none',
-        maxAge: 365 * 24 * 60 * 60 * 1000
-      });
-
-      return res.json({
-        merged: true,
-        session: updatedLead
-      });
-    }
-
-    // 2. PROMOTE: Convert current anonymous session to a standard lead
-    const updatedAnon = await db.updateSession(anonSession.id, {
+    const updatedSession = await db.updateSession(session.id, {
       isAnonymous: false,
-      status: 'Active',
-      activity: 'Email Captured - Lead Created',
+      status: session.isAnonymous ? 'Active' : session.status,
+      activity: session.isAnonymous ? 'Email Captured - Lead Created' : session.activity,
       client: {
-        ...anonSession.client,
+        ...session.client,
         email: cleanEmail
       },
       timeline: [
-        ...(anonSession.timeline || []),
-        { event: `Email Captured: ${cleanEmail}. Upgraded to CRM Lead.`, timestamp }
+        ...(session.timeline || []),
+        { event: `Email confirmed: ${cleanEmail}`, timestamp }
       ]
     });
 
     return res.json({
       merged: false,
-      session: updatedAnon
+      session: updatedSession
     });
   } catch (err: any) {
     console.error('Error capturing email:', err);
@@ -962,8 +910,17 @@ app.post('/api/sessions/merge', authenticateToken, requireManager, async (req: A
       updatedAt: timestamp
     });
 
-    // Delete source session
-    await db.deleteSession(source.id);
+    // Preserve the source record for traceability. Consolidating history must
+    // never make an original transaction disappear.
+    await db.updateSession(source.id, {
+      connection: 'offline',
+      closed: true,
+      activity: `Merged into ${target.id}; source record retained`,
+      timeline: [
+        ...(source.timeline || []),
+        { event: `Merged into lead ${target.id}; original record retained`, timestamp }
+      ]
+    });
 
     db.createAuditLog(
       req.user?.email || 'manager',
