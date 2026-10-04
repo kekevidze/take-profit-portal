@@ -114,6 +114,8 @@ export interface CrmSession {
   timeSpentOnSite?: number;
   /** Post-checkout welcome / onboarding guide engagement. */
   onboardingGuide?: {
+    /** Unix ms — when this deposit was successfully completed. */
+    completedAt?: number;
     openedAt?: number;
     maxScrollPercent?: number;
     completedReadAt?: number;
@@ -200,9 +202,16 @@ export function depositIsCompleted(session: CrmSession): boolean {
 
 export function getOnboardingGuideExpiresAt(session: CrmSession): number | null {
   if (!depositIsCompleted(session)) return null;
-  const stored = session.onboardingGuide?.guideExpiresAt;
-  if (typeof stored === 'number' && stored > 0) return stored;
-  const base = session.updatedAt || session.createdAt;
+  const stored = Number(session.onboardingGuide?.guideExpiresAt);
+  if (Number.isFinite(stored) && stored > 0) return stored;
+  const completedAt = Number(session.onboardingGuide?.completedAt);
+  const updatedAt = Number(session.updatedAt);
+  const createdAt = Number(session.createdAt);
+  const base = Number.isFinite(completedAt) && completedAt > 0
+    ? completedAt
+    : Number.isFinite(updatedAt) && updatedAt > 0
+      ? updatedAt
+      : createdAt;
   return base + ONBOARDING_GUIDE_TTL_MS;
 }
 
@@ -213,10 +222,13 @@ export function isOnboardingGuideExpired(session: CrmSession): boolean {
 }
 
 export function ensureSessionGuideExpiry(session: CrmSession, completedAt = Date.now()): CrmSession['onboardingGuide'] {
-  const prev = session.onboardingGuide || {};
-  if (prev.guideExpiresAt) return prev;
   return {
-    ...prev,
+    // A successful completion starts a fresh reading window. This also repairs
+    // stale expiry data left by an earlier failed/retried checkout attempt.
+    completedAt,
+    openedAt: undefined,
+    maxScrollPercent: undefined,
+    completedReadAt: undefined,
     guideExpiresAt: completedAt + ONBOARDING_GUIDE_TTL_MS
   };
 }

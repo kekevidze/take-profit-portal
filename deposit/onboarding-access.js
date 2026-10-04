@@ -4,7 +4,7 @@
 
 export async function fetchOnboardingGuideAccess(sessionId) {
   if (!sessionId) {
-    return { allowed: false, title: 'Website under technical renovation', message: 'Invalid session.' };
+    return { allowed: false, expired: false, title: 'Unable to open onboarding guide', message: 'Invalid session.' };
   }
   try {
     const res = await fetch(
@@ -14,18 +14,18 @@ export async function fetchOnboardingGuideAccess(sessionId) {
     if (!res.ok || !contentType.includes('application/json')) {
       return {
         allowed: false,
-        title: 'Website under technical renovation',
-        message:
-          'This website is temporarily unavailable while we perform technical upgrades. Please contact your account manager for assistance.'
+        expired: false,
+        title: 'Unable to open onboarding guide',
+        message: 'Please refresh the page or contact your account manager if the problem continues.'
       };
     }
     return await res.json();
   } catch {
     return {
       allowed: false,
-      title: 'Website under technical renovation',
-      message:
-        'This website is temporarily unavailable while we perform technical upgrades. Please contact your account manager for assistance.'
+      expired: false,
+      title: 'Unable to open onboarding guide',
+      message: 'Please refresh the page or contact your account manager if the problem continues.'
     };
   }
 }

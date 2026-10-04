@@ -19,6 +19,7 @@ export default defineConfig(() => {
           agent: path.resolve(__dirname, 'agent/index.html'),
           deposit: path.resolve(__dirname, 'deposit/index.html'),
           depositWelcome: path.resolve(__dirname, 'deposit/welcome.html'),
+          depositFaqContent: path.resolve(__dirname, 'deposit/faq-content.html'),
           backoffice: path.resolve(__dirname, 'backoffice/index.html'),
         },
       },

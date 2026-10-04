@@ -1970,7 +1970,9 @@ async function bootServer() {
       try {
         const urlPath = req.path;
 
-        if (urlPath.includes('.') && !urlPath.endsWith('.html')) {
+        // Requests for concrete assets (including HTML fragments such as the
+        // FAQ) must never be rewritten to an app shell.
+        if (urlPath.includes('.')) {
           return next();
         }
 
@@ -2006,7 +2008,7 @@ async function bootServer() {
     try {
       const urlPath = req.path;
 
-      if (urlPath.includes('.') && !urlPath.endsWith('.html')) {
+      if (urlPath.includes('.')) {
         return next();
       }
 

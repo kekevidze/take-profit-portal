@@ -443,15 +443,33 @@
 .queue-toolbar-body {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-md);
+  padding: var(--spacing-xxs) 0 var(--spacing-xs);
 }
 
 .queue-toolbar.is-collapsed .queue-toolbar-body {
   display: none;
 }
 
+.queue-search-field,
+.queue-status-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.queue-filter-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-tertiary);
+  line-height: 1;
+}
+
 .queue-search {
-  height: 40px;
+  height: 38px;
   border-radius: var(--radius-sm);
   width: 100%;
 }
@@ -460,17 +478,8 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--spacing-sm);
-  row-gap: var(--spacing-xs);
-}
-
-.queue-date-label {
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--text-tertiary);
-  flex-shrink: 0;
+  gap: var(--spacing-xs);
+  padding-top: 1px;
 }
 
 .queue-date-preset {
@@ -522,7 +531,7 @@
 .filter-segments {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 6px;
   flex: 1;
   min-width: 0;
 }
@@ -533,7 +542,7 @@
   color: var(--text-secondary);
   font-size: 0.72rem;
   font-weight: 600;
-  padding: 4px 10px;
+  padding: 5px 11px;
   border-radius: var(--radius-full);
   cursor: pointer;
   transition: all 0.15s ease;

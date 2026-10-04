@@ -149,31 +149,37 @@
                   </div>
                 </div>
                 <div class="queue-toolbar-body" id="queue-toolbar-body">
-                <input type="search" id="sessions-search-input" class="form-input queue-search" placeholder="Search name, email, ID, agent…" autocomplete="off" />
-                <div class="queue-date-filter" aria-label="Filter by created date">
-                  <label class="queue-date-label" for="sessions-date-preset">Created</label>
-                  <select id="sessions-date-preset" class="form-input queue-date-preset" aria-label="Date preset">
-                    <option value="any">Any date</option>
-                    <option value="today">Today</option>
-                    <option value="yesterday">Yesterday</option>
-                    <option value="7d">Last 7 days</option>
-                    <option value="30d">Last 30 days</option>
-                    <option value="custom">Custom range</option>
-                  </select>
-                  <div id="sessions-date-custom" class="queue-date-custom hidden">
-                    <input type="date" id="sessions-date-from" class="form-input queue-date-input" aria-label="From date" />
-                    <span class="queue-date-sep" aria-hidden="true">–</span>
-                    <input type="date" id="sessions-date-to" class="form-input queue-date-input" aria-label="To date" />
+                  <label class="queue-search-field" for="sessions-search-input">
+                    <span class="queue-filter-label">Search</span>
+                    <input type="search" id="sessions-search-input" class="form-input queue-search" placeholder="Name, email, ID or agent…" autocomplete="off" />
+                  </label>
+                  <div class="queue-date-filter" aria-label="Filter by created date">
+                    <label class="queue-filter-label" for="sessions-date-preset">Created</label>
+                    <select id="sessions-date-preset" class="form-input queue-date-preset" aria-label="Date preset">
+                      <option value="any">Any date</option>
+                      <option value="today">Today</option>
+                      <option value="yesterday">Yesterday</option>
+                      <option value="7d">Last 7 days</option>
+                      <option value="30d">Last 30 days</option>
+                      <option value="custom">Custom range</option>
+                    </select>
+                    <div id="sessions-date-custom" class="queue-date-custom hidden">
+                      <input type="date" id="sessions-date-from" class="form-input queue-date-input" aria-label="From date" />
+                      <span class="queue-date-sep" aria-hidden="true">–</span>
+                      <input type="date" id="sessions-date-to" class="form-input queue-date-input" aria-label="To date" />
+                    </div>
+                    <span id="sessions-date-summary" class="queue-date-summary"></span>
                   </div>
-                  <span id="sessions-date-summary" class="queue-date-summary"></span>
-                </div>
-                <div class="filter-segments" role="tablist" aria-label="Filter sessions">
-                  <button type="button" class="filter-tag active" data-filter="all">All</button>
-                  <button type="button" class="filter-tag" data-filter="online">Online</button>
-                  <button type="button" class="filter-tag" data-filter="Completed">Completed</button>
-                  <button type="button" class="filter-tag" data-filter="deposits">Deposits</button>
-                  <button type="button" class="filter-tag" data-filter="anonymous">Anonymous</button>
-                </div>
+                  <div class="queue-status-filter">
+                    <span class="queue-filter-label">Status</span>
+                    <div class="filter-segments" role="tablist" aria-label="Filter sessions">
+                      <button type="button" class="filter-tag active" data-filter="all">All</button>
+                      <button type="button" class="filter-tag" data-filter="online">Online</button>
+                      <button type="button" class="filter-tag" data-filter="Completed">Completed</button>
+                      <button type="button" class="filter-tag" data-filter="deposits">Deposits</button>
+                      <button type="button" class="filter-tag" data-filter="anonymous">Anonymous</button>
+                    </div>
+                  </div>
                 </div>
               </div>
 
