@@ -12,7 +12,7 @@ This app is a **single Node web service** plus **one PostgreSQL database**. Prod
 | Start | `npm start` → `node dist/server.cjs` | Express on `PORT` (set by Render), serves `dist/` + `/api/*` |
 | Health | `GET /api/health` | `{ "ok": true }` — used by Render health checks |
 
-Blueprint: [`render.yaml`](render.yaml) creates web service **`take-profit-portal`** and Postgres **`take-profit-db`**.
+Blueprint: [`render.yaml`](render.yaml) creates free-tier web service **`take-profit-portal`** and free-tier Postgres **`take-profit-db`**.
 
 ---
 

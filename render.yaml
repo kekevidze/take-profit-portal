@@ -2,7 +2,7 @@ services:
   - type: web
     name: take-profit-portal
     runtime: node
-    plan: starter
+    plan: free
     buildCommand: npm ci && npm run render:verify
     startCommand: npm start
     healthCheckPath: /api/health
@@ -21,6 +21,6 @@ services:
 
 databases:
   - name: take-profit-db
-    plan: starter
+    plan: free
     databaseName: take_profit
     user: take_profit
