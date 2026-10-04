@@ -1,0 +1,27 @@
+import tailwindcss from '@tailwindcss/vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
+import {defineConfig} from 'vite';
+
+export default defineConfig(() => {
+  return {
+    plugins: [react(), tailwindcss()],
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, '.'),
+      },
+    },
+    build: {
+      outDir: 'dist',
+      rollupOptions: {
+        input: {
+          main: path.resolve(__dirname, 'index.html'),
+          agent: path.resolve(__dirname, 'agent/index.html'),
+          deposit: path.resolve(__dirname, 'deposit/index.html'),
+          depositWelcome: path.resolve(__dirname, 'deposit/welcome.html'),
+          backoffice: path.resolve(__dirname, 'backoffice/index.html'),
+        },
+      },
+    },
+  };
+});

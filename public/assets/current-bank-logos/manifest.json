@@ -1,0 +1,381 @@
+{
+  "UK": [
+    {
+      "name": "Al Rayan Bank",
+      "alt": "Home",
+      "src": "/assets/current-bank-logos/UK/al-rayan-bank.svg"
+    },
+    {
+      "name": "Aldermore",
+      "alt": "Aldermore Bank home",
+      "src": "/assets/current-bank-logos/UK/aldermore.jpg"
+    },
+    {
+      "name": "Allica Bank",
+      "alt": "Allica-Bank-Primary-Dark-RGB-optimised",
+      "src": "/assets/current-bank-logos/UK/allica-bank.svg"
+    },
+    {
+      "name": "Atom Bank",
+      "alt": "Go to the home page",
+      "src": "/assets/current-bank-logos/UK/atom-bank.svg"
+    },
+    {
+      "name": "Bank of Scotland",
+      "alt": "Bankname: Bank of Scotland",
+      "src": "/assets/current-bank-logos/UK/bank-of-scotland.png"
+    },
+    {
+      "name": "Barclays",
+      "alt": "Barclays",
+      "src": "/assets/current-bank-logos/UK/barclays.svg"
+    },
+    {
+      "name": "C. Hoare and Co.",
+      "alt": "C. Hoare and Co.",
+      "src": "/assets/current-bank-logos/UK/c-hoare-and-co.svg"
+    },
+    {
+      "name": "Cater Allen",
+      "alt": "Cater Allen logo",
+      "src": "/assets/current-bank-logos/UK/cater-allen.svg"
+    },
+    {
+      "name": "Charter Savings Bank",
+      "alt": "Charter Savings Bank Logo",
+      "src": "/assets/current-bank-logos/UK/charter-savings-bank.svg"
+    },
+    {
+      "name": "Chase UK",
+      "alt": "Chase UK",
+      "src": "/assets/current-bank-logos/UK/chase-uk.svg"
+    },
+    {
+      "name": "Coutts",
+      "alt": "Coutts Logo",
+      "src": "/assets/current-bank-logos/UK/coutts.svg"
+    },
+    {
+      "name": "Coventry Building Society",
+      "alt": "Coventry Building Society",
+      "src": "/assets/current-bank-logos/UK/coventry-building-society.png"
+    },
+    {
+      "name": "Danske Bank UK",
+      "alt": "Danske pill logo",
+      "src": "/assets/current-bank-logos/UK/danske-bank-uk.png"
+    },
+    {
+      "name": "Gatehouse Bank",
+      "alt": "Gatehouse Bank",
+      "src": "/assets/current-bank-logos/UK/gatehouse-bank.svg"
+    },
+    {
+      "name": "HSBC UK",
+      "alt": "HSBC UK",
+      "src": "/assets/current-bank-logos/UK/hsbc-uk.svg"
+    },
+    {
+      "name": "Kent Reliance",
+      "alt": "KentReliance brand logo",
+      "src": "/assets/current-bank-logos/UK/kent-reliance.svg"
+    },
+    {
+      "name": "Lloyds",
+      "alt": "Bankname: Lloyds Bank",
+      "src": "/assets/current-bank-logos/UK/lloyds.svg"
+    },
+    {
+      "name": "Marks and Spencer Bank",
+      "alt": "M&S Bank Home",
+      "src": "/assets/current-bank-logos/UK/marks-and-spencer-bank.svg"
+    },
+    {
+      "name": "Monzo",
+      "alt": "Official website inline logo",
+      "src": "/assets/current-bank-logos/UK/monzo.svg"
+    },
+    {
+      "name": "Nationwide",
+      "alt": "Official website inline logo",
+      "src": "/assets/current-bank-logos/UK/nationwide.svg"
+    },
+    {
+      "name": "NatWest",
+      "alt": "NatWest Logo",
+      "src": "/assets/current-bank-logos/UK/natwest.svg"
+    },
+    {
+      "name": "Newcastle Building Society",
+      "alt": "Newcastle Building Society Logo",
+      "src": "/assets/current-bank-logos/UK/newcastle-building-society.svg"
+    },
+    {
+      "name": "Royal Bank of Scotland",
+      "alt": "Royal Bank of Scotland",
+      "src": "/assets/current-bank-logos/UK/royal-bank-of-scotland.svg"
+    },
+    {
+      "name": "Santander UK",
+      "alt": "Home",
+      "src": "/assets/current-bank-logos/UK/santander-uk.svg"
+    },
+    {
+      "name": "Shawbrook",
+      "alt": "Shawbrook logo",
+      "src": "/assets/current-bank-logos/UK/shawbrook.svg"
+    },
+    {
+      "name": "Skipton Building Society",
+      "alt": "Skipton Building Society logo",
+      "src": "/assets/current-bank-logos/UK/skipton-building-society.svg"
+    },
+    {
+      "name": "Starling Bank",
+      "alt": "Starling Bank logo",
+      "src": "/assets/current-bank-logos/UK/starling-bank.svg"
+    },
+    {
+      "name": "Tandem Bank",
+      "alt": "Tandem Logo",
+      "src": "/assets/current-bank-logos/UK/tandem-bank.svg"
+    },
+    {
+      "name": "Tesco Bank",
+      "alt": "Tesco Bank",
+      "src": "/assets/current-bank-logos/UK/tesco-bank.svg"
+    },
+    {
+      "name": "The Bank of London",
+      "alt": "Bank of London Logo",
+      "src": "/assets/current-bank-logos/UK/the-bank-of-london.svg"
+    },
+    {
+      "name": "Triodos Bank UK",
+      "alt": "Logo Triodos Bank",
+      "src": "/assets/current-bank-logos/UK/triodos-bank-uk.svg"
+    },
+    {
+      "name": "Ulster Bank",
+      "alt": "Ulster Bank Logo",
+      "src": "/assets/current-bank-logos/UK/ulster-bank.svg"
+    },
+    {
+      "name": "Yorkshire Building Society",
+      "alt": "Yorkshire Building Society logo",
+      "src": "/assets/current-bank-logos/UK/yorkshire-building-society.svg"
+    },
+    {
+      "name": "Zempler Bank",
+      "alt": "Official website inline logo",
+      "src": "/assets/current-bank-logos/UK/zempler-bank.svg"
+    },
+    {
+      "name": "Zopa",
+      "alt": "Official website inline logo",
+      "src": "/assets/current-bank-logos/UK/zopa.svg"
+    }
+  ],
+  "AU": [
+    {
+      "name": "Alex Bank",
+      "alt": "Alex Bank",
+      "src": "/assets/current-bank-logos/AU/alex-bank.svg"
+    },
+    {
+      "name": "AMP Bank",
+      "alt": "AMP logo",
+      "src": "/assets/current-bank-logos/AU/amp-bank.svg"
+    },
+    {
+      "name": "ANZ",
+      "alt": "The ANZ Bank logo features the letters \"ANZ\" in a bold, modern font. Next to the text is a distinctive symbol composed of three shapes that represent Australia, New Zealand, and the Asia-Pacific region. These shapes come together to form a central human figure, symbolising the bank's focus on people - both customers and employees. The logo's design emphasises simplicity, growth, and a unified presence across its core markets.",
+      "src": "/assets/current-bank-logos/AU/anz.png"
+    },
+    {
+      "name": "Arab Bank Australia",
+      "alt": "Arab Bank Australia",
+      "src": "/assets/current-bank-logos/AU/arab-bank-australia.svg"
+    },
+    {
+      "name": "Australian Military Bank",
+      "alt": "Australian Military Bank Logo",
+      "src": "/assets/current-bank-logos/AU/australian-military-bank.svg"
+    },
+    {
+      "name": "Australian Mutual Bank",
+      "alt": "AMB Bank Logo",
+      "src": "/assets/current-bank-logos/AU/australian-mutual-bank.svg"
+    },
+    {
+      "name": "Auswide Bank",
+      "alt": "Auswide Bank home",
+      "src": "/assets/current-bank-logos/AU/auswide-bank.png"
+    },
+    {
+      "name": "Bank Australia",
+      "alt": "Bank Australia logo",
+      "src": "/assets/current-bank-logos/AU/bank-australia.webp"
+    },
+    {
+      "name": "Bank of us",
+      "alt": "Bank of us Logo",
+      "src": "/assets/current-bank-logos/AU/bank-of-us.svg"
+    },
+    {
+      "name": "BankVic",
+      "alt": "BankVic Logo",
+      "src": "/assets/current-bank-logos/AU/bankvic.svg"
+    },
+    {
+      "name": "BankWAW",
+      "alt": "WAW",
+      "src": "/assets/current-bank-logos/AU/bankwaw.svg"
+    },
+    {
+      "name": "Bankwest",
+      "alt": "Bankwest home page",
+      "src": "/assets/current-bank-logos/AU/bankwest.svg"
+    },
+    {
+      "name": "BCU Bank",
+      "alt": "BCU Bank logo",
+      "src": "/assets/current-bank-logos/AU/bcu-bank.svg"
+    },
+    {
+      "name": "Bendigo Bank",
+      "alt": "Bendigo Bank logo",
+      "src": "/assets/current-bank-logos/AU/bendigo-bank.png"
+    },
+    {
+      "name": "Beyond Bank",
+      "alt": "Beyond Bank logo",
+      "src": "/assets/current-bank-logos/AU/beyond-bank.png"
+    },
+    {
+      "name": "Cairns Bank",
+      "alt": "Cairns Bank",
+      "src": "/assets/current-bank-logos/AU/cairns-bank.svg"
+    },
+    {
+      "name": "Commonwealth Bank",
+      "alt": "CommBank homepage",
+      "src": "/assets/current-bank-logos/AU/commonwealth-bank.svg"
+    },
+    {
+      "name": "Defence Bank",
+      "alt": "Defence Bank logo",
+      "src": "/assets/current-bank-logos/AU/defence-bank.svg"
+    },
+    {
+      "name": "Geelong Bank",
+      "alt": "Official website inline logo",
+      "src": "/assets/current-bank-logos/AU/geelong-bank.svg"
+    },
+    {
+      "name": "GMCU",
+      "alt": "GMCU",
+      "src": "/assets/current-bank-logos/AU/gmcu.png"
+    },
+    {
+      "name": "Heartland Bank",
+      "alt": "Heartland Bank",
+      "src": "/assets/current-bank-logos/AU/heartland-bank.svg"
+    },
+    {
+      "name": "Horizon Bank",
+      "alt": "Horizon Bank",
+      "src": "/assets/current-bank-logos/AU/horizon-bank.png"
+    },
+    {
+      "name": "HSBC Australia",
+      "alt": "HSBC Australia Bank",
+      "src": "/assets/current-bank-logos/AU/hsbc-australia.svg"
+    },
+    {
+      "name": "Hume Bank",
+      "alt": "Hume Bank",
+      "src": "/assets/current-bank-logos/AU/hume-bank.png"
+    },
+    {
+      "name": "IMB Bank",
+      "alt": "IMB main logo in navbar",
+      "src": "/assets/current-bank-logos/AU/imb-bank.svg"
+    },
+    {
+      "name": "ING Australia",
+      "alt": "ING logo",
+      "src": "/assets/current-bank-logos/AU/ing-australia.webp"
+    },
+    {
+      "name": "ME Bank",
+      "alt": "ME logo displayed on a teal background",
+      "src": "/assets/current-bank-logos/AU/me-bank.png"
+    },
+    {
+      "name": "MOVE Bank",
+      "alt": "MoveBank Logo",
+      "src": "/assets/current-bank-logos/AU/move-bank.svg"
+    },
+    {
+      "name": "MyState Bank",
+      "alt": "Home",
+      "src": "/assets/current-bank-logos/AU/mystate-bank.png"
+    },
+    {
+      "name": "National Australia Bank",
+      "alt": "NAB App Image",
+      "src": "/assets/current-bank-logos/AU/national-australia-bank.jpg"
+    },
+    {
+      "name": "P and N Bank",
+      "alt": "P and N Bank",
+      "src": "/assets/current-bank-logos/AU/p-and-n-bank.svg"
+    },
+    {
+      "name": "People First Bank",
+      "alt": "PeopleFirst Bank Logo",
+      "src": "/assets/current-bank-logos/AU/people-first-bank.svg"
+    },
+    {
+      "name": "QBank",
+      "alt": "QBank",
+      "src": "/assets/current-bank-logos/AU/qbank.png"
+    },
+    {
+      "name": "Qudos Bank",
+      "alt": "Qudos Bank logo",
+      "src": "/assets/current-bank-logos/AU/qudos-bank.webp"
+    },
+    {
+      "name": "Queensland Country Bank",
+      "alt": "Queensland Country Bank",
+      "src": "/assets/current-bank-logos/AU/queensland-country-bank.svg"
+    },
+    {
+      "name": "Summerland Bank",
+      "alt": "Summerland Logo",
+      "src": "/assets/current-bank-logos/AU/summerland-bank.webp"
+    },
+    {
+      "name": "Suncorp Bank",
+      "alt": "Suncorp Bank logo, click to return to the home page",
+      "src": "/assets/current-bank-logos/AU/suncorp-bank.jpg"
+    },
+    {
+      "name": "The Capricornian",
+      "alt": "The Capricornian Bank",
+      "src": "/assets/current-bank-logos/AU/the-capricornian.png"
+    },
+    {
+      "name": "Unity Bank",
+      "alt": "Unity Bank",
+      "src": "/assets/current-bank-logos/AU/unity-bank.png"
+    },
+    {
+      "name": "Woolworths Team Bank",
+      "alt": "Ui Top Navi Logo@2x",
+      "src": "/assets/current-bank-logos/AU/woolworths-team-bank.png"
+    }
+  ]
+}

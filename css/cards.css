@@ -1,0 +1,294 @@
+/**
+ * cards.css
+ * Layout, shadows, hover properties, and custom components like the payment card mockup.
+ */
+
+.card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--spacing-lg);
+  transition: border-color var(--transition-speed) var(--ease-in-out),
+              box-shadow var(--transition-speed) var(--ease-in-out),
+              background-color var(--transition-speed) var(--ease-in-out);
+}
+
+.card-hover:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-md);
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.card-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: var(--spacing-xxs);
+}
+
+/* Glassmorphism/Transparent Card (For premium effects) */
+.card-glass {
+  background: rgba(24, 32, 43, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Session Monitoring Cards (In the Sidebar or Main Grid) */
+.session-card {
+  border-left: 4px solid var(--border-strong);
+  cursor: pointer;
+  transition: all 0.25s var(--ease-in-out);
+}
+
+.session-card:hover {
+  background-color: var(--surface-hover);
+  border-left-color: var(--text-secondary);
+}
+
+.session-card.active {
+  background-color: var(--surface-active);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.session-card.high-priority {
+  border-left-color: var(--danger);
+}
+
+.session-card.completed {
+  border-left-color: var(--success);
+}
+
+.session-card.stale {
+  opacity: 0.6;
+}
+
+/* Timeline/Log Card Item */
+.timeline-card {
+  position: relative;
+  padding-left: var(--spacing-lg);
+  border-left: 2px solid var(--border);
+  padding-bottom: var(--spacing-md);
+}
+
+.timeline-card::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background-color: var(--border-strong);
+  border: 2px solid var(--surface);
+  transition: background-color var(--transition-speed) var(--ease-in-out);
+}
+
+.timeline-card.success::before {
+  background-color: var(--success);
+}
+
+.timeline-card.active::before {
+  background-color: var(--primary);
+}
+
+.timeline-card.error::before {
+  background-color: var(--danger);
+}
+
+/* ---------------- PREMIUM 3D PAYMENT CARD PREVIEW ---------------- */
+.cc-stage {
+  perspective: 1200px;
+  margin: var(--spacing-md) 0 var(--spacing-lg);
+}
+
+.cc-inner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.586 / 1;
+  transform-style: preserve-3d;
+  transition: transform 0.6s var(--ease-in-out);
+}
+
+.cc-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.cc-face {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  backface-visibility: hidden;
+  padding: var(--spacing-lg);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 12px 30px -6px rgba(0, 0, 0, 0.45);
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  transition: background var(--transition-speed) var(--ease-in-out);
+  overflow: hidden;
+}
+
+/* Hologram background shine */
+.cc-face::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.15;
+  background: radial-gradient(350px 200px at 100% 0%, rgba(255, 255, 255, 0.4), transparent 60%),
+              radial-gradient(280px 200px at 0% 100%, rgba(255, 255, 255, 0.2), transparent 60%);
+  pointer-events: none;
+}
+
+.cc-face.back {
+  transform: rotateY(180deg);
+  justify-content: flex-start;
+  padding: 0;
+}
+
+/* Card Brand Color Schemes */
+.cc-face.visa {
+  background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+}
+.cc-face.mastercard {
+  background: linear-gradient(135deg, #27272a 0%, #09090b 100%);
+}
+.cc-face.amex {
+  background: linear-gradient(135deg, #0d9488 0%, #115e59 100%);
+}
+.cc-face.maestro {
+  background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+}
+
+.cc-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.cc-chip {
+  width: 44px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, #fef08a, #ca8a04);
+  position: relative;
+  z-index: 1;
+}
+
+.cc-chip::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.cc-brand-logo {
+  height: 28px;
+  width: auto;
+  max-width: 64px;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 2px 6px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.cc-number {
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  letter-spacing: 0.12em;
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  margin: var(--spacing-sm) 0;
+}
+
+.cc-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.cc-label {
+  font-size: 0.65rem;
+  opacity: 0.6;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.cc-exp {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.cc-holder {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Card Back Design */
+.cc-stripe {
+  width: 100%;
+  height: 48px;
+  background-color: #000000;
+  margin-top: var(--spacing-lg);
+}
+
+.cc-cvv-row {
+  display: flex;
+  justify-content: flex-end;
+  padding: var(--spacing-md) var(--spacing-lg) 0;
+}
+
+.cc-cvv-box {
+  background-color: #ffffff;
+  color: #0f172a;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  min-width: 50px;
+  text-align: right;
+  letter-spacing: 0.15em;
+}
+
+.cc-back-note {
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.4;
+  text-align: center;
+}

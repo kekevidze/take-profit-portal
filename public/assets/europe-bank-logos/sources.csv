@@ -1,0 +1,94 @@
+country,bank,website,file,asset_url,alt,status
+Norway,DNB,https://www.dnb.no/,Norway/dnb.svg,https://www.dnb.no/#embedded-logo,Official website inline logo,Current official website asset
+Norway,Sparebanken Norge,https://www.sparebankennorge.no/,Norway/sparebanken-norge.svg,https://cdn.sbnorge.no/static/assets/images/1.0.23/SBNorge-logo-main.svg,Sparebanken Norge,Current official website asset
+Norway,Sparebanken More,https://www.sbm.no/,Norway/sparebanken-more.svg,https://www.sbm.no/#embedded-logo,Official website inline logo,Current official website asset
+Norway,Storebrand Bank,https://www.storebrand.no:443/,Norway/storebrand-bank.svg,https://www.storebrand.no:443/#embedded-logo,Official website inline logo,Current official website asset
+Norway,KLP Banken,https://www.klp.no/,,,,Logo unavailable or could not be verified; omitted
+Finland,Nordea,https://www.nordea.com/en,Finland/nordea.svg,https://www.nordea.com/en#embedded-logo,Official website inline logo,Current official website asset
+Finland,OP Financial Group,https://www.op.fi/,,,,Logo unavailable or could not be verified; omitted
+Finland,Aktia,https://www.aktia.fi/,Finland/aktia.svg,https://www.aktia.fi/#embedded-logo,Official website inline logo,Current official website asset
+Finland,S-Pankki,https://www.s-pankki.fi/,Finland/s-pankki.svg,https://www.s-pankki.fi/Assets/img/logos/s-pankki-logo-107x46.svg?width=320&quality=80,Etusivulle,Current official website asset
+Finland,Alandsbanken,https://alandsbanken.fi,,,,Omitted: HTTP Error 403: Forbidden
+Finland,Saastopankki,https://www.saastopankki.fi:443/,Finland/saastopankki.svg,https://www.saastopankki.fi:443/-/media/feature/header/saavutettavat-logot/saastopankki_vaakalogo_rgb_svg.svg?h=400&w=290&hash=D635FA3A8607589B2E0CD1DBC563460D,Säästöpankki,Current official website asset
+Sweden,SEB,https://sebgroup.com,Sweden/seb.svg,https://sebgroup.com/Images/seb-wordmark-logo.svg,"SEB logotype, link to start page",Current official website asset
+Sweden,Swedbank,https://www.swedbank.com/,Sweden/swedbank.svg,https://www.swedbank.com/content/dam/global/brand/logotypes/8999-swedbank-logo-default.svg,Swedbank Group,Current official website asset
+Sweden,Handelsbanken,https://www.handelsbanken.com/en/,Sweden/handelsbanken.svg,https://www.handelsbanken.com/en/#embedded-logo,Official website inline logo,Current official website asset
+Sweden,Lansforsakringar Bank,https://lansforsakringar.se,,,,Logo unavailable or could not be verified; omitted
+Sweden,Skandia,https://skandia.se,,,,Omitted: HTTP Error 403: Forbidden
+Sweden,ICA Banken,https://icabanken.se,,,,Omitted: HTTP Error 403: Forbidden
+Sweden,SBAB,https://www.sbab.se/,Sweden/sbab.svg,https://www.sbab.se/#embedded-logo,Official website inline logo,Current official website asset
+Denmark,Danske Bank,https://danskebank.com,Denmark/danske-bank.svg,https://danskebank.com/-/media/danske-bank-images/logo/danske-bank-logo-svg.svg?iar=0&rev=0e441a0bbc8d416f8bebe06b22002475&hash=957BD8DC9B9BA20FF4DD2EFC1CD646EC,Danske Bank COM,Current official website asset
+Denmark,Jyske Bank,https://jyskebank.dk,,,,Omitted: HTTP Error 403: Forbidden
+Denmark,Nykredit,https://www.nykredit.dk/dit-liv/,Denmark/nykredit.svg,https://www.nykredit.dk/globalassets/billeder/ikoner-logoer-flag-grafikker-og-diverse/logoer/nykredit_logo.svg,Gå til forsiden,Current official website asset
+Denmark,Sydbank,https://sydbank.dk,,,,Omitted: HTTP Error 403: Forbidden
+Denmark,Spar Nord,https://www.sparnord.dk/dit-liv/,Denmark/spar-nord.svg,https://www.sparnord.dk/globalassets/billeder/spar-nord/logo/sparnord_logo_website.svg,Gå til forsiden,Current official website asset
+Denmark,Arbejdernes Landsbank,https://www.al-bank.dk/privat,,,,Excluded unrelated or superseded brand image
+France,Credit Agricole,https://www.credit-agricole.com/,France/credit-agricole.png,https://www.credit-agricole.com/var/ca/storage/images/_aliases/logo/1406828-1541-fre-FR/af1f8dd55157-accueil.png,Le site d'actualités du groupe Crédit Agricole,Current official website asset
+France,Societe Generale,https://www.societegenerale.com/fr,France/societe-generale.svg,https://www.societegenerale.com/sites/default/files/image/logo/soc103-1.svg,"C'est vous l'avenir, Société Générale",Current official website asset
+France,BPCE,https://www.groupebpce.com/,France/bpce.png,https://www.groupebpce.com/app/uploads/2023/07/Logo-groupe-bpce-1-e1690364459275.png,Retour à l'accueil Groupe BPCE,Current official website asset
+France,Credit Mutuel,https://www.creditmutuel.fr/home/index.html,France/credit-mutuel.svg,https://cdnsi.e-i.com/INGR/sd/cm_2015/59.128.3/fr/images/css/env/logo.svg,Crédit Mutuel,Current official website asset
+France,La Banque Postale,https://www.labanquepostale.fr/,,,,"Omitted: sequence item 3: expected str instance, NoneType found"
+France,BoursoBank,https://www.boursobank.com/,France/boursobank.svg,https://www.boursobank.com/#embedded-logo,Official website inline logo,Current official website asset
+Germany,Deutsche Bank,https://www.db.com:443/,Germany/deutsche-bank.png,https://www.db.com:443/application/project/images/logos/identifier_RETINA.png,Deutsche Bank,Current official website asset
+Germany,Commerzbank,https://www.commerzbank.de/group/,Germany/commerzbank.svg,https://www.commerzbank.de/group/#embedded-logo,Official website inline logo,Current official website asset
+Germany,DZ Bank,https://www.dzbank.com:443/,Germany/dz-bank.png,https://www.dzbank.com:443/content/dam/dzbank/bilder/Homepage/logo/logo-dzbank.png,"The image contains the logo of DZ Bank, which is a prominent corporate and investment bank in Germany. The design features a stylized emblem, typically composed of a ""V"" icon in white, enclosed within an orange and blue box. The name ""DZ BANK"" appears next to it in bold, uppercase letters, primarily colored in blue. This logo is used for identifying and branding purposes.",Current official website asset
+Germany,Sparkasse,https://www.sparkasse.de/,,,,Logo unavailable or could not be verified; omitted
+Germany,N26,https://n26.com/en-eu,Germany/n26.svg,https://n26.com/en-eu#embedded-logo,Official website inline logo,Current official website asset
+Germany,DKB,https://www.dkb.de/,,,,"Omitted: sequence item 4: expected str instance, NoneType found"
+Spain,CaixaBank,https://www.caixabank.com/home_es.html,Spain/caixabank.svg,https://www.caixabank.com/deployedfiles/caixabank_com/css/Estaticos/images/caixaBank-logotipo-web.svg,"Logotipo de CaixaBank Corporativo, ir a la página de Inicio",Current official website asset
+Spain,Banco Sabadell,https://www.bancsabadell.com/bsnacional/es/,,,,Logo unavailable or could not be verified; omitted
+Spain,Bankinter,https://bankinter.com,,,,Omitted: HTTP Error 403: Forbidden
+Italy,UniCredit,https://www.unicreditgroup.eu/en.html,Italy/unicredit.png,https://www.unicreditgroup.eu/etc/designs/unicreditgroupn/img/static/logoHiRes.png,Logo UniCredit,Current official website asset
+Italy,Intesa Sanpaolo,https://www.intesasanpaolo.com/,,,,"Omitted: sequence item 3: expected str instance, NoneType found"
+Italy,Banco BPM,https://www.bancobpm.it/,Italy/banco-bpm.svg,https://www.bancobpm.it/media/2022/05/logoBancoBPM.svg,Banco bpm,Current official website asset
+Italy,BPER Banca,https://www.bper.it/,Italy/bper-banca.svg,https://www.bper.it/o/bper-2026-theme/images/BPER_Logo_Verde_SITOCOMM.svg,,Current official website asset
+Italy,Banca Monte dei Paschi di Siena,https://www.mps.it/,,,,Logo unavailable or could not be verified; omitted
+Netherlands,ING,https://ing.com,Netherlands/ing.svg,https://ing.com/webfiles/1788951119972/images/ing-logo.svg,ING.com,Current official website asset
+Netherlands,Rabobank,https://rabobank.com,,,,Omitted: HTTP Error 403: Forbidden
+Netherlands,ABN AMRO,https://www.abnamro.com/nl/home,Netherlands/abn-amro.svg,https://images.ctfassets.net/1u811bvgvthc/1WdfhFEy0bKMxR8dlZqGNr/b75d47b937b7b48d814d371477904782/Logo-abn.svg,"ABN AMRO logo , Naar homepage abnamro.com",Current official website asset
+Netherlands,bunq,https://bunq.com,,,,Omitted: HTTP Error 308: Permanent Redirect
+Belgium,KBC,https://www.kbc.com/en.html,,,,"Omitted: sequence item 3: expected str instance, NoneType found"
+Belgium,Belfius,https://www.belfius.be/site/retail/nl,Belgium/belfius.svg,https://www.belfius.be/site/retail/nl#embedded-logo,Official website inline logo,Current official website asset
+Belgium,BNP Paribas Fortis,https://bnpparibasfortis.be,,,,Omitted: HTTP Error 503: Service Unavailable
+Switzerland,UBS,https://ubs.com,,,,Omitted: HTTP Error 403: Forbidden
+Switzerland,Julius Baer,https://juliusbaer.com,,,,Omitted: HTTP Error 403: Forbidden
+Switzerland,Raiffeisen Switzerland,https://www.raiffeisen.ch/,Switzerland/raiffeisen-switzerland.svg,https://www.raiffeisen.ch/#embedded-logo,Official website inline logo,Current official website asset
+Switzerland,Zurcher Kantonalbank,https://www.zkb.ch/de/private.html,,,,"Omitted: sequence item 3: expected str instance, NoneType found"
+Austria,Erste Group,https://www.erstegroup.com/en/home,,,,Logo unavailable or could not be verified; omitted
+Austria,Raiffeisen Bank International,https://www.rbinternational.com/de/home.html,,,,"Omitted: sequence item 3: expected str instance, NoneType found"
+Austria,BAWAG,https://www.bawaggroup.com/en,,,,Logo unavailable or could not be verified; omitted
+Portugal,Millennium BCP,https://www.millenniumbcp.pt/,Portugal/millennium-bcp.svg,https://www.millenniumbcp.pt/#embedded-logo,Official website inline logo,Current official website asset
+Portugal,Caixa Geral de Depositos,https://www.cgd.pt/Particulares/Pages/Particulares_v2.aspx,Portugal/caixa-geral-de-depositos.png,https://www.cgd.pt/PublishingImages/WSImages/Novo-CGD/favicon.ico.png?rev=44,logo CGD,Current official website asset
+Portugal,Novo Banco,https://www.novobanco.pt/,Portugal/novo-banco.svg,https://www.novobanco.pt/content/dam/novobancopublicsites/logos/novobanco.svg,Novo Banco,Current official website asset
+Ireland,AIB,https://aib.ie,,,,Omitted: HTTP Error 403: Forbidden
+Ireland,Bank of Ireland,https://www.bankofireland.com:443/,Ireland/bank-of-ireland.svg,https://boi-public-assets.s3-eu-west-1.amazonaws.com/images/logos/bank-of-ireland-logo-new-branding-positive.svg,Bank of ireland logo,Current official website asset
+Poland,PKO Bank Polski,https://www.pkobp.pl/,Poland/pko-bank-polski.svg,https://www.pkobp.pl/api/public/3c663fc2-a8dc-4cb9-ab55-9a4ee64b7c35.svg,,Current official website asset
+Poland,Bank Pekao,https://www.pekao.com.pl/,Poland/bank-pekao.svg,https://www.pekao.com.pl/.resources/pekao-module/webresources/dist_v2/img/logo.svg,,Current official website asset
+Poland,mBank,https://www.mbank.pl/indywidualny/,,,,Logo unavailable or could not be verified; omitted
+Czechia,CSOB,https://csob.cz,,,,Omitted: HTTP Error 500: Internal Server Error
+Czechia,Komercni banka,https://www.kb.cz/cs/obcane,Czechia/komercni-banka.svg,https://www.kb.cz/cs/obcane#embedded-logo,Official website inline logo,Current official website asset
+Greece,Eurobank,https://eurobank.gr,,,,Omitted: HTTP Error 403: Forbidden
+Greece,Piraeus Bank,https://www.piraeusbank.gr/el/idiwtes,Greece/piraeus-bank.svg,https://www.piraeusbank.gr/el/idiwtes#embedded-logo,Official website inline logo,Current official website asset
+Greece,Alpha Bank,https://alpha.gr,,,,Omitted: HTTP Error 403: Forbidden
+Iceland,Landsbankinn,https://www.landsbankinn.is/,,,,Logo unavailable or could not be verified; omitted
+Iceland,Islandsbanki,https://www.islandsbanki.is/,,,,Logo unavailable or could not be verified; omitted
+Iceland,Arion Bank,https://www.arionbanki.is/,,,,Logo unavailable or could not be verified; omitted
+United Kingdom,Barclays,https://www.barclays.co.uk/,United Kingdom/barclays.svg,https://www.barclays.co.uk/content/dam/icons/favicons/barclays/Eagle_RGB_Cyan_Large.svg,,"Current official website asset, verified 3 October 2026"
+United Kingdom,HSBC UK,https://www.hsbc.co.uk/,United Kingdom/hsbc-uk.svg,https://www.hsbc.co.uk/content/dam/hsbc/gb/images/logos/hsbc-uk.svg,HSBC UK,"Current official website asset, verified 3 October 2026"
+United Kingdom,Lloyds,https://www.lloydsbank.com,United Kingdom/lloyds.svg,https://www.lloydsbank.com#embedded-logo,Bankname: Lloyds Bank,"Current official website asset, verified 3 October 2026"
+United Kingdom,NatWest,https://www.natwest.com/,United Kingdom/natwest.svg,https://www.natwest.com/content/dam/championlogos/Natwest_Secondary_Horizontal_RGB_NEG.svg,NatWest Logo,"Current official website asset, verified 3 October 2026"
+United Kingdom,Royal Bank of Scotland,https://www.rbs.co.uk/,United Kingdom/royal-bank-of-scotland.svg,https://www.rbs.co.uk/content/dam/championlogos/RBS_Secondary_Horizontal_RGB_NEG.svg,Royal Bank of Scotland,"Current official website asset, verified 3 October 2026"
+United Kingdom,Santander UK,https://www.santander.co.uk/,United Kingdom/santander-uk.svg,https://www.santander.co.uk/themes/custom/santander_web18_2_0/logo.svg,Home,"Current official website asset, verified 3 October 2026"
+United Kingdom,Nationwide,https://www.nationwide.co.uk/,United Kingdom/nationwide.svg,https://www.nationwide.co.uk/#inline-logo,Official website inline logo,"Current official website asset, verified 3 October 2026"
+United Kingdom,Monzo,https://monzo.com,United Kingdom/monzo.svg,https://monzo.com#inline-logo,Official website inline logo,"Current official website asset, verified 3 October 2026"
+United Kingdom,Starling Bank,https://www.starlingbank.com,United Kingdom/starling-bank.svg,https://www.starlingbank.com#embedded-logo,Starling Bank logo,"Current official website asset, verified 3 October 2026"
+United Kingdom,Chase UK,https://www.chase.co.uk/gb/en/,United Kingdom/chase-uk.svg,https://static.chase.co.uk/content/dam/chaseweb/gb/en/images/logos/chase-logo.svg?bypass-img-cdn?384,,"Current official website asset, verified 3 October 2026"
+United Kingdom,Atom Bank,https://www.atombank.co.uk/,United Kingdom/atom-bank.svg,https://www.atombank.co.uk/_astro/atom-logo.CV42YAKh.svg,Go to the home page,"Current official website asset, verified 3 October 2026"
+United Kingdom,Zopa,https://www.zopa.com/,United Kingdom/zopa.svg,https://www.zopa.com/#inline-logo,Official website inline logo,"Current official website asset, verified 3 October 2026"
+United Kingdom,Coutts,https://www.coutts.com/,United Kingdom/coutts.svg,https://www.coutts.com/content/dam/coutts/header/Coutts_Logo_DarkBurgundy.svg,Coutts Logo,"Current official website asset, verified 3 October 2026"
+Norway,SpareBank 1,https://www.sparebank1.no/nb/bank/privat.html,Norway/sparebank-1.svg,https://www.sparebank1.no/content/dam/SB1/nettsider/logo.svg,Tilbake til forsiden for privat for - SpareBank 1,Current official website asset
+Hungary,OTP Bank,https://www.otpbank.hu/portal/hu/maganszemelyek,,,,Unrelated security badge excluded
+Spain,Santander,https://www.santander.com/en/home,Spain/santander.svg,https://www.santander.com/content/dam/santander-com/images/Santander_Logo.svg,Santander,Current official website logo
+France,BNP Paribas,https://group.bnpparibas/en,France/bnp-paribas.svg,https://commons.wikimedia.org/wiki/File:BNP_Paribas_logo.svg,BNP Paribas,Current brand vector; Wikimedia source
+Spain,BBVA,https://www.bbva.com/en/innovation/bbva-unveils-a-new-more-optimistic-and-empathetic-brand-identity/,Spain/bbva.svg,https://commons.wikimedia.org/wiki/File:BBVA_logo_2025.svg,BBVA,2025 refreshed logo; current rebrand documented by BBVA
+Denmark,AL Sydbank,https://www.al-bank.dk,Denmark/al-sydbank.svg,https://www.al-bank.dk/assets/vectorImages/ALsydbank_RGB_Positiv_Tidligere_AL.svg,AL Sydbank,"Current official transitional AL Sydbank logo, formerly Arbejdernes Landsbank"

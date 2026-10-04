@@ -1,0 +1,115 @@
+.welcome-body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: var(--bg-light, #f8fafc);
+  color: var(--text-primary-light, #0f172a);
+  min-height: 100vh;
+}
+
+.welcome-header {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  color: #fff;
+  padding: 48px 24px 56px;
+}
+
+.welcome-header-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.welcome-kicker {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.9;
+  margin-bottom: 8px;
+}
+
+.welcome-header h1 {
+  margin: 0 0 12px;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.welcome-lead {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.92;
+  max-width: 640px;
+}
+
+.welcome-main {
+  max-width: 720px;
+  margin: -32px auto 0;
+  padding: 0 24px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.welcome-card {
+  background: #fff;
+  border: 1px solid var(--border-light, #e2e8f0);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
+}
+
+.welcome-card h2 {
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.welcome-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text-secondary-light, #475569);
+}
+
+.welcome-scroll-hint {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+  padding: 16px 20px;
+  font-size: 0.85rem;
+  color: #1e40af;
+}
+
+.welcome-scroll-hint.hidden {
+  display: none;
+}
+
+.welcome-progress-track {
+  margin-top: 10px;
+  height: 6px;
+  background: #dbeafe;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.welcome-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: #2563eb;
+  border-radius: 999px;
+  transition: width 0.2s ease;
+}
+
+.welcome-end-sentinel {
+  height: 1px;
+}
+
+.welcome-footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 0.85rem;
+  color: var(--text-tertiary-light, #64748b);
+  border-top: 1px solid var(--border-light, #e2e8f0);
+  background: #fff;
+}

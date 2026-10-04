@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Take Profit · Agent</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/variables.css" />
+  <link rel="stylesheet" href="/css/layout.css" />
+  <link rel="stylesheet" href="/css/forms.css" />
+  <link rel="stylesheet" href="/css/buttons.css" />
+  <link rel="stylesheet" href="/css/cards.css" />
+  <link rel="stylesheet" href="/css/utilities.css" />
+  <link rel="stylesheet" href="/css/animations.css" />
+  <link rel="stylesheet" href="/agent/agent.css" />
+</head>
+<body>
+
+  <div class="top-nav">
+    <div class="flex align-center gap-md">
+      <a href="/" class="btn-icon btn-sm btn-tertiary" style="border: none; background: none;">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+      </a>
+      <div class="flex-col">
+        <h1 style="font-size: 1.15rem; font-weight: 700; letter-spacing: -0.01em;">Take Profit</h1>
+      </div>
+    </div>
+    <div class="flex align-center gap-lg">
+      <button class="btn-icon theme-toggle-btn">
+        <!-- Theme Toggle SVG -->
+        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+
+      <!-- Profile Badge -->
+      <div class="flex align-center gap-sm" id="agent-profile-badge">
+        <div class="profile-avatar" id="agent-avatar" style="background-color: var(--primary); font-size: 0.85rem; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #fff;">A</div>
+        <div class="flex-col" style="line-height: 1.2;">
+          <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-primary);" id="agent-profile-name">Agent</span>
+          <span style="font-size: 0.7rem; color: var(--text-tertiary);" id="agent-profile-role">Sales Representative</span>
+        </div>
+      </div>
+
+      <div id="backoffice-link-container" style="display: none;">
+      </div>
+
+      <button class="btn btn-tertiary btn-sm" id="logout-btn" style="height: 32px; padding: 0 var(--spacing-sm);">Log Out</button>
+    </div>
+  </div>
+
+  <main class="container content-body">
+    <div class="agent-main-layout">
+      
+      <!-- LEFT COLUMN: REGISTRATION AND ACTIVE SESSIONS -->
+      <div class="flex-col gap-lg" style="flex: 1; min-width: 0;">
+        <!-- LEFT PANE: LEAD REGISTRATION FORM -->
+        <section class="card">
+          <div class="card-header">
+            <div class="flex-col">
+              <h2 class="card-title">Register New Client</h2>
+            </div>
+          </div>
+
+          <form id="agent-onboarding-form" novalidate>
+            <!-- Email -->
+            <div class="floating-group" data-field="email">
+              <input type="email" id="email" class="floating-input" placeholder=" " autocomplete="off" required />
+              <label for="email" class="floating-label">Email Address</label>
+              <div class="form-error-msg">Enter a valid email address</div>
+            </div>
+
+            <!-- Campaign Name -->
+            <div class="floating-group" data-field="campaignName">
+              <input type="text" id="campaignName" class="floating-input" placeholder=" " autocomplete="off" />
+              <label for="campaignName" class="floating-label">Campaign Name</label>
+              <div class="form-error-msg">Enter a valid campaign name</div>
+            </div>
+
+            <div class="grid-2col">
+              <!-- First Name -->
+              <div class="floating-group" data-field="firstName">
+                <input type="text" id="firstName" class="floating-input" placeholder=" " autocomplete="off" />
+                <label for="firstName" class="floating-label">First Name (Optional)</label>
+                <div class="form-error-msg">Enter a valid first name</div>
+              </div>
+              <!-- Last Name -->
+              <div class="floating-group" data-field="lastName">
+                <input type="text" id="lastName" class="floating-input" placeholder=" " autocomplete="off" />
+                <label for="lastName" class="floating-label">Last Name (Optional)</label>
+                <div class="form-error-msg">Enter a valid last name</div>
+              </div>
+            </div>
+
+            <!-- Phone (Optional but with dynamic phone country code) -->
+            <div class="floating-group phone-wrap" data-field="phone">
+              <div class="phone-input-wrapper">
+                <span class="phone-country-code" id="phoneCode"></span>
+                <input type="tel" id="phoneNumber" class="floating-input" placeholder=" " autocomplete="off" />
+              </div>
+              <label for="phoneNumber" class="floating-label">Phone Number (Optional)</label>
+              <div class="form-error-msg">Enter a valid phone number</div>
+            </div>
+
+            <div class="grid-2col" style="margin-bottom: var(--spacing-sm);">
+              <!-- Country Combobox -->
+              <div class="form-group combobox-container" data-field="country">
+                <div class="floating-group combo-field" style="margin-bottom: 0;">
+                  <input type="text" id="countryInput" class="floating-input" placeholder=" " autocomplete="off" role="combobox" aria-expanded="false" aria-haspopup="listbox" />
+                  <label for="countryInput" class="floating-label always-active">Country (Optional)</label>
+                  <div class="combobox-list" id="countryList" role="listbox"></div>
+                </div>
+                <div class="form-error-msg" style="display: none;">Select a country from the list</div>
+              </div>
+
+              <!-- City -->
+              <div class="floating-group" data-field="city">
+                <input type="text" id="city" class="floating-input" placeholder=" " autocomplete="off" />
+                <label for="city" class="floating-label">City (Optional)</label>
+                <div class="form-error-msg">Enter client's city</div>
+              </div>
+            </div>
+
+            <label class="checkbox-row" for="autoDetectCountryByIp" style="display:flex; align-items:flex-start; gap:10px; margin: 0 0 var(--spacing-md); cursor:pointer; font-size:0.85rem; line-height:1.45; color:var(--text-secondary);">
+              <input type="checkbox" id="autoDetectCountryByIp" style="margin-top:3px; flex-shrink:0;" />
+              <span>Automatically detect the client&apos;s country from their IP when they open the deposit page (only if no country is set above).</span>
+            </label>
+
+            <button type="button" class="btn btn-primary w-full" id="generate-btn">Generate Onboarding Link</button>
+          </form>
+        </section>
+
+        <!-- ACTIVE SESSIONS LIST -->
+        <section class="card flex-col gap-md">
+          <div class="card-header" style="border-bottom: 1px solid var(--border); padding-bottom: var(--spacing-sm); margin-bottom: 0;">
+            <div class="flex-col">
+              <h2 class="card-title">Your Onboarding Sessions</h2>
+              <span class="card-subtitle">Select a session to resume active monitoring or copy its link</span>
+            </div>
+          </div>
+          <div class="flex-col gap-md" id="agent-sessions-list" style="max-height: 400px; overflow-y: auto; padding-right: var(--spacing-xs);">
+            <div class="text-center text-tertiary" style="padding: var(--spacing-lg) 0; font-size: 0.85rem;">
+              No sessions found. Register a client above to begin.
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- RIGHT PANE: LINK GENERATOR & REALTIME MONITOR -->
+      <section class="card agent-monitor-panel">
+
+        <!-- Initial Placeholder State -->
+        <div id="monitoring-placeholder" class="flex-col align-center justify-center text-center gap-md" style="padding: var(--spacing-xxl) 0;">
+          <svg viewBox="0 0 24 24" width="48" height="48" stroke="var(--text-tertiary)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.6;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          <div>
+            <h3 style="font-size: 1.05rem; margin-bottom: 4px;">Link Not Yet Generated</h3>
+            <p style="font-size: 0.85rem; max-width: 280px; margin: 0 auto;">Fill out the client's information on the left and click "Generate Onboarding Link" to begin tracking.</p>
+          </div>
+        </div>
+
+        <!-- Real-time Tracking Dashboard (Hidden initially) -->
+        <div id="monitoring-dashboard" class="hidden agent-monitor-dashboard">
+          <div class="agent-monitor-hero">
+            <div class="agent-monitor-hero-main">
+              <p class="agent-monitor-hero-label">Live session</p>
+              <p class="agent-monitor-hero-title text-truncate" id="live-session-id">DEP-XXXXXXXX</p>
+              <p class="agent-monitor-hero-sub mono" id="live-session-ref">—</p>
+            </div>
+            <div class="agent-monitor-hero-badge" id="live-status-badge">
+              <span class="badge badge-gray">WAITING</span>
+            </div>
+          </div>
+
+          <div class="agent-monitor-block">
+            <h4 class="agent-monitor-label">Onboarding URL</h4>
+            <div class="link-input-group">
+              <input type="text" id="onboarding-url-input" class="form-input mono agent-monitor-url-input" readonly />
+              <button type="button" class="btn btn-secondary btn-icon btn-copy" id="copy-link-btn" title="Copy Link">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="agent-monitor-block">
+            <h4 class="agent-monitor-label">Onboarding progress</h4>
+            <div class="card agent-monitor-inner">
+              <div class="agent-monitor-activity">
+                <span class="agent-monitor-activity-label">Current activity</span>
+                <p id="live-activity-text" class="agent-monitor-activity-msg text-tertiary">Waiting for client…</p>
+                <div id="live-progress-bar-wrapper"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="agent-monitor-block" id="live-client-bio-section">
+            <h4 class="agent-monitor-label">Client biography</h4>
+            <div class="card agent-monitor-inner">
+              <div class="flex-col gap-xs agent-monitor-list">
+                <div class="list-row"><span class="list-row-label">First Name</span><span class="list-row-value" id="live-firstName">—</span></div>
+                <div class="list-row"><span class="list-row-label">Last Name</span><span class="list-row-value" id="live-lastName">—</span></div>
+                <div class="list-row"><span class="list-row-label">Email Address</span><span class="list-row-value text-truncate" style="max-width: 220px;" id="live-email">—</span></div>
+                <div class="list-row"><span class="list-row-label">Phone</span><span class="list-row-value" id="live-phone">—</span></div>
+                <div class="list-row"><span class="list-row-label">Country</span><span class="list-row-value" id="live-country">—</span></div>
+                <div class="list-row"><span class="list-row-label">City</span><span class="list-row-value" id="live-city">—</span></div>
+                <div class="list-row"><span class="list-row-label">Campaign Name</span><span class="list-row-value text-truncate" style="max-width: 180px;" id="live-campaignName">—</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="agent-monitor-block" id="live-card-security-section">
+            <div class="agent-monitor-label-row">
+              <h4 class="agent-monitor-label">Card security metadata</h4>
+              <span class="badge badge-success agent-monitor-pci-badge">PCI compliant</span>
+            </div>
+            <div class="card agent-monitor-inner">
+              <div class="flex-col gap-xs agent-monitor-list" style="margin-bottom: var(--spacing-sm);">
+                <div class="list-row"><span class="list-row-label">Card Brand</span><span class="list-row-value" id="live-cardBrand">—</span></div>
+                <div class="list-row"><span class="list-row-label">Digits Inputted</span><span class="list-row-value cell-mono" id="live-cardDigits">—</span></div>
+                <div class="list-row"><span class="list-row-label">Luhn Validation</span><span class="list-row-value" id="live-cardLuhn">—</span></div>
+                <div class="list-row"><span class="list-row-label">Expiration Date</span><span class="list-row-value" id="live-cardExpiry">—</span></div>
+                <div class="list-row"><span class="list-row-label">CVV Status</span><span class="list-row-value" id="live-cardCvv">—</span></div>
+              </div>
+              <button id="agent-view-card-btn" class="btn btn-secondary btn-sm" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                View Card Details
+              </button>
+            </div>
+          </div>
+
+          <div class="agent-monitor-block" id="live-incomplete-fields-section">
+            <h4 class="agent-monitor-label">Incomplete form fields</h4>
+            <div class="card agent-monitor-inner">
+              <div class="flex-col gap-xs" id="live-missing-wrapper">
+                <!-- Dynamically injected -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- External libraries -->
+  <script src="/js/utils/constants.js" type="module"></script>
+  <script src="/agent/agent.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,379 @@
+/**
+ * forms.css
+ * Styling for input fields, floating labels, validation states, and select dropdowns.
+ */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+  position: relative;
+}
+
+/* Modern Input with Floating Label */
+.floating-group {
+  position: relative;
+  margin-bottom: var(--spacing-md);
+}
+
+.floating-input,
+.floating-select {
+  width: 100%;
+  height: 52px;
+  background-color: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md) 0;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color var(--transition-speed) var(--ease-in-out),
+              box-shadow var(--transition-speed) var(--ease-in-out),
+              background-color var(--transition-speed) var(--ease-in-out);
+}
+
+.floating-label {
+  position: absolute;
+  left: var(--spacing-md);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  pointer-events: none;
+  transition: transform var(--transition-speed) var(--ease-in-out),
+              top var(--transition-speed) var(--ease-in-out),
+              font-size var(--transition-speed) var(--ease-in-out),
+              color var(--transition-speed) var(--ease-in-out);
+}
+
+/* Floating label active states */
+.floating-input:focus ~ .floating-label,
+.floating-select:focus ~ .floating-label,
+.floating-group.has-value .floating-label,
+.floating-input:not(:placeholder-shown) ~ .floating-label,
+.floating-select:not([value=""]) ~ .floating-label,
+.floating-label.always-active {
+  top: 14px;
+  font-size: 0.75rem;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Multi-line floating field — label stays in the top band, not over text */
+.floating-group-textarea textarea.floating-input {
+  height: auto;
+  min-height: 88px;
+  padding: 1.75rem var(--spacing-md) var(--spacing-sm);
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.floating-group-textarea .floating-label {
+  top: 10px;
+  transform: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+}
+
+.floating-group-textarea.focused .floating-label,
+.floating-group-textarea.has-value .floating-label,
+.floating-group-textarea textarea.floating-input:focus ~ .floating-label {
+  top: 10px;
+  transform: none;
+  color: var(--primary);
+}
+
+.floating-input:focus,
+.floating-select:focus,
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--primary);
+  background-color: var(--surface-hover);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+/* Standard Inputs & Textareas */
+.form-input,
+.form-textarea {
+  width: 100%;
+  background-color: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color var(--transition-speed) var(--ease-in-out),
+              box-shadow var(--transition-speed) var(--ease-in-out);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Validation States */
+.floating-group.success .floating-input,
+.floating-group.success .floating-select,
+.form-group.success .form-input {
+  border-color: var(--success);
+}
+
+.floating-group.success .floating-label,
+.floating-group.success .status-icon.ok {
+  color: var(--success);
+}
+
+.floating-group.error .floating-input,
+.floating-group.error .floating-select,
+.form-group.error .form-input {
+  border-color: var(--danger);
+  animation: shake 0.4s var(--ease-in-out);
+}
+
+.floating-group.error .floating-label,
+.floating-group.error .status-icon.err {
+  color: var(--danger);
+}
+
+.floating-group .status-icon {
+  position: absolute;
+  right: var(--spacing-md);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  font-size: 1.1rem;
+}
+
+.floating-group .status-icon.ok,
+.floating-group .status-icon.err {
+  display: none;
+}
+
+.floating-group.success .status-icon.ok {
+  display: flex;
+}
+
+.floating-group.error .status-icon.err {
+  display: flex;
+}
+
+.form-error-msg {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--danger);
+  margin-top: 4px;
+  display: none;
+}
+
+.floating-group.error .form-error-msg,
+.form-group.error .form-error-msg {
+  display: block;
+}
+
+/* Custom Flags inside Inputs */
+.floating-group.has-flag .floating-input {
+  padding-left: 54px;
+}
+
+.floating-group.has-flag .floating-label {
+  left: 54px;
+}
+
+.floating-group.has-flag .floating-input:focus ~ .floating-label,
+.floating-group.has-flag.has-value .floating-label {
+  left: var(--spacing-md);
+}
+
+.flag-overlay {
+  position: absolute;
+  left: var(--spacing-md);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.3rem;
+  pointer-events: none;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+}
+
+/* Country Phone Prefix Style */
+.phone-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.phone-country-code {
+  position: absolute;
+  left: var(--spacing-md);
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  pointer-events: none;
+  z-index: 2;
+  display: none;
+}
+
+.floating-group.has-phone-code .phone-country-code {
+  display: block;
+}
+
+.floating-group.has-phone-code .floating-input {
+  padding-left: 64px;
+}
+
+.floating-group.has-phone-code .floating-label {
+  left: 64px;
+}
+
+.floating-group.has-phone-code .floating-input:focus ~ .floating-label,
+.floating-group.has-phone-code.has-value .floating-label {
+  left: var(--spacing-md);
+}
+
+/* Searchable Country Dropdown Combobox */
+.combobox-container {
+  position: relative;
+  width: 100%;
+}
+
+.combobox-list {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 4px);
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  max-height: 240px;
+  overflow-y: auto;
+  z-index: 999;
+  padding: var(--spacing-xs);
+  display: none;
+}
+
+.combobox-list.show {
+  display: block;
+  animation: slideInDown var(--transition-speed) var(--ease-out);
+}
+
+.combobox-option {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: background-color var(--transition-speed) var(--ease-in-out), color var(--transition-speed) var(--ease-in-out);
+}
+
+.combobox-option:hover,
+.combobox-option.active {
+  background-color: var(--primary-dim);
+  color: var(--primary);
+}
+
+.combobox-option .option-flag {
+  font-size: 1.2rem;
+}
+
+.combobox-option .option-code {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  font-weight: 600;
+}
+
+.combobox-option:hover .option-code,
+.combobox-option.active .option-code {
+  color: var(--primary);
+}
+
+.combobox-empty {
+  padding: var(--spacing-md);
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Custom Checkbox/Radio */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-input {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  outline: none;
+  background-color: var(--surface);
+  cursor: pointer;
+  transition: background-color var(--transition-speed) var(--ease-in-out),
+              border-color var(--transition-speed) var(--ease-in-out);
+  position: relative;
+}
+
+.checkbox-input:checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.checkbox-input:checked::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* Inline Info/Hint text below input */
+.form-hint {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  margin-top: var(--spacing-xs);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.form-hint svg {
+  width: 14px;
+  height: 14px;
+}
+
+.form-hint.warn {
+  color: var(--warning);
+}
+
+.form-hint.success {
+  color: var(--success);
+}

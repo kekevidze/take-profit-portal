@@ -1,0 +1,113 @@
+/**
+ * variables.css
+ * Core design tokens, theme variables, and color schemes.
+ * Inspired by modern premium UIs (Linear, Stripe, Revolut).
+ */
+
+:root {
+  /* Color Palette - Deep Dark Slate Theme */
+  --bg-dark: #090d12;
+  --surface-dark: #11161d;
+  --surface-hover-dark: #18202b;
+  --surface-active-dark: #1f2a3a;
+  --border-dark: #1f2733;
+  --border-strong-dark: #2d3744;
+  
+  --text-primary-dark: #f0f3f9;
+  --text-secondary-dark: #94a3b8;
+  --text-tertiary-dark: #64748b;
+
+  /* Color Palette - Clean Light Slate Theme */
+  --bg-light: #f8fafc;
+  --surface-light: #ffffff;
+  --surface-hover-light: #f1f5f9;
+  --surface-active-light: #e2e8f0;
+  --border-light: #e2e8f0;
+  --border-strong-light: #cbd5e1;
+
+  --text-primary-light: #0f172a;
+  --text-secondary-light: #475569;
+  --text-tertiary-light: #64748b;
+
+  /* Accent Colors (Consistent across themes) */
+  --primary: #2563eb;         /* Stripe/Revolut Blue */
+  --primary-hover: #1d4ed8;
+  --primary-dim: rgba(37, 99, 235, 0.12);
+  --primary-glow: rgba(37, 99, 235, 0.25);
+
+  --accent: #2dd4bf;          /* Mint/Cyan for Real-time events */
+  --accent-dim: rgba(45, 212, 191, 0.12);
+  --accent-glow: rgba(45, 212, 191, 0.25);
+
+  --success: #10b981;         /* Emerald Green */
+  --success-dim: rgba(16, 185, 129, 0.12);
+  --success-glow: rgba(16, 185, 129, 0.25);
+
+  --warning: #f59e0b;         /* Amber Yellow */
+  --warning-dim: rgba(245, 158, 11, 0.12);
+  --warning-glow: rgba(245, 158, 11, 0.25);
+
+  --danger: #ef4444;          /* Rose Red */
+  --danger-dim: rgba(239, 68, 68, 0.12);
+  --danger-glow: rgba(239, 68, 68, 0.25);
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Roboto Mono', monospace;
+
+  /* Spacing (8px Grid System) */
+  --spacing-xxs: 4px;
+  --spacing-xs: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+
+  /* Borders & Shadows */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --transition-speed: 0.2s;
+
+  /* Default Active Theme - Set to Dark Theme */
+  --bg: var(--bg-dark);
+  --surface: var(--surface-dark);
+  --surface-hover: var(--surface-hover-dark);
+  --surface-active: var(--surface-active-dark);
+  --border: var(--border-dark);
+  --border-strong: var(--border-strong-dark);
+  --text-primary: var(--text-primary-dark);
+  --text-secondary: var(--text-secondary-dark);
+  --text-tertiary: var(--text-tertiary-dark);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-glow: 0 0 20px rgba(37, 99, 235, 0.15);
+}
+
+/* Light Theme overrides */
+body.light-theme {
+  --bg: var(--bg-light);
+  --surface: var(--surface-light);
+  --surface-hover: var(--surface-hover-light);
+  --surface-active: var(--surface-active-light);
+  --border: var(--border-light);
+  --border-strong: var(--border-strong-light);
+  --text-primary: var(--text-primary-light);
+  --text-secondary: var(--text-secondary-light);
+  --text-tertiary: var(--text-tertiary-light);
+  --primary-dim: rgba(37, 99, 235, 0.1);
+  --success-dim: rgba(16, 185, 129, 0.14);
+  --warning-dim: rgba(245, 158, 11, 0.14);
+  --danger-dim: rgba(239, 68, 68, 0.12);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-glow: 0 0 20px rgba(37, 99, 235, 0.08);
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign in · Take Profit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/variables.css" />
+  <link rel="stylesheet" href="/css/layout.css" />
+  <link rel="stylesheet" href="/css/forms.css" />
+  <link rel="stylesheet" href="/css/buttons.css" />
+  <link rel="stylesheet" href="/css/cards.css" />
+  <link rel="stylesheet" href="/css/utilities.css" />
+  <link rel="stylesheet" href="/css/animations.css" />
+  <style>
+    body {
+      background: radial-gradient(1200px 600px at 50% -10%, rgba(37, 99, 235, 0.08) 0%, rgba(9, 13, 18, 0) 100%), var(--bg-dark);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: var(--spacing-md);
+    }
+    .login-container {
+      width: 100%;
+      max-width: 440px;
+    }
+    .login-header {
+      text-align: center;
+      margin-bottom: var(--spacing-xl);
+    }
+    .login-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+      margin-bottom: var(--spacing-md);
+      box-shadow: var(--shadow-glow);
+    }
+    .login-header h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-primary-dark);
+      margin-bottom: 6px;
+    }
+    .login-header p {
+      font-size: 0.9rem;
+      color: var(--text-secondary-dark);
+    }
+    .login-footer {
+      margin-top: var(--spacing-xl);
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-tertiary-dark);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container animate-fade-in">
+    <header class="login-header">
+      <h1>Welcome back</h1>
+      <p>Log in to access your dashboard</p>
+    </header>
+
+    <main class="card" style="padding: var(--spacing-xl); border-color: var(--border-dark); background-color: var(--surface-dark);">
+      <form id="login-form" novalidate>
+        <!-- Email field -->
+        <div class="floating-group" data-field="email" style="margin-bottom: var(--spacing-md);">
+          <input type="email" id="email" class="floating-input" placeholder=" " autocomplete="email" required />
+          <label for="email" class="floating-label">Email Address</label>
+          <div class="form-error-msg">Enter a valid email address</div>
+        </div>
+
+        <!-- Password field -->
+        <div class="floating-group" data-field="password" style="margin-bottom: var(--spacing-lg);">
+          <input type="password" id="password" class="floating-input" placeholder=" " autocomplete="current-password" required />
+          <label for="password" class="floating-label">Password</label>
+          <div class="form-error-msg">Password must be at least 6 characters</div>
+        </div>
+
+        <!-- Remember Me Checkbox -->
+        <div class="flex justify-between align-center" style="margin-bottom: var(--spacing-lg);">
+          <label class="flex align-center gap-xs" style="font-size: 0.85rem; color: var(--text-secondary-dark); cursor: pointer;">
+            <input type="checkbox" id="rememberMe" style="width: 16px; height: 16px; accent-color: var(--primary);" checked />
+            Remember session
+          </label>
+          <span style="font-size: 0.85rem; color: var(--primary); cursor: pointer;" id="forgot-pass-btn">Forgot password?</span>
+        </div>
+
+        <!-- Alert messages -->
+        <div id="login-alert" class="hidden text-danger" style="font-size: 0.85rem; margin-bottom: var(--spacing-md); font-weight: 500; text-align: center;">
+          Invalid credentials. Please try again.
+        </div>
+
+        <button type="submit" class="btn btn-primary w-full" id="submit-btn" style="height: 48px; font-weight: 600;">Log In</button>
+      </form>
+    </main>
+
+
+    <footer class="login-footer">
+      <p>© Take Profit</p>
+    </footer>
+  </div>
+
+  <script src="/login/login.js" type="module"></script>
+</body>
+</html>

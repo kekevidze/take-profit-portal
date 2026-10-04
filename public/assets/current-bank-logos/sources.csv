@@ -1,0 +1,138 @@
+country,bank,website,file,asset_url,status,alt
+UK,Barclays,https://www.barclays.co.uk/,UK/barclays.svg,https://www.barclays.co.uk/content/dam/icons/favicons/barclays/Eagle_RGB_Cyan_Large.svg,Logo currently served by official website,
+UK,HSBC UK,https://www.hsbc.co.uk/,UK/hsbc-uk.svg,https://www.hsbc.co.uk/content/dam/hsbc/gb/images/logos/hsbc-uk.svg,Logo currently served by official website,HSBC UK
+UK,Lloyds,https://www.lloydsbank.com,UK/lloyds.svg,https://www.lloydsbank.com#embedded-logo,Logo currently served by official website,Bankname: Lloyds Bank
+UK,NatWest,https://www.natwest.com/,UK/natwest.svg,https://www.natwest.com/content/dam/championlogos/Natwest_Secondary_Horizontal_RGB_NEG.svg,Logo currently served by official website,NatWest Logo
+UK,Royal Bank of Scotland,https://www.rbs.co.uk/,UK/royal-bank-of-scotland.svg,https://www.rbs.co.uk/content/dam/championlogos/RBS_Secondary_Horizontal_RGB_NEG.svg,Logo currently served by official website,Royal Bank of Scotland
+UK,Bank of Scotland,https://www.bankofscotland.co.uk,UK/bank-of-scotland.png,https://www.bankofscotland.co.uk#embedded-logo,Logo currently served by official website,Bankname: Bank of Scotland
+UK,Santander UK,https://www.santander.co.uk/,UK/santander-uk.svg,https://www.santander.co.uk/themes/custom/santander_web18_2_0/logo.svg,Logo currently served by official website,Home
+UK,Nationwide,https://www.nationwide.co.uk/,UK/nationwide.svg,https://www.nationwide.co.uk/#inline-logo,Inline vector logo on current official website,Official website inline logo
+UK,Monzo,https://monzo.com,UK/monzo.svg,https://monzo.com#inline-logo,Inline vector logo on current official website,Official website inline logo
+UK,Starling Bank,https://www.starlingbank.com,UK/starling-bank.svg,https://www.starlingbank.com#embedded-logo,Logo currently served by official website,Starling Bank logo
+UK,Chase UK,https://www.chase.co.uk/gb/en/,UK/chase-uk.svg,https://static.chase.co.uk/content/dam/chaseweb/gb/en/images/logos/chase-logo.svg?bypass-img-cdn?384,Logo currently served by official website,
+UK,TSB,https://www.tsb.co.uk/,,,Unrelated icon or switching badge; current brand logo not verified,
+UK,Metro Bank,https://www.metrobankonline.co.uk/,,,Omitted: selected image was unrelated to bank branding,
+UK,The Co-operative Bank,https://co-operativebank.co.uk,,,Omitted: <urlopen error [Errno 61] Connection refused>,
+UK,First Direct,https://www.firstdirect.com/,,,Unrelated icon or switching badge; current brand logo not verified,
+UK,Virgin Money,https://uk.virginmoney.com/,,,Omitted: selected image was unrelated to bank branding,
+UK,Revolut,https://revolut.com,,,Omitted: HTTP Error 403: Forbidden,
+UK,Atom Bank,https://www.atombank.co.uk/,UK/atom-bank.svg,https://www.atombank.co.uk/_astro/atom-logo.CV42YAKh.svg,Logo currently served by official website,Go to the home page
+UK,Zopa,https://www.zopa.com/,UK/zopa.svg,https://www.zopa.com/#inline-logo,Inline vector logo on current official website,Official website inline logo
+UK,Tandem Bank,https://www.tandem.co.uk/,UK/tandem-bank.svg,https://cdn.prod.website-files.com/62a364a1705cce548303c9aa/65781dd3bf951f27e14104eb_Logo.svg,Logo currently served by official website,Tandem Logo
+UK,OakNorth,https://oaknorth.co.uk,,,Omitted: HTTP Error 403: Forbidden,
+UK,Allica Bank,https://www.allica.bank/,UK/allica-bank.svg,https://www.allica.bank/hubfs/New%20Website%20Theme%202024/logos-and-icons/brand/Allica-Bank-Primary-Dark-RGB-optimised.svg,Logo currently served by official website,Allica-Bank-Primary-Dark-RGB-optimised
+UK,Shawbrook,https://www.shawbrook.co.uk/,UK/shawbrook.svg,https://www.shawbrook.co.uk/media/a55lupu1/shawbrook.svg,Logo currently served by official website,Shawbrook logo
+UK,Aldermore,https://www.aldermore.co.uk/,UK/aldermore.jpg,https://www.aldermore.co.uk/media/0wrnsnpx/ald_master_logo_full_rgb.jpg,Logo currently served by official website,Aldermore Bank home
+UK,Paragon Bank,https://paragonbank.co.uk,,,Omitted: HTTP Error 403: Forbidden,
+UK,Secure Trust Bank,https://securetrustbank.com,,,Omitted: HTTP Error 403: Forbidden,
+UK,Close Brothers,https://www.closebrothers.com/s/,,,Could not verify/download official website logo; omitted,
+UK,Kent Reliance,https://www.kentreliance.co.uk/,UK/kent-reliance.svg,https://www.kentreliance.co.uk/media/iqtizjaq/logo.svg,Logo currently served by official website,KentReliance brand logo
+UK,Charter Savings Bank,https://chartersavingsbank.co.uk,UK/charter-savings-bank.svg,https://chartersavingsbank.co.uk/media/wq3pnlj5/csb-logo-latest.svg,Logo currently served by official website,Charter Savings Bank Logo
+UK,Sainsburys Bank,https://sainsburysbank.co.uk,,,Omitted: HTTP Error 403: Forbidden,
+UK,Tesco Bank,https://www.tescobank.com/,UK/tesco-bank.svg,https://forrit-one-tb-prod-cdn-p1-prod.azureedge.net/media-76a057a8-43e8-4899-a94d-aaa40249b955/ff713953-33ca-4d12-884c-48ed74671048/tesco-bank-logo.svg,Logo currently served by official website,Tesco Bank
+UK,Marks and Spencer Bank,https://bank.marksandspencer.com,UK/marks-and-spencer-bank.svg,https://bank.marksandspencer.com/content/dam/wpb/msrf/pws/media/help-tool/triage-mns-header-logo.svg,Logo currently served by official website,M&S Bank Home
+UK,Coutts,https://www.coutts.com/,UK/coutts.svg,https://www.coutts.com/content/dam/coutts/header/Coutts_Logo_DarkBurgundy.svg,Logo currently served by official website,Coutts Logo
+UK,Cater Allen,https://www.caterallen.co.uk/,UK/cater-allen.svg,https://www.caterallen.co.uk/dist/images/cater-allen-logo.svg,Logo currently served by official website,Cater Allen logo
+UK,C. Hoare and Co.,https://www.hoaresbank.co.uk/,UK/c-hoare-and-co.svg,https://www.hoaresbank.co.uk/themes/custom/chc__theme/assets/images/logo.svg,Logo currently served by official website,
+UK,Arbuthnot Latham,https://www.arbuthnotlatham.co.uk:443,,,Could not verify/download official website logo; omitted,
+UK,Hampden Bank,https://www.hampdenbank.com/,,,Omitted: selected image was unrelated to bank branding,
+UK,Handelsbanken UK,https://www.handelsbanken.co.uk/en/,,,Could not verify/download official website logo; omitted,
+UK,Danske Bank UK,https://danskebank.co.uk/personal,UK/danske-bank-uk.png,https://danskebank.co.uk/-/media/danske-bank-images/dbuk/graphics/digital/danske-pill.png,Logo currently served by official website,Danske pill logo
+UK,Ulster Bank,https://www.ulsterbank.co.uk/,UK/ulster-bank.svg,https://www.ulsterbank.co.uk/content/dam/championlogos/Ulsterbank_Secondary_Horizontal_RGB_NEG.svg,Logo currently served by official website,Ulster Bank Logo
+UK,Unity Trust Bank,https://www.unity.co.uk,,,Could not verify/download official website logo; omitted,
+UK,Triodos Bank UK,https://www.triodos.co.uk/,UK/triodos-bank-uk.svg,https://www.triodos.co.uk/webfiles/1790847319764/static/img/svg/logo-triodos-bank.svg,Logo currently served by official website,Logo Triodos Bank
+UK,Charity Bank,https://charitybank.org,,,Omitted: HTTP Error 403: Forbidden,
+UK,Ecology Building Society,https://ecology.co.uk,,,Omitted: HTTP Error 403: Forbidden,
+UK,Skipton Building Society,https://www.skipton.co.uk/,UK/skipton-building-society.svg,https://www.skipton.co.uk/content/experience-fragments/sbs-sites/skipton/en/site/header/master/_jcr_content/root/container-top/headerimagescontainer/image-desktop.coreimg.svg/1733327656738/sbs-logo-header-desktop.svg,Logo currently served by official website,Skipton Building Society logo
+UK,Coventry Building Society,https://coventrybuildingsociety.co.uk,UK/coventry-building-society.png,https://coventrybuildingsociety.co.uk/etc.clientlibs/cbs/brandvi/clientlibs/publish/resources/mobile-logo.png,Logo currently served by official website,
+UK,Yorkshire Building Society,https://www.ybs.co.uk/,UK/yorkshire-building-society.svg,https://www.ybs.co.uk/documents/100493/612386/ybs-logo.svg,Logo currently served by official website,Yorkshire Building Society logo
+UK,Leeds Building Society,https://leedsbuildingsociety.co.uk,,,Omitted: HTTP Error 403: Forbidden,
+UK,Principality Building Society,https://principality.co.uk,,,Omitted: HTTP Error 403: Forbidden,
+UK,Newcastle Building Society,https://newcastle.co.uk,UK/newcastle-building-society.svg,https://newcastle.co.uk/images/logo.svg,Logo currently served by official website,Newcastle Building Society Logo
+UK,Nottingham Building Society,https://thenottingham.com,,,Omitted: <urlopen error timed out>,
+UK,Zempler Bank,https://zemplerbank.com,UK/zempler-bank.svg,https://zemplerbank.com#inline-logo,Inline vector logo on current official website,Official website inline logo
+UK,GB Bank,https://thegbb.co.uk,,,Omitted: <urlopen error timed out>,
+UK,The Bank of London,https://www.bankoflondon.com/,UK/the-bank-of-london.svg,https://cdn.prod.website-files.com/67ac63e504ea6d324d5e5a44/67af0f1566a1b80fc62cacb3_The%20Bank%20of%20London%20Logo-White.svg,Logo currently served by official website,Bank of London Logo
+UK,JN Bank UK,https://thisbank.co.uk,,,Could not verify/download official website logo; omitted,
+UK,Gatehouse Bank,https://gatehousebank.com/personal,UK/gatehouse-bank.svg,https://gatehousebank.com/assets/images/logo.svg,Logo currently served by official website,Gatehouse Bank
+UK,Al Rayan Bank,https://www.alrayanbank.co.uk/,UK/al-rayan-bank.svg,https://www.alrayanbank.co.uk/themes/custom/rain_theme/logo.svg,Logo currently served by official website,Home
+UK,United Trust Bank,https://www.utbank.co.uk,,,Could not verify/download official website logo; omitted,
+UK,Cynergy Bank,https://www.cynergybank.co.uk,,,Could not verify/download official website logo; omitted,
+UK,Vanquis Bank,https://vanquis.com,,,Omitted: HTTP Error 403: Forbidden,
+UK,Investec,https://investec.com,,,Omitted: HTTP Error 403: Forbidden,
+UK,Standard Chartered,https://www.sc.com,,,Could not verify/download official website logo; omitted,
+AU,ANZ,https://www.anz.com.au/personal/,AU/anz.png,https://www.anz.com.au/content/dam/anzconz/images/common/promopages/logo-promo-anz-small.png,Logo currently served by official website,"The ANZ Bank logo features the letters ""ANZ"" in a bold, modern font. Next to the text is a distinctive symbol composed of three shapes that represent Australia, New Zealand, and the Asia-Pacific region. These shapes come together to form a central human figure, symbolising the bank's focus on people - both customers and employees. The logo's design emphasises simplicity, growth, and a unified presence across its core markets."
+AU,Commonwealth Bank,https://www.commbank.com.au/,AU/commonwealth-bank.svg,https://www.commbank.com.au/content/dam/commbank/commBank-logo.svg,Logo currently served by official website,CommBank homepage
+AU,National Australia Bank,https://www.nab.com.au/,AU/national-australia-bank.jpg,https://www.nab.com.au/content/dam/nab/images/types/logos/nab-app-logo-283x283.png,Logo currently served by official website,NAB App Image
+AU,Westpac,https://www.westpac.com.au,,,Could not verify/download official website logo; omitted,
+AU,AMP Bank,https://www.amp.com.au/,AU/amp-bank.svg,https://www.amp.com.au/content/experience-fragments/amp-2024/site/header/full-header/_jcr_content/root/container/header_copy/image.coreimg.svg/1730472599525/amp-logo.svg,Logo currently served by official website,AMP logo
+AU,Alex Bank,https://www.alex.bank/,AU/alex-bank.svg,https://proud-unity-82c03c9eb0.media.strapiapp.com/alex_bank_logo_white_949d5b1880.svg,Logo currently served by official website,
+AU,Arab Bank Australia,https://www.arabbank.com.au/,AU/arab-bank-australia.svg,https://www.arabbank.com.au/themes/arabbank/images/abal-logo.svg,Logo currently served by official website,
+AU,Australian Military Bank,https://australianmilitarybank.com.au,AU/australian-military-bank.svg,https://assets.australianmilitarybank.com.au/AMB_Logo_72961285c1.svg,Logo currently served by official website,Australian Military Bank Logo
+AU,Australian Mutual Bank,https://australianmutual.bank,AU/australian-mutual-bank.svg,https://australianmutual.bank/Client_Theme/imgs/AMB-logo-blue.svg,Logo currently served by official website,AMB Bank Logo
+AU,Auswide Bank,https://www.auswidebank.com.au/,AU/auswide-bank.png,https://www.auswidebank.com.au/Client_Theme/imgs/auswide-bank-logo.png,Logo currently served by official website,Auswide Bank home
+AU,BCU Bank,https://www.bcu.com.au/,AU/bcu-bank.svg,https://www.bcu.com.au/globalassets/bcu-bank/media/bcu_bank_orange.svg,Logo currently served by official website,BCU Bank logo
+AU,BOQ Specialist,https://www.boqspecialist.com.au,,,Could not verify/download official website logo; omitted,
+AU,Bank Australia,https://www.bankaust.com.au/,AU/bank-australia.webp,https://cdn.prod.website-files.com/64d5d5beb2a67e9491ecdff8/6859675ea65a040bf1c7c63a_bank-aus-logo-white.webp,Logo currently served by official website,Bank Australia logo
+AU,Bank First,https://bankfirst.com.au,,,Could not verify/download official website logo; omitted,
+AU,Bank of China Australia,https://bankofchina.com.au,,,Omitted: <urlopen error timed out>,
+AU,Bank of Melbourne,https://www.bankofmelbourne.com.au,,,Could not verify/download official website logo; omitted,
+AU,Bank of Queensland,https://www.boq.com.au,,,Could not verify/download official website logo; omitted,
+AU,Bank of Sydney,https://banksyd.com.au,,,Omitted: HTTP Error 403: Forbidden,
+AU,Bank of us,https://bankofus.com.au,AU/bank-of-us.svg,https://bankofus.com.au/assets/images/bank-of-us-logo.svg,Logo currently served by official website,Bank of us Logo
+AU,BankSA,https://www.banksa.com.au,,,Could not verify/download official website logo; omitted,
+AU,BankVic,https://www.bankvic.com.au/,AU/bankvic.svg,https://www.datocms-assets.com/28619/1606456907-bankvic-logo.svg,Logo currently served by official website,BankVic Logo
+AU,Bankwest,https://www.bankwest.com.au/,AU/bankwest.svg,https://www.bankwest.com.au/content/dam/bankwest/system/logos/bankwest-logo.svg,Logo currently served by official website,Bankwest home page
+AU,Bendigo Bank,https://www.bendigobank.com.au/,AU/bendigo-bank.png,https://www.bendigobank.com.au/globalassets/globalresources/brand-logos/bendigobank-logo.png,Logo currently served by official website,Bendigo Bank logo
+AU,Beyond Bank,https://www.beyondbank.com.au/,AU/beyond-bank.png,https://brand.beyondbank.com.au/asset/a4404045-3ceb-4e9c-8796-4210276553b8/thumbnail/webimage-Beyond_Bank_logo_RGB_narrow,Logo currently served by official website,Beyond Bank logo
+AU,Border Bank,https://borderbank.com.au,,,"Omitted: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+AU,Broken Hill Bank,https://bhb.bank,,,"Omitted: <urlopen error [Errno 8] nodename nor servname provided, or not known>",
+AU,Cairns Bank,https://cairnsbank.com.au,AU/cairns-bank.svg,https://cairnsbank.com.au/wp-content/uploads/2024/03/logo-cairns-bank-stacked-mobile-1.svg,Logo currently served by official website,
+AU,Coastline Bank,https://coastline.com.au,,,Omitted: HTTP Error 308: Permanent Redirect,
+AU,Community First Bank,https://communityfirst.com.au,,,Could not verify/download official website logo; omitted,
+AU,Credit Union SA,https://creditunionsa.com.au,,,Omitted: HTTP Error 308: Permanent Redirect,
+AU,Defence Bank,https://www.defencebank.com.au/,AU/defence-bank.svg,https://www.defencebank.com.au/globalassets/images/logos/defence-bank/logo-horizontal.svg,Logo currently served by official website,Defence Bank logo
+AU,Firefighters Mutual Bank,https://www.fmbank.com.au,,,Could not verify/download official website logo; omitted,
+AU,First Option Bank,https://firstoptionbank.com.au,,,Omitted: HTTP Error 403: Forbidden,
+AU,Gateway Bank,https://gatewaybank.com.au,,,Omitted: HTTP Error 403: Forbidden,
+AU,Geelong Bank,https://geelongbank.com.au,AU/geelong-bank.svg,https://geelongbank.com.au#inline-logo,Inline vector logo on current official website,Official website inline logo
+AU,Great Southern Bank,https://greatsouthernbank.com.au,,,Omitted: HTTP Error 403: Forbidden,
+AU,Greater Bank,https://greater.com.au,,,Omitted: HTTP Error 403: Forbidden,
+AU,HSBC Australia,https://www.hsbc.com.au/,AU/hsbc-australia.svg,https://www.hsbc.com.au/content/dam/hsbc/au/images/01_HSBC_MASTERBRAND_LOGO_RGB.svg,Logo currently served by official website,HSBC Australia Bank
+AU,Health Professionals Bank,https://www.hpbank.com.au,,,Could not verify/download official website logo; omitted,
+AU,Heartland Bank,https://www.heartlandbank.com.au/,AU/heartland-bank.svg,https://www.heartlandbank.com.au/images/heartland-bank-logo-white.svg?v=134332987900000000-639265875493110508,Logo currently served by official website,Heartland Bank
+AU,Hiver Bank,https://hiver.bank,,,Omitted: HTTP Error 404: Not Found,
+AU,Horizon Bank,https://horizonbank.com.au,AU/horizon-bank.png,https://horizonbank.com.au/media/3797/horizon_logo_horiz_fullcol_web.png?width=321&height=45,Logo currently served by official website,
+AU,Hume Bank,https://www.humebank.com.au/,AU/hume-bank.png,https://www.humebank.com.au/media/2024/01/Hume_Bank_Logo_Desktop_No_TM.png,Logo currently served by official website,Hume Bank
+AU,IMB Bank,https://www.imb.com.au/,AU/imb-bank.svg,https://cdn.prod.website-files.com/6523c01e3505e25d762e59e6/6563a6d04112006d552c18c6_imb-logo-nc.svg,Logo currently served by official website,IMB main logo in navbar
+AU,ING Australia,https://www.ing.com.au/,AU/ing-australia.webp,https://www.ing.com.au/img/logos/ing.webp,Logo currently served by official website,ING logo
+AU,Judo Bank,https://judo.bank,,,Omitted: HTTP Error 403: Forbidden,
+AU,ME Bank,https://www.mebank.com.au/,AU/me-bank.png,https://www.mebank.com.au/media_136c24ca3fd42f8444f82d39cffe1ce61b6b8ec69.png?width=750&format=png&optimize=medium,Logo currently served by official website,ME logo displayed on a teal background
+AU,MOVE Bank,https://move.bank/,AU/move-bank.svg,https://move.bank/images/logo-black.svg,Logo currently served by official website,MoveBank Logo
+AU,Macquarie Bank,https://macquarie.com.au,,,Omitted: HTTP Error 403: Forbidden,
+AU,The Mutual Bank,https://www.themutual.com.au,,,Could not verify/download official website logo; omitted,
+AU,MyState Bank,https://mystate.com.au,AU/mystate-bank.png,https://mystate.com.au/wp-content/uploads/MyState_Logo_s.png,Logo currently served by official website,Home
+AU,Newcastle Permanent,https://newcastlepermanent.com.au,,,Omitted: HTTP Error 403: Forbidden,
+AU,P and N Bank,https://www.pnbank.com.au/,AU/p-and-n-bank.svg,https://www.pnbank.com.au/globalassets/pn-bank/media/logo__pnbank--horizontal-red-white.svg,Logo currently served by official website,
+AU,People First Bank,https://www.peoplefirstbank.com.au/,AU/people-first-bank.svg,https://www.peoplefirstbank.com.au/-/media/Project/PeopleFirst/PFBShared/logo.png,Logo currently served by official website,PeopleFirst Bank Logo
+AU,Police Bank,https://www.policebank.com.au,,,Could not verify/download official website logo; omitted,
+AU,QBank,https://qbank.com.au,AU/qbank.png,https://qbank.com.au/media/2276/qbank-logo-footer.png,Logo currently served by official website,
+AU,Qudos Bank,https://www.qudosbank.com.au/,AU/qudos-bank.webp,https://cdn.prod.website-files.com/686c54fd8bf32f902b5a3c61/686c54fd8bf32f902b5a3cb4_qudosbank_logo_horizontal-negative_lightpurple-1.webp,Logo currently served by official website,Qudos Bank logo
+AU,Queensland Country Bank,https://www.queenslandcountry.bank/,AU/queensland-country-bank.svg,https://www.queenslandcountry.bank/theme/images__qccu/qccu-logo--33a69599896efed86b7bae1d3f3e9ca6.svg,Logo currently served by official website,Queensland Country Bank
+AU,Rabobank Australia,https://rabobank.com.au,,,Omitted: HTTP Error 403: Forbidden,
+AU,Regional Australia Bank,https://www.regionalaustraliabank.com.au,,,Could not verify/download official website logo; omitted,
+AU,Southern Cross Credit Union,https://www.sccu.com.au,,,Could not verify/download official website logo; omitted,
+AU,St George Bank,https://www.stgeorge.com.au,,,Could not verify/download official website logo; omitted,
+AU,Summerland Bank,https://www.summerland.com.au/,AU/summerland-bank.webp,https://www.summerland.com.au/app/themes/summerland-theme/images/logo.webp,Logo currently served by official website,Summerland Logo
+AU,Suncorp Bank,https://www.suncorpbank.com.au/,AU/suncorp-bank.jpg,https://www.suncorpbank.com.au/_jcr_content/header/sunbank-logo/image.img.jpg/1754958513341.jpg,Logo currently served by official website,"Suncorp Bank logo, click to return to the home page"
+AU,Teachers Mutual Bank,https://www.tmbank.com.au,,,Could not verify/download official website logo; omitted,
+AU,The Capricornian,https://www.capricornian.com.au/,AU/the-capricornian.png,https://www.capricornian.com.au/app/uploads/2025/11/TCB_Nimo_logo.png,Logo currently served by official website,The Capricornian Bank
+AU,UBank,https://ubank.com.au,,,Omitted: HTTP Error 403: Forbidden,
+AU,UniBank,https://www.unibank.com.au,,,Could not verify/download official website logo; omitted,
+AU,Unity Bank,https://www.unitybank.com.au/,AU/unity-bank.png,https://www.unitybank.com.au/Client_Theme/imgs/ua2/welcome-logo-unity@3x.png,Logo currently served by official website,
+AU,Up Bank,https://up.com.au,,,Could not verify/download official website logo; omitted,
+AU,Virgin Money Australia,https://www.virginmoney.com.au,,,Could not verify/download official website logo; omitted,
+AU,Warwick Credit Union,https://wcu.com.au,,,Omitted: HTTP Error 403: Forbidden,
+AU,Woolworths Team Bank,https://woolworthsteambank.com.au,AU/woolworths-team-bank.png,https://woolworthsteambank.com.au/wp-content/uploads/2023/03/ui-top-navi-logo@2x.png,Logo currently served by official website,Ui Top Navi Logo@2x
+AU,BankWAW,https://www.bankwaw.com.au/,AU/bankwaw.svg,https://www.bankwaw.com.au/Portals/_default/skins/bankwaw//src/images/logo-green.svg,Logo currently served by official website,WAW
+AU,GMCU,https://www.gmcu.com.au/,AU/gmcu.png,https://www.gmcu.com.au/media/2756/logo-welcome.png,Logo currently served by official website,

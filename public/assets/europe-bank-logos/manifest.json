@@ -1,0 +1,236 @@
+{
+  "EUROPE": [
+    {
+      "name": "DNB",
+      "src": "/assets/europe-bank-logos/Norway/dnb.svg"
+    },
+    {
+      "name": "Sparebanken Norge",
+      "src": "/assets/europe-bank-logos/Norway/sparebanken-norge.svg"
+    },
+    {
+      "name": "Sparebanken More",
+      "src": "/assets/europe-bank-logos/Norway/sparebanken-more.svg"
+    },
+    {
+      "name": "Storebrand Bank",
+      "src": "/assets/europe-bank-logos/Norway/storebrand-bank.svg"
+    },
+    {
+      "name": "Nordea",
+      "src": "/assets/europe-bank-logos/Finland/nordea.svg"
+    },
+    {
+      "name": "Aktia",
+      "src": "/assets/europe-bank-logos/Finland/aktia.svg"
+    },
+    {
+      "name": "S-Pankki",
+      "src": "/assets/europe-bank-logos/Finland/s-pankki.svg"
+    },
+    {
+      "name": "Saastopankki",
+      "src": "/assets/europe-bank-logos/Finland/saastopankki.svg"
+    },
+    {
+      "name": "SEB",
+      "src": "/assets/europe-bank-logos/Sweden/seb.svg"
+    },
+    {
+      "name": "Swedbank",
+      "src": "/assets/europe-bank-logos/Sweden/swedbank.svg"
+    },
+    {
+      "name": "Handelsbanken",
+      "src": "/assets/europe-bank-logos/Sweden/handelsbanken.svg"
+    },
+    {
+      "name": "SBAB",
+      "src": "/assets/europe-bank-logos/Sweden/sbab.svg"
+    },
+    {
+      "name": "Danske Bank",
+      "src": "/assets/europe-bank-logos/Denmark/danske-bank.svg"
+    },
+    {
+      "name": "Nykredit",
+      "src": "/assets/europe-bank-logos/Denmark/nykredit.svg"
+    },
+    {
+      "name": "Spar Nord",
+      "src": "/assets/europe-bank-logos/Denmark/spar-nord.svg"
+    },
+    {
+      "name": "Credit Agricole",
+      "src": "/assets/europe-bank-logos/France/credit-agricole.png"
+    },
+    {
+      "name": "Societe Generale",
+      "src": "/assets/europe-bank-logos/France/societe-generale.svg"
+    },
+    {
+      "name": "BPCE",
+      "src": "/assets/europe-bank-logos/France/bpce.png"
+    },
+    {
+      "name": "Credit Mutuel",
+      "src": "/assets/europe-bank-logos/France/credit-mutuel.svg"
+    },
+    {
+      "name": "BoursoBank",
+      "src": "/assets/europe-bank-logos/France/boursobank.svg"
+    },
+    {
+      "name": "Deutsche Bank",
+      "src": "/assets/europe-bank-logos/Germany/deutsche-bank.png"
+    },
+    {
+      "name": "Commerzbank",
+      "src": "/assets/europe-bank-logos/Germany/commerzbank.svg"
+    },
+    {
+      "name": "DZ Bank",
+      "src": "/assets/europe-bank-logos/Germany/dz-bank.png"
+    },
+    {
+      "name": "N26",
+      "src": "/assets/europe-bank-logos/Germany/n26.svg"
+    },
+    {
+      "name": "CaixaBank",
+      "src": "/assets/europe-bank-logos/Spain/caixabank.svg"
+    },
+    {
+      "name": "UniCredit",
+      "src": "/assets/europe-bank-logos/Italy/unicredit.png"
+    },
+    {
+      "name": "Banco BPM",
+      "src": "/assets/europe-bank-logos/Italy/banco-bpm.svg"
+    },
+    {
+      "name": "BPER Banca",
+      "src": "/assets/europe-bank-logos/Italy/bper-banca.svg"
+    },
+    {
+      "name": "ING",
+      "src": "/assets/europe-bank-logos/Netherlands/ing.svg"
+    },
+    {
+      "name": "ABN AMRO",
+      "src": "/assets/europe-bank-logos/Netherlands/abn-amro.svg"
+    },
+    {
+      "name": "Belfius",
+      "src": "/assets/europe-bank-logos/Belgium/belfius.svg"
+    },
+    {
+      "name": "Raiffeisen Switzerland",
+      "src": "/assets/europe-bank-logos/Switzerland/raiffeisen-switzerland.svg"
+    },
+    {
+      "name": "Millennium BCP",
+      "src": "/assets/europe-bank-logos/Portugal/millennium-bcp.svg"
+    },
+    {
+      "name": "Caixa Geral de Depositos",
+      "src": "/assets/europe-bank-logos/Portugal/caixa-geral-de-depositos.png"
+    },
+    {
+      "name": "Novo Banco",
+      "src": "/assets/europe-bank-logos/Portugal/novo-banco.svg"
+    },
+    {
+      "name": "Bank of Ireland",
+      "src": "/assets/europe-bank-logos/Ireland/bank-of-ireland.svg"
+    },
+    {
+      "name": "PKO Bank Polski",
+      "src": "/assets/europe-bank-logos/Poland/pko-bank-polski.svg"
+    },
+    {
+      "name": "Bank Pekao",
+      "src": "/assets/europe-bank-logos/Poland/bank-pekao.svg"
+    },
+    {
+      "name": "Komercni banka",
+      "src": "/assets/europe-bank-logos/Czechia/komercni-banka.svg"
+    },
+    {
+      "name": "Piraeus Bank",
+      "src": "/assets/europe-bank-logos/Greece/piraeus-bank.svg"
+    },
+    {
+      "name": "Barclays",
+      "src": "/assets/europe-bank-logos/United Kingdom/barclays.svg"
+    },
+    {
+      "name": "HSBC UK",
+      "src": "/assets/europe-bank-logos/United Kingdom/hsbc-uk.svg"
+    },
+    {
+      "name": "Lloyds",
+      "src": "/assets/europe-bank-logos/United Kingdom/lloyds.svg"
+    },
+    {
+      "name": "NatWest",
+      "src": "/assets/europe-bank-logos/United Kingdom/natwest.svg"
+    },
+    {
+      "name": "Royal Bank of Scotland",
+      "src": "/assets/europe-bank-logos/United Kingdom/royal-bank-of-scotland.svg"
+    },
+    {
+      "name": "Santander UK",
+      "src": "/assets/europe-bank-logos/United Kingdom/santander-uk.svg"
+    },
+    {
+      "name": "Nationwide",
+      "src": "/assets/europe-bank-logos/United Kingdom/nationwide.svg"
+    },
+    {
+      "name": "Monzo",
+      "src": "/assets/europe-bank-logos/United Kingdom/monzo.svg"
+    },
+    {
+      "name": "Starling Bank",
+      "src": "/assets/europe-bank-logos/United Kingdom/starling-bank.svg"
+    },
+    {
+      "name": "Chase UK",
+      "src": "/assets/europe-bank-logos/United Kingdom/chase-uk.svg"
+    },
+    {
+      "name": "Atom Bank",
+      "src": "/assets/europe-bank-logos/United Kingdom/atom-bank.svg"
+    },
+    {
+      "name": "Zopa",
+      "src": "/assets/europe-bank-logos/United Kingdom/zopa.svg"
+    },
+    {
+      "name": "Coutts",
+      "src": "/assets/europe-bank-logos/United Kingdom/coutts.svg"
+    },
+    {
+      "name": "SpareBank 1",
+      "src": "/assets/europe-bank-logos/Norway/sparebank-1.svg"
+    },
+    {
+      "name": "Santander",
+      "src": "/assets/europe-bank-logos/Spain/santander.svg"
+    },
+    {
+      "name": "BNP Paribas",
+      "src": "/assets/europe-bank-logos/France/bnp-paribas.svg"
+    },
+    {
+      "name": "BBVA",
+      "src": "/assets/europe-bank-logos/Spain/bbva.svg"
+    },
+    {
+      "name": "AL Sydbank",
+      "src": "/assets/europe-bank-logos/Denmark/al-sydbank.svg"
+    }
+  ]
+}

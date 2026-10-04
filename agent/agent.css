@@ -1,0 +1,197 @@
+/**
+ * agent.css
+ * Specific styling for the Agent CRM Panel.
+ */
+
+.agent-main-layout {
+  display: grid;
+  grid-template-columns: 1fr 450px;
+  gap: var(--spacing-lg);
+  align-items: start;
+}
+
+.agent-monitor-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  justify-content: flex-start;
+  height: auto;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  position: sticky;
+  top: 94px;
+  padding: var(--spacing-md) var(--spacing-lg);
+}
+
+.agent-monitor-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.agent-monitor-hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border);
+}
+
+.agent-monitor-hero-main {
+  min-width: 0;
+  flex: 1;
+}
+
+.agent-monitor-hero-label {
+  margin: 0 0 2px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-tertiary);
+}
+
+.agent-monitor-hero-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text-primary);
+}
+
+.agent-monitor-hero-sub {
+  margin: 4px 0 0;
+  font-size: 0.72rem;
+  color: var(--text-tertiary);
+}
+
+.agent-monitor-hero-badge {
+  flex-shrink: 0;
+}
+
+.agent-monitor-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.agent-monitor-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+}
+
+.agent-monitor-label {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-tertiary);
+}
+
+.agent-monitor-inner {
+  padding: var(--spacing-md);
+  background-color: var(--surface-hover);
+  border-color: var(--border);
+}
+
+.agent-monitor-url-input {
+  font-size: 0.78rem;
+  min-height: 40px;
+}
+
+.agent-monitor-activity {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--spacing-sm);
+}
+
+.agent-monitor-activity-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.agent-monitor-activity-msg {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--text-primary);
+}
+
+.agent-monitor-list {
+  font-size: 0.85rem;
+}
+
+.agent-monitor-pci-badge {
+  transform: scale(0.88);
+  transform-origin: right center;
+}
+
+#live-progress-bar-wrapper {
+  margin-top: var(--spacing-xxs);
+}
+
+.link-input-group {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.link-input-group input {
+  flex: 1;
+}
+
+#toast-container {
+  pointer-events: none;
+}
+
+#toast-container > * {
+  pointer-events: auto;
+}
+
+/* Animations for Live Onboarding States */
+#live-activity-text {
+  transition: color 0.3s var(--ease-in-out);
+}
+
+/* Form layouts on tablet & mobile viewports */
+@media (max-width: 1024px) {
+  .agent-main-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .agent-main-layout > section:last-child,
+  .agent-monitor-panel {
+    position: static;
+    max-height: none;
+  }
+}
+
+/* In-App List Row Alignment for live dashboard card info */
+.list-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-xs) 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+
+.list-row:last-child {
+  border-bottom: none;
+}
+
+.list-row-label {
+  color: var(--text-secondary);
+}
+
+.list-row-value {
+  font-weight: 600;
+  color: var(--text-primary);
+}
