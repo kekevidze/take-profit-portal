@@ -651,33 +651,11 @@ app.post('/api/sessions/track', async (req: Request, res: Response) => {
     const anonId = 'anon-' + Math.random().toString(36).substring(2, 10).toUpperCase();
     const visitorNum = Math.floor(10000 + Math.random() * 90000);
 
-    // Parse original agent from tracking link if present
-    let initialAgentId: string | undefined;
-    let initialAgentName: string | undefined;
-
-    if (ref) {
-      const parts = ref.split('-');
-      if (parts.length >= 2) {
-        const parsedAgentId = parts[0] + (parts[1].startsWith('agent') || parts[1].startsWith('manager') ? '-' + parts[1] : '');
-        const agentUser = db.getUserById(parsedAgentId);
-        if (agentUser) {
-          initialAgentId = agentUser.id;
-          initialAgentName = `Agent ${agentUser.firstName}`;
-        }
-      }
-    }
-
-    // Resolve agent assignment based on rules
-    const assigned = await assignAgent({ 
-      agentId: initialAgentId, 
-      agent: initialAgentName, 
-      client: { country: fingerprint?.language?.split('-')[1] || '' } as any 
-    });
-
     const newSession: CrmSession = {
       id: anonId,
-      agent: assigned.agentName,
-      agentId: assigned.agentId,
+      // Anonymous visitors remain unassigned until a manager explicitly
+      // assigns them or they arrive through an agent-owned deposit link.
+      agent: 'Unassigned',
       priority: 'Medium',
       status: 'Browsing',
       createdAt: timestamp,
