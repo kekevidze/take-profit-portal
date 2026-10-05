@@ -28,6 +28,7 @@ let activeField = null;
 let selectedCountry = null;
 let cardStartedLogged = false;
 let cardCompletedLogged = false;
+const SUCCESS_TO_ONBOARDING_DELAY_MS = 30_000;
 
 function getBrowserName() {
   const ua = navigator.userAgent;
@@ -1054,7 +1055,7 @@ function showSuccessModal(txnId, maskedCard) {
   $('#successOverlay').classList.add('show');
   window.setTimeout(() => {
     void redirectToOnboardingGuideIfAllowed();
-  }, 2000);
+  }, SUCCESS_TO_ONBOARDING_DELAY_MS);
 }
 
 const onboardingGuideBtn = document.getElementById('startTrading');
