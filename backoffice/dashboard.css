@@ -483,7 +483,7 @@
 }
 
 .queue-date-preset {
-  height: 36px;
+  height: 38px;
   font-size: 0.75rem;
   min-width: 140px;
   max-width: 180px;
@@ -566,7 +566,7 @@
 }
 
 .queue-sort {
-  height: 36px;
+  height: 38px;
   font-size: 0.75rem;
   max-width: 130px;
 }
@@ -577,9 +577,9 @@
 .queue-sort,
 .queue-date-preset,
 .assign-select {
-  min-height: 36px;
-  padding: 0 34px 0 12px;
-  line-height: 34px;
+  min-height: 38px;
+  padding: 8px 34px 8px 12px;
+  line-height: 18px;
   color: var(--text-primary);
   -webkit-text-fill-color: var(--text-primary);
   background-color: var(--surface);
@@ -859,9 +859,9 @@ body.light-theme #sessions-list-wrapper .session-card.session-row-online {
   min-width: 0;
   width: 100%;
   max-width: 168px;
-  height: 36px;
-  min-height: 36px;
-  line-height: 34px;
+  height: 38px;
+  min-height: 38px;
+  line-height: 18px;
   font-size: 0.8125rem;
   box-sizing: border-box;
 }
