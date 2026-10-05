@@ -601,6 +601,17 @@ app.post('/api/sessions/track', async (req: Request, res: Response) => {
     // 1. Reconnect using cookie/localstorage
     if (visitorIdCookie) {
       session = await db.getSessionById(visitorIdCookie);
+      // The public landing page is reusable. Once the previous visitor has
+      // completed or closed their transaction, start a fresh session instead
+      // of reconnecting the browser to the old receipt/onboarding flow.
+      if (
+        session &&
+        (depositIsCompleted(session) ||
+          session.closed === true ||
+          (session.link && session.link.status !== 'Active'))
+      ) {
+        session = undefined;
+      }
     }
 
     const timestamp = Date.now();

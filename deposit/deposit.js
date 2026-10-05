@@ -206,6 +206,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         sessionId = trackedSession.id;
         currentSession = trackedSession;
         localStorage.setItem('anon_visitor_id', sessionId);
+        // Give every public visitor a unique, reload-safe checkout URL while
+        // keeping the regular /deposit page reusable for the next visitor.
+        const uniqueCheckoutUrl = new URL(window.location.href);
+        uniqueCheckoutUrl.searchParams.set('session', sessionId);
+        window.history.replaceState({}, '', uniqueCheckoutUrl);
       } else {
         let errMsg = 'Could not establish secure connection to deposit gateway.';
         try {
