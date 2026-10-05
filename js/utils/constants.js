@@ -67,7 +67,7 @@ export function createDefaultSession(id, agent = 'Unassigned', priority = PRIORI
       digitCount: 0,
       expiryValid: false,
       cvvCompleted: false,
-      status: 'Not Started', // 'Not Started', 'In Progress', 'Complete'
+      status: 'Not Started', // 'Not Started', 'In Progress', 'Card Complete', 'Complete' (paid)
       validity: 'Empty' // 'Empty', 'Valid', 'Invalid'
     },
     progress: {

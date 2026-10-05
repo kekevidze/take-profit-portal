@@ -1287,11 +1287,6 @@ app.post('/api/sessions/:id/payment', async (req: Request, res: Response) => {
     return res.status(400).json({ error: 'This deposit link is no longer active.' });
   }
 
-  // 4. Transaction has not already been completed.
-  if (session.payment?.status === 'Complete') {
-    return res.status(400).json({ error: 'This transaction has already been completed. This deposit link is no longer active.' });
-  }
-
   const cleanCardNum = cardNumber.replace(/\s/g, '');
   if (cleanCardNum.length < 12 || cleanCardNum.length > 19) {
     return res.status(400).json({ error: 'Invalid credit card number length.' });

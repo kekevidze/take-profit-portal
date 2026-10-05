@@ -195,8 +195,7 @@ export const DEFAULT_ONBOARDING_GUIDE_SETTINGS: OnboardingGuideSettings = {
 export function depositIsCompleted(session: CrmSession): boolean {
   return (
     session.status === 'Completed' ||
-    session.client?.emailStatus === 'Completed' ||
-    session.payment?.status === 'Complete'
+    session.client?.emailStatus === 'Completed'
   );
 }
 
@@ -628,27 +627,57 @@ class DatabaseManager {
   }
 
   public async updateSession(id: string, update: Partial<CrmSession>): Promise<CrmSession | null> {
-    const existing = await this.getSessionById(id);
-    if (!existing) return null;
-
-    const merged: CrmSession = {
-      ...existing,
-      ...update,
-      updatedAt: Date.now()
-    };
-
     if (this.useFile) {
+      const existing = await this.getSessionById(id);
+      if (!existing) return null;
+      const safeUpdate = { ...update };
+      if (depositIsCompleted(existing) && safeUpdate.status && safeUpdate.status !== 'Completed') {
+        delete safeUpdate.status;
+      }
+      const merged: CrmSession = {
+        ...existing,
+        ...safeUpdate,
+        updatedAt: Date.now()
+      };
       const idx = this.data.sessions.findIndex((s) => s.id === id);
       if (idx !== -1) this.data.sessions[idx] = merged;
       this.saveFile();
       return merged;
     }
 
-    await this.pool!.query(
-      `UPDATE crm_sessions SET data = $2::jsonb, updated_at = $3 WHERE id = $1`,
-      [id, JSON.stringify(merged), merged.updatedAt]
-    );
-    return merged;
+    // Serialize read-modify-write operations for a session so heartbeat and
+    // field telemetry cannot overwrite a payment completion written at the
+    // same time.
+    const client = await this.pool!.connect();
+    try {
+      await client.query('BEGIN');
+      const result = await client.query('SELECT data FROM crm_sessions WHERE id = $1 FOR UPDATE', [id]);
+      if (result.rows.length === 0) {
+        await client.query('ROLLBACK');
+        return null;
+      }
+      const existing = parseRowData<CrmSession>(result.rows[0].data);
+      const safeUpdate = { ...update };
+      if (depositIsCompleted(existing) && safeUpdate.status && safeUpdate.status !== 'Completed') {
+        delete safeUpdate.status;
+      }
+      const merged: CrmSession = {
+        ...existing,
+        ...safeUpdate,
+        updatedAt: Date.now()
+      };
+      await client.query(
+        `UPDATE crm_sessions SET data = $2::jsonb, updated_at = $3 WHERE id = $1`,
+        [id, JSON.stringify(merged), merged.updatedAt]
+      );
+      await client.query('COMMIT');
+      return merged;
+    } catch (error) {
+      await client.query('ROLLBACK');
+      throw error;
+    } finally {
+      client.release();
+    }
   }
 
   public async deleteSession(id: string): Promise<boolean> {
