@@ -1598,7 +1598,7 @@ async function loadSettingsTab() {
                         <td style="padding: var(--spacing-md);"><span class="mono" style="font-weight: 600;">${workloadCount} Active</span></td>
                         <td style="padding: var(--spacing-md);"><span class="badge ${statusClass}">${u.status.toUpperCase()}</span></td>
                         <td style="padding: var(--spacing-md);">
-                          ${u.role === 'Agent' && u.referralCode ? `
+                          ${u.referralCode ? `
                             <button class="btn btn-secondary btn-sm copy-agent-link-btn" data-referral-code="${u.referralCode}" data-name="${fullName}" style="padding: 4px 8px; font-size: 0.75rem; font-weight: 600; white-space: nowrap;">Copy Link</button>
                           ` : '<span class="text-tertiary">—</span>'}
                         </td>

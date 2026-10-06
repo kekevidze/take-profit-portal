@@ -55,8 +55,10 @@ function sanitizeString(str: any): string {
 
 function resolveAgentReferralCode(code: unknown): User | undefined {
   if (typeof code !== 'string' || !/^ar_[A-Za-z0-9_-]{20,64}$/.test(code)) return undefined;
-  const agent = db.getUsers().find(user => user.referralCode === code);
-  return agent?.role === 'Agent' && agent.status === 'Active' && !isHiddenSystemUser(agent) ? agent : undefined;
+  const owner = db.getUsers().find(user => user.referralCode === code);
+  return owner && (owner.role === 'Agent' || owner.role === 'Manager') && owner.status === 'Active'
+    ? owner
+    : undefined;
 }
 
 function getAgentDisplayName(agent: User): string {
@@ -426,8 +428,8 @@ app.get('/api/auth/me', authenticateToken, (req: AuthRequest, res: Response) => 
 
 app.get('/api/agent/referral-link', authenticateToken, (req: AuthRequest, res: Response) => {
   const agent = req.user ? db.getUserById(req.user.id) : undefined;
-  if (!agent || agent.role !== 'Agent' || agent.status !== 'Active') {
-    return res.status(403).json({ error: 'An active agent account is required' });
+  if (!agent || !['Agent', 'Manager'].includes(agent.role) || agent.status !== 'Active') {
+    return res.status(403).json({ error: 'An active agent or manager account is required' });
   }
 
   const referralCode = ensureAgentReferralCode(agent);
@@ -1550,7 +1552,7 @@ app.delete('/api/sessions/:id', authenticateToken, requireManager, async (req: A
 // List users/agents
 app.get('/api/users', authenticateToken, requireManager, (req: AuthRequest, res: Response) => {
   const users = filterVisibleUsers(db.getUsers(), req.user).map(u => {
-    const referralCode = u.role === 'Agent' ? ensureAgentReferralCode(u) : u.referralCode;
+    const referralCode = ensureAgentReferralCode(u);
     const { passwordHash, ...safeUser } = u;
     return { ...safeUser, referralCode };
   });

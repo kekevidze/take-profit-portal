@@ -129,7 +129,7 @@ async function loadAgentProfile() {
       // Rerender list of sessions once the agent's name is loaded
       renderAgentSessions();
 
-      if (user.role === 'Agent') {
+      if (user.role === 'Agent' || user.role === 'Manager') {
         $('#agent-referral-card')?.classList.remove('hidden');
         await loadPersonalReferralLink();
       }
