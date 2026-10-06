@@ -1,3 +1,5 @@
+import faqData from './faq-data.json';
+
 const TAB_LABELS = {
   'opening-and-controlling-your-account': 'Account',
   'payment-submission-and-the-72-hour-window': 'Payments',
@@ -65,12 +67,4 @@ function renderFaq(data) {
   });
 }
 
-fetch('faq-data.json')
-  .then((res) => {
-    if (!res.ok) throw new Error('Failed to load FAQ');
-    return res.json();
-  })
-  .then(renderFaq)
-  .catch(() => {
-    if (panelsEl) panelsEl.innerHTML = '<p class="faq-error">Common questions could not be loaded.</p>';
-  });
+renderFaq(faqData);

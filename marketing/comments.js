@@ -1,3 +1,11 @@
+import commentsData from './comments-data.json';
+
+const commentAvatarUrls = import.meta.glob('./assets/comments/*', {
+  eager: true,
+  query: '?url',
+  import: 'default',
+});
+
 const feed = document.getElementById('commentsFeed');
 const countEl = document.getElementById('commentsCount');
 const composer = document.getElementById('commentComposer');
@@ -7,7 +15,12 @@ const fieldWrap = composer?.querySelector('.comments-composer-shell');
 
 const NAME_KEY = 'aiTradingLocalCommentName';
 
-let remoteData = { comments: [], replies: [] };
+let remoteData = commentsData;
+
+function resolveAvatarUrl(avatar) {
+  const sourceKey = `./${String(avatar).replace(/^\.\//, '')}`;
+  return commentAvatarUrls[sourceKey] || avatar;
+}
 
 function escapeHtml(value) {
   return String(value)
@@ -33,7 +46,7 @@ function commentArticle({ name, avatar, text, time_ago, likes }, { reply = false
 
   return `
     <article class="comment${reply ? ' reply' : ''}">
-      <img class="comment-avatar" src="${escapeHtml(avatar)}" alt="${escapeHtml(name)}" width="40" height="40" loading="lazy" decoding="async">
+      <img class="comment-avatar" src="${escapeHtml(resolveAvatarUrl(avatar))}" alt="${escapeHtml(name)}" width="40" height="40" loading="lazy" decoding="async">
       <div>
         <div class="comment-bubble">
           <strong>${escapeHtml(name)}</strong>
@@ -106,18 +119,4 @@ textInput?.addEventListener('keydown', (event) => {
 sessionStorage.removeItem('aiTradingLocalComments');
 syncComposerAvatar();
 
-fetch('comments-data.json')
-  .then((res) => {
-    if (!res.ok) throw new Error('Failed to load comments');
-    return res.json();
-  })
-  .then((data) => {
-    remoteData = data;
-    renderAll();
-  })
-  .catch(() => {
-    renderAll();
-    if (feed && !feed.innerHTML.trim()) {
-      feed.innerHTML = '<p class="comments-error">Comments could not be loaded.</p>';
-    }
-  });
+renderAll();
