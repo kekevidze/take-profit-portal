@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="AI trading system dashboard">
+  <title>AI Trading System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20251007">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <div class="system-title"><span class="system-icon" aria-hidden="true">✦</span><span>AI TRADING SYSTEM</span></div>
+    <nav class="nav-links" aria-label="Main navigation"><a href="#how">How it works</a><a href="#demo">Trading</a><a href="#stories">Stories</a><a href="#comments">Comments</a><a href="#faq">Common questions</a></nav>
+    <div class="header-actions"><a href="/deposit/" class="btn btn-primary nav-cta" data-deposit-page>Get started</a></div>
+  </header>
+  <main>
+    <section class="landing-hero" aria-labelledby="landing-title">
+      <div class="hero-copy">
+        <span class="hero-kicker"><i></i> AI-assisted trading · built for clarity</span>
+        <h1 id="landing-title">Trade smarter with an AI-assisted interface.</h1>
+        <p>Follow live candlesticks, get plain-language AI updates, and manage your portfolio from one calm dashboard.</p>
+        <div class="hero-ctas"><a href="/deposit/" class="btn btn-primary hero-primary" data-deposit-page>Open your account <span>→</span></a><a href="#demo" class="text-link">Explore the dashboard</a></div>
+        <div class="trust-row"><span>✓ Secure onboarding</span><span>✓ Multi-asset markets</span><span>✓ AI session controls</span></div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="mini-window"><div class="mini-top"><span>AI SESSION</span><i></i></div><div class="mini-price">$67,248.32</div><div class="mini-chart"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div><div class="mini-status"><span>✦</span><div><strong>AI analyzing…</strong><small>Session in progress</small></div></div></div>
+      </div>
+    </section>
+    <section class="steps" id="how" aria-labelledby="how-title">
+      <div class="section-intro"><p class="eyebrow">HOW IT WORKS</p><h2 id="how-title">Get started in three simple steps.</h2></div>
+      <div class="step-grid"><article><span>01</span><h3>Choose a market</h3><p>Switch between Bitcoin, Ethereum, or the S&amp;P 500.</p></article><article><span>02</span><h3>Launch the AI</h3><p>Watch the chart advance as the system explains its analysis.</p></article><article><span>03</span><h3>Review the outcome</h3><p>See session results at a glance, then launch another run when you are ready.</p></article></div>
+    </section>
+    <section class="institutions" aria-labelledby="institutions-title">
+      <div class="section-intro"><p class="eyebrow">OUR PARTNERS</p><h2 id="institutions-title">Trusted by our Banking Partners</h2></div>
+      <div class="logo-grid logo-grid-banks" aria-label="Bank partner logos">
+        <div><img src="assets/commbank.png" alt="CommBank"></div><div><img src="assets/nab.png" alt="NAB"></div><div><img src="assets/ing.png" alt="ING"></div><div><img src="assets/commsec.svg" alt="CommSec"></div>
+        <div><img src="assets/anz.svg" alt="ANZ"></div><div><img src="assets/westpac.svg" alt="Westpac"></div><div><img src="assets/hsbc.svg" alt="HSBC"></div><div><img src="assets/bendigo.svg" alt="Bendigo Bank"></div>
+      </div>
+    </section>
+    <section class="editorial-image"><img src="assets/office.png" alt="Office portrait"><div><span>OUR APPROACH</span><h2>Technology designed around clarity.</h2><p>Tools and guidance built to help you follow markets without the noise.</p></div></section>
+    <section class="demo-shell" id="demo" aria-label="AI trading demo">
+    <div class="section-intro demo-intro"><p class="eyebrow">INTERACTIVE DEMO</p><h2>Try the trading dashboard.</h2></div>
+    <section class="hero dashboard-hero" aria-labelledby="welcome">
+      <div><p class="eyebrow">Tuesday, October 6</p><h1 id="welcome">Welcome back!</h1><p class="intro">Your portfolio is steady. Here’s today’s overview.</p></div>
+      <div class="account-actions"><button class="btn btn-secondary" data-action="withdraw"><span aria-hidden="true">↗</span> Withdraw</button><a href="/deposit/" class="btn btn-primary" id="depositButton" data-deposit-page><span aria-hidden="true">＋</span> Deposit</a></div>
+    </section>
+    <section class="portfolio-card" aria-labelledby="portfolio-title">
+      <div class="portfolio-copy">
+        <div class="label-row"><span id="portfolio-title">Current portfolio</span></div>
+        <div class="value" id="portfolioValue">$350<span>.00</span></div><div class="gain"><span>↗</span> +$2.80 today <strong>(+0.80%)</strong></div>
+      </div>
+      <div class="allocation" aria-label="Portfolio allocation">
+        <div class="donut"><span>3</span><small>assets</small></div>
+        <div class="legend"><div><i class="btc"></i><span>Bitcoin</span><strong>62%</strong></div><div><i class="eth"></i><span>Ethereum</span><strong>24%</strong></div><div><i class="sp"></i><span>S&amp;P 500</span><strong>14%</strong></div></div>
+      </div>
+    </section>
+    <section class="market-card" aria-labelledby="market-heading">
+      <div class="market-head"><div><div class="section-label" id="market-heading">MARKET</div><div class="asset-switcher" role="tablist" aria-label="Select market">
+        <button role="tab" aria-selected="true" data-symbol="BTC/USD">BTC/USD</button><button role="tab" aria-selected="false" data-symbol="ETH/USD">ETH/USD</button><button role="tab" aria-selected="false" data-symbol="S&P 500">S&amp;P 500</button>
+      </div></div><div class="time-switcher" role="group" aria-label="Chart timeframe"><button class="active">1D</button><button>1W</button><button>1M</button><button>1Y</button></div></div>
+      <div class="quote-row"><div><span id="symbolLabel">Bitcoin / U.S. Dollar</span><strong id="quotePrice">$67,248.32</strong></div><span class="quote-change">+$684.21 · 1.03%</span></div>
+      <div class="chart-wrap"><canvas id="chart" role="img" aria-label="Animated simulated BTC/USD Japanese candlestick chart"></canvas><div class="chart-badge"><i></i> LIVE SIMULATION</div><div class="price-tag" id="priceTag">67,248.32</div></div>
+      <div class="ai-panel" id="aiPanel"><div class="ai-info"><div class="ai-orb" aria-hidden="true"><span>✦</span></div><div><strong id="aiTitle">AI Trading System is ready</strong><p id="aiMessage">Launch a simulated session to watch the market unfold.</p></div></div><div class="ai-controls"><button class="icon-btn" id="pauseBtn" aria-label="Pause simulation" hidden>Ⅱ</button><button class="launch-btn" id="launchBtn"><span>✦</span> Launch AI</button></div></div>
+      <div class="activity" id="activity" aria-live="polite" hidden><div><span class="pulse-dot"></span><strong id="activityText">AI analyzing…</strong></div><span id="runtime">00:00</span></div>
+      <div class="profit-result" id="profitResult" role="status" aria-live="polite" hidden>
+        <div class="profit-spark" aria-hidden="true">✦</div>
+        <div><span>KA-CHING · DEMONSTRATION ONLY</span><strong id="profitAmount">+$2.63</strong><small>Simulated result · no real trade or funds</small></div>
+      </div>
+    </section>
+    </section>
+    <section class="stories" id="stories" aria-labelledby="stories-title">
+      <div class="section-intro"><p class="eyebrow">CLIENT STORIES</p><h2 id="stories-title">Designed to feel clear at every stage.</h2><p>Real people sharing how clearer guidance helped them feel more confident about their finances.</p></div>
+      <div class="stories-grid">
+        <article><div class="person"><img src="assets/michael.jpeg" alt="Portrait of Michael McCann"><div><strong>Michael McCann</strong><small>Client</small></div></div><blockquote>“I was worried my superfund wasn't going to be enough for the future. The guidance gave me a clearer direction.”</blockquote></article>
+        <article><div class="person"><img src="assets/caterina.jpg" alt="Portrait of Caterina Ferraro"><div><strong>Caterina Ferraro</strong><small>Client</small></div></div><blockquote>“As a single mother, I wanted to create more financial security for my family. The guidance was simple and easy to understand.”</blockquote></article>
+        <article><div class="person"><img src="assets/robert.jfif" alt="Portrait of Robert Broinowski"><div><strong>Robert Broinowski</strong><small>Client</small></div></div><blockquote>“I had almost given up on investing. Getting clear guidance changed my perspective.”</blockquote></article>
+        <article><div class="person"><img src="assets/shey-john.jpg" alt="Portrait of Shey Bustamante and John Turnbull"><div><strong>Shey &amp; John</strong><small>Clients</small></div></div><blockquote>“We were constantly stressing about our mortgage repayments. A clearer understanding of our options helped.”</blockquote></article>
+        <article><div class="person"><img src="assets/malcolm.jpg" alt="Portrait of Malcolm Page"><div><strong>Malcolm Page</strong><small>Client</small></div></div><blockquote>“I never had much time to think about investing. The process was made simple so I could understand where I stood.”</blockquote></article>
+        <article><div class="person"><img src="assets/susan.jpg" alt="Portrait of Susan Cooper"><div><strong>Susan Cooper</strong><small>Client</small></div></div><blockquote>“After retiring, I wanted to explore my options and feel more confident about the future.”</blockquote></article>
+      </div>
+    </section>
+    <section class="comments-section" id="comments" aria-labelledby="comments-title">
+      <div class="section-intro"><p class="eyebrow">COMMUNITY</p><h2 id="comments-title">What people are saying.</h2><p>Recent discussion from members across Australia.</p></div>
+      <div class="comments-card">
+        <div class="comments-header"><strong>Comments</strong> <span class="comments-count" id="commentsCount">13 comments</span></div>
+        <form class="comments-composer" id="commentComposer" autocomplete="off">
+          <span class="comment-avatar composer-avatar" id="composerAvatar" aria-hidden="true">You</span>
+          <div class="comments-composer-inner">
+            <div class="comments-composer-shell">
+              <label class="visually-hidden" for="commentText">Write a comment</label>
+              <textarea id="commentText" name="text" class="comments-composer-field" rows="2" maxlength="1000" placeholder="Write a comment…"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary comments-post-btn">Post</button>
+          </div>
+        </form>
+        <div class="comments-feed" id="commentsFeed" aria-live="polite"></div>
+      </div>
+    </section>
+    <section class="faq-section" id="faq" aria-labelledby="faq-title">
+      <div class="section-intro"><p class="eyebrow">COMMON QUESTIONS</p><h2 id="faq-title">Account, payments &amp; security</h2><p id="faqHeading">Financial Account, Payments &amp; Security FAQ</p></div>
+      <div class="faq-deposit-banner">
+        <div><strong>Ready to fund your account?</strong><p>Make a deposit to activate your balance and start from the trading dashboard.</p></div>
+        <a href="/deposit/" class="btn btn-primary" data-deposit-page>Make deposit</a>
+      </div>
+      <div class="faq-shell market-card">
+        <div class="faq-tabs-head">
+          <div class="section-label">Browse by topic</div>
+          <div class="asset-switcher faq-tabs" id="faqTabs" role="tablist" aria-label="FAQ categories"></div>
+        </div>
+        <div class="faq-panels" id="faqPanels"></div>
+      </div>
+      <div class="faq-deposit-footer">
+        <p>Still have questions after reading? You can make a deposit anytime from the dashboard.</p>
+        <a href="/deposit/" class="btn btn-primary hero-primary" data-deposit-page>Make deposit <span>→</span></a>
+      </div>
+    </section>
+    <section class="final-cta"><h2>Ready to get started?</h2><p>Fund your account and launch your first AI-assisted session from the dashboard.</p><a href="/deposit/" class="btn btn-primary hero-primary" data-deposit-page>Make deposit <span>→</span></a></section>
+    <footer><span>AI TRADING SYSTEM</span><span>Not financial advice · Past performance is not indicative of future results</span></footer>
+  </main>
+  <dialog id="demoDialog" aria-labelledby="dialogTitle"><form method="dialog"><button class="dialog-close" value="close" aria-label="Close">×</button><div class="dialog-icon" id="dialogIcon">＋</div><h2 id="dialogTitle">Make deposit</h2><p id="dialogDescription">Enter the amount you would like to add to your trading balance.</p><div id="dialogDepositPanel"><div class="agent-reference" id="agentReference" hidden><span>Referral reference</span><strong id="agentCode"></strong></div><label for="amount">Amount</label><div class="amount-field"><span>$</span><input id="amount" inputmode="decimal" value="350" aria-describedby="amountHelp"></div><small id="amountHelp">Minimum deposit may apply depending on your region.</small></div><div id="dialogWithdrawPanel" hidden><div class="dialog-status-card"><span class="dialog-status-badge">Account inactive</span><p class="dialog-status-lead">Withdrawals are not available until your account has been activated.</p><ul class="dialog-checklist"><li>Complete your first deposit to start the account</li><li>Trading and withdrawal features unlock after activation</li><li>Verification may be required before funds can be withdrawn</li></ul></div></div><button class="btn btn-primary dialog-submit" value="confirm" id="dialogSubmit">Make deposit</button></form></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div><script type="module" src="deposit.js"></script><script type="module" src="app.js"></script><script type="module" src="faq.js"></script><script type="module" src="comments.js"></script>
+</body></html>

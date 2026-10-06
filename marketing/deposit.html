@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Make a deposit to activate your AI trading account">
+  <title>Make deposit — AI Trading System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20251006">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="system-title deposit-home-link" href="index.html"><span class="system-icon" aria-hidden="true">✦</span><span>AI TRADING SYSTEM</span></a>
+    <nav class="nav-links" aria-label="Main navigation"><a href="index.html#how">How it works</a><a href="index.html#demo">Trading</a><a href="index.html#faq">Common questions</a></nav>
+    <div class="header-actions"><a class="btn btn-secondary deposit-home-link" href="index.html">Back to site</a></div>
+  </header>
+  <main class="deposit-page">
+    <section class="deposit-card" aria-labelledby="deposit-page-title">
+      <div class="dialog-icon deposit-page-icon" aria-hidden="true">＋</div>
+      <p class="eyebrow">ACCOUNT FUNDING</p>
+      <h1 id="deposit-page-title">Make deposit</h1>
+      <p class="deposit-page-lead">Enter the amount you would like to add to your trading balance and activate your account.</p>
+      <form id="depositForm">
+        <div class="agent-reference" id="agentReference" hidden><span>Referral reference</span><strong id="agentCode"></strong></div>
+        <label for="amount">Amount</label>
+        <div class="amount-field"><span>$</span><input id="amount" name="amount" inputmode="decimal" value="350" aria-describedby="amountHelp"></div>
+        <small id="amountHelp">Minimum deposit may apply depending on your region.</small>
+        <button type="submit" class="btn btn-primary dialog-submit">Make deposit</button>
+      </form>
+    </section>
+  </main>
+  <footer><span>AI TRADING SYSTEM</span><span>Not financial advice · Past performance is not indicative of future results</span></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="deposit.js"></script>
+</body>
+</html>

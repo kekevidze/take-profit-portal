@@ -1,0 +1,339 @@
+{
+  "heading": "Financial Account, Payments & Security FAQ",
+  "categories": [
+    {
+      "id": "opening-and-controlling-your-account",
+      "title": "Opening and controlling your account",
+      "questions": [
+        {
+          "q": "What happens when I submit my details?",
+          "a": "Submitting your personal and card details creates a financial account in your name and submits the payment request shown on the website. Before confirming, review the account terms, payment amount, currency, and any applicable fees. Account creation and payment completion are separate steps."
+        },
+        {
+          "q": "What type of account am I opening?",
+          "a": "You are opening a financial account in your own name. It is more than a website login: it is an account through which you can access the financial services described in the account terms. Those terms explain the provider, available features, and how money held or processed through the account is handled."
+        },
+        {
+          "q": "Is this account the same as a bank account?",
+          "a": "A financial account is not necessarily a bank deposit account. Check the account terms for its exact type, the services it provides, and any protections that apply to your funds. Do not assume that bank deposit insurance applies unless this is explicitly confirmed."
+        },
+        {
+          "q": "Whose name is the account registered under?",
+          "a": "The account is registered under your name using the personal information you provide. Your details must be accurate and belong to you. You may be asked to verify your identity before accessing certain services."
+        },
+        {
+          "q": "Am I in full control of my account?",
+          "a": "Yes. You remain in control of your account access and the instructions you authorize. You decide whether to initiate payments, use available account features, or request account closure. Transactions remain subject to available funds, agreed terms, and any required security or verification checks."
+        },
+        {
+          "q": "Does opening the account give another person control over it?",
+          "a": "Opening an account does not, by itself, authorize another person to operate it for you. Keep your login details private and review any separate authorization carefully before granting someone access or permission to act on your behalf."
+        },
+        {
+          "q": "Can someone make decisions or payments on my behalf?",
+          "a": "Any authority for someone else to act on your behalf should be separately and clearly explained. Do not share your password or verification codes as a way of granting access. If you believe someone is operating your account without permission, contact official support immediately."
+        },
+        {
+          "q": "Does \u201cfull control\u201d mean every transaction will be processed immediately?",
+          "a": "No. You control the instructions you submit, but their completion may depend on processing times, available funds, verification, and account restrictions. A transaction already being processed may not be cancellable."
+        },
+        {
+          "q": "Can I review activity on my account?",
+          "a": "Use the account\u2019s available activity history, statements, and confirmations to review transactions. Check these regularly and report any activity you do not recognize. Contact support if you need clarification about an entry."
+        },
+        {
+          "q": "Can I change my personal information?",
+          "a": "Use the available account settings or contact official support. Changes to important details, such as your name or contact information, may require verification to protect your account."
+        },
+        {
+          "q": "Can I open an account for another person?",
+          "a": "This account-opening process is intended for people opening an account in their own name. Do not enter another person\u2019s identity details or present yourself as them. Contact support if you need information about an authorized representative arrangement."
+        },
+        {
+          "q": "Why must my information be accurate?",
+          "a": "Accurate information helps establish account ownership, deliver important notices, and complete verification. Incorrect or inconsistent details may delay account access or payment processing."
+        },
+        {
+          "q": "How do I know that my account has been opened?",
+          "a": "Check the account confirmation displayed after submission and any confirmation sent to your email address. Keep a copy of the terms you accepted. If you are unsure whether the account was created, contact support before submitting again."
+        }
+      ]
+    },
+    {
+      "id": "payment-submission-and-the-72-hour-window",
+      "title": "Payment submission and the 72-hour window",
+      "questions": [
+        {
+          "q": "What am I authorizing when I submit my card details?",
+          "a": "You are submitting the payment request displayed at checkout alongside your account-opening request. The page should clearly show the amount, currency, purpose of the payment, and any applicable fees before you confirm."
+        },
+        {
+          "q": "When will the funds be deducted from my card?",
+          "a": "Funds are due to be deducted within 72 hours from the moment you submit your card details and payment request, subject to payment approval and completion of any required checks. Your bank may show a pending authorization before the completed charge appears."
+        },
+        {
+          "q": "When does the 72-hour period begin?",
+          "a": "It begins when you submit your card details and payment request on the website. Keep your submission confirmation so you can refer to the date and time if you need assistance."
+        },
+        {
+          "q": "Are the funds deducted immediately?",
+          "a": "They may be deducted sooner, but processing can take up to 72 hours from submission. Do not assume that the absence of an immediate charge means your payment request was unsuccessful."
+        },
+        {
+          "q": "Does the 72-hour window guarantee payment approval?",
+          "a": "No. Your bank must approve the payment, and any required checks must be completed. Incorrect card information, insufficient funds, card restrictions, or incomplete verification may prevent the payment from completing."
+        },
+        {
+          "q": "Why has the money not been deducted yet?",
+          "a": "Your request may still be processing within the 72-hour window. Check your confirmation and banking app for updates. Avoid submitting the same payment again while the original request\u2019s status is unclear."
+        },
+        {
+          "q": "Should I keep enough money available during processing?",
+          "a": "Yes. Keep sufficient funds or available credit until the payment is completed. A change to your balance, spending limit, or card status may cause the payment to fail."
+        },
+        {
+          "q": "What happens if more than 72 hours pass without a completed payment?",
+          "a": "Contact official support with your payment reference, submission time, amount, and currency. Check for both pending and completed bank entries before making another attempt."
+        },
+        {
+          "q": "Does a card deduction mean the funds are immediately available in my financial account?",
+          "a": "Not necessarily. A card charge and the availability of funds in your financial account may have different processing stages. Check your account balance and transaction status before attempting to use the funds."
+        },
+        {
+          "q": "What is the difference between pending and completed?",
+          "a": "A pending entry generally indicates that a request or authorization is still being processed. A completed entry indicates that the relevant processing stage has finished. Check whether the status refers to the card payment or the transaction within your financial account."
+        },
+        {
+          "q": "Why does my available card balance decrease before the charge is completed?",
+          "a": "Your bank may reserve the payment amount through a temporary authorization. This can reduce your available balance before the final charge appears. Your bank can explain how it handles these reservations."
+        },
+        {
+          "q": "How do I know whether my payment succeeded?",
+          "a": "Check the payment confirmation and reference number, your bank\u2019s transaction history, and the relevant account transaction status. An account-opening confirmation alone does not confirm that a payment succeeded."
+        },
+        {
+          "q": "What if the website freezes after I submit?",
+          "a": "Avoid repeatedly clicking submit or immediately making another payment. Check your email, account status, and banking app first. Contact support if you cannot determine whether the original request was received."
+        },
+        {
+          "q": "What if I accidentally submit twice?",
+          "a": "Contact support promptly and provide both references if available. Multiple submissions may create separate payment attempts. Do not assume that one will automatically cancel the other."
+        },
+        {
+          "q": "Can I cancel a submitted payment?",
+          "a": "Contact support as soon as possible. Cancellation depends on the payment\u2019s processing stage and the applicable terms. A payment may already be processing even if no completed charge appears in your banking app."
+        },
+        {
+          "q": "Why was my card payment declined?",
+          "a": "Possible reasons include incorrect details, insufficient funds, an expired card, spending limits, restrictions on online payments, or a security check. Your bank can usually provide the specific reason."
+        },
+        {
+          "q": "What should I check before trying again?",
+          "a": "Check your card details, available balance, online payment permissions, and any message from your bank. Confirm that the previous attempt failed before submitting another request."
+        },
+        {
+          "q": "Can I use someone else\u2019s card to fund my account?",
+          "a": "Check the service\u2019s rules before using a card that is not in your name. Having the cardholder\u2019s permission does not necessarily mean third-party funding is accepted. A mismatch between account and cardholder details may require additional checks or result in rejection."
+        }
+      ]
+    },
+    {
+      "id": "card-and-website-security",
+      "title": "Card and website security",
+      "questions": [
+        {
+          "q": "Is it safe to enter my card details online?",
+          "a": "Use the official website and check that your browser shows a secure connection without security warnings. A secure connection helps protect information during transmission, but it does not by itself prove that a website is genuine. Check the website address carefully."
+        },
+        {
+          "q": "What card details will I be asked to provide?",
+          "a": "The payment form may request your card number, expiration date, security code, cardholder name, and billing address. It should show the payment amount and currency before you confirm."
+        },
+        {
+          "q": "Will you ask for my card PIN or online banking password?",
+          "a": "No. Do not enter your card PIN or online banking password into the account-opening or payment form. Our support team will never ask you to share them."
+        },
+        {
+          "q": "Why is my card security code required?",
+          "a": "The security code, sometimes called CVV or CVC, helps verify an online card payment. Enter it only in the designated payment field. Never send it by email, message, or chat."
+        },
+        {
+          "q": "Will my card details be saved?",
+          "a": "Review the checkout information to see whether your payment method will be saved. Account creation and saving a card are separate matters and should be clearly explained. Check the Privacy Policy for details about how payment information is handled."
+        },
+        {
+          "q": "Does saving my card authorize future payments?",
+          "a": "Saving a payment method does not, by itself, explain which future payments you have authorized. Any recurring payment arrangement or permission for future charges should be clearly stated in the terms you accept."
+        },
+        {
+          "q": "Can support ask me to send a photograph of my card?",
+          "a": "Do not send an unredacted photograph showing your full card number or security code. If card ownership verification is requested, confirm the request through official support and follow the designated secure process, including instructions about information that must be hidden."
+        },
+        {
+          "q": "Why does my bank ask me to approve the payment?",
+          "a": "Your bank may require an additional verification step to confirm that you initiated the transaction. Check the amount, currency, and merchant name before approving."
+        },
+        {
+          "q": "What if I receive an approval request I did not initiate?",
+          "a": "Do not approve it. Open your banking app directly and contact your bank through its official support channel. Never approve a payment because someone claims it is necessary to cancel another payment or release a refund."
+        },
+        {
+          "q": "Will support ask for a one-time verification code?",
+          "a": "No. Our support team will never ask you to read out or send a one-time code. Enter codes only in the official verification screen for an action you initiated."
+        }
+      ]
+    },
+    {
+      "id": "protecting-access-to-your-financial-account",
+      "title": "Protecting access to your financial account",
+      "questions": [
+        {
+          "q": "How should I secure my account?",
+          "a": "Use a strong, unique password if your account uses password-based sign-in. Enable additional authentication where available and keep your associated email account secure. Never share login details or verification codes."
+        },
+        {
+          "q": "Why is my email account important?",
+          "a": "Your email may receive account notices, confirmations, and password reset messages. Someone with access to it may be able to interfere with your financial account. Protect it with a unique password and additional authentication where available."
+        },
+        {
+          "q": "What if I forget my password?",
+          "a": "Use the official password reset process. If you receive an unexpected reset message, visit the website directly instead of following the message\u2019s link. Contact support if you suspect someone else requested the reset."
+        },
+        {
+          "q": "What if I entered the wrong email address?",
+          "a": "Contact support to correct it. You may need to verify account ownership before changes are made. Avoid opening another account simply to correct a typing error unless support instructs you to do so."
+        },
+        {
+          "q": "Can I access my account on a shared computer?",
+          "a": "Use a trusted personal device whenever possible. On a shared device, do not save your password or payment details, and sign out when finished. Avoid using devices with suspicious software, pop-ups, or security warnings."
+        },
+        {
+          "q": "Should I let support remotely access my device?",
+          "a": "Do not grant remote access to someone who unexpectedly contacts you about your account. Remote access can expose your financial account, email, and banking information. Confirm any assistance request through official support before taking action."
+        },
+        {
+          "q": "What if someone claims they need my login to manage the account for me?",
+          "a": "Do not share it. Your financial account is in your name, and you remain responsible for protecting access. Any legitimate arrangement for another person to act on your behalf should use a clearly documented authorization process."
+        },
+        {
+          "q": "What should I do if I suspect unauthorized access?",
+          "a": "Change your password if you can still sign in, secure your associated email, and contact support immediately. Review recent activity. Contact your bank promptly if your card has also been used without permission."
+        }
+      ]
+    },
+    {
+      "id": "identity-verification-and-account-checks",
+      "title": "Identity verification and account checks",
+      "questions": [
+        {
+          "q": "Why do I need to verify my identity?",
+          "a": "Verification helps confirm that the financial account belongs to the person named on it and helps prevent fraud and misuse. Certain account features or transactions may be unavailable until required checks are completed."
+        },
+        {
+          "q": "What information may be requested?",
+          "a": "You may be asked for an identity document, address information, or details about a transaction. Follow the specific instructions provided through the designated verification process. Never include passwords, card PINs, or one-time codes."
+        },
+        {
+          "q": "Why might I be asked about the source of my funds?",
+          "a": "A review may require information about where funds came from, such as employment income, savings, or a sale. If information is needed, the request should explain what to provide and how to submit it securely."
+        },
+        {
+          "q": "Does a verification request mean I am suspected of wrongdoing?",
+          "a": "No. Checks may be routine or may be needed to clarify information. A request for documents does not, by itself, mean wrongdoing has occurred."
+        },
+        {
+          "q": "Can my account be restricted even though I control it?",
+          "a": "Yes. Your control over the account operates within its terms and required security checks. Access or transactions may be temporarily restricted during a review. Contact support for information about the steps available to resolve the restriction."
+        },
+        {
+          "q": "What happens if I cannot provide a requested document?",
+          "a": "Contact support and explain the issue. Ask whether another document can be accepted. Do not alter documents or submit inaccurate information to complete verification."
+        }
+      ]
+    },
+    {
+      "id": "funds-fees-refunds-and-account-closure",
+      "title": "Funds, fees, refunds, and account closure",
+      "questions": [
+        {
+          "q": "Can I withdraw or transfer money from my financial account?",
+          "a": "Available withdrawal and transfer options depend on the account\u2019s features and terms. Review eligible destinations, fees, processing times, and limits before submitting an instruction. Funds must be available for the requested transaction."
+        },
+        {
+          "q": "Are there limits on payments or withdrawals?",
+          "a": "Check the account terms and the information displayed before the transaction. Limits may depend on verification status, payment method, or the service being used. Contact support if a limit is unclear."
+        },
+        {
+          "q": "Will I be charged any fees?",
+          "a": "Review the fee information before opening the account or authorizing a transaction. Your card issuer may separately apply charges, such as currency conversion fees. Ask for clarification before submitting if the total cost is unclear."
+        },
+        {
+          "q": "Why is the amount on my bank statement different?",
+          "a": "Check whether currency conversion or a card issuer fee applies. Compare the amount and currency in your payment confirmation with the statement entry. Contact support about the submitted amount and your bank about charges it applied."
+        },
+        {
+          "q": "Why does the statement show a different company name?",
+          "a": "The billing name may differ from the website\u2019s trading name. Compare the date, amount, and payment reference with your confirmation. Contact support if you cannot identify the entry."
+        },
+        {
+          "q": "What if I do not recognize a charge?",
+          "a": "Review your confirmations and any payment arrangements you authorized. If the charge remains unfamiliar, lock your card if available and contact your bank promptly. Also report any related account activity to support."
+        },
+        {
+          "q": "How do I request a refund?",
+          "a": "Contact support with your payment reference and the reason for your request. Eligibility depends on the applicable terms and circumstances. Never provide your password, PIN, or verification code to receive a refund."
+        },
+        {
+          "q": "Does the 72-hour deduction window apply to refunds?",
+          "a": "No. The 72-hour window concerns the original payment deduction following submission. Refund processing follows a separate timeline, including the time your bank takes to display the returned funds."
+        },
+        {
+          "q": "Do I need to make another payment to receive a refund?",
+          "a": "Treat an unexpected request for an additional payment to release a refund as suspicious. Confirm it through official support before taking any action. Never approve an unrelated bank payment or share a verification code to obtain a refund."
+        },
+        {
+          "q": "Can I close my financial account?",
+          "a": "You can request closure through the available account process or official support. Before closing, check for remaining funds, pending transactions, and any outstanding obligations. Keep confirmation that your request has been completed."
+        },
+        {
+          "q": "Does closing the account automatically cancel a pending card payment?",
+          "a": "Do not assume so. Request cancellation of the payment separately and obtain confirmation. Account closure and cancellation of a previously submitted payment may follow different processes."
+        },
+        {
+          "q": "What happens to any remaining funds when I close the account?",
+          "a": "The closure process should explain how eligible remaining funds will be returned or transferred. Resolve pending transactions and confirm the destination before closure. Contact support if any balance or restriction remains unclear."
+        },
+        {
+          "q": "Can I obtain my transaction records before closing?",
+          "a": "Save available statements, payment confirmations, and transaction references before requesting closure. Ask support how to obtain any records you cannot access through the account."
+        }
+      ]
+    },
+    {
+      "id": "getting-help",
+      "title": "Getting help",
+      "questions": [
+        {
+          "q": "What should I include in a support request?",
+          "a": "Provide your account email, payment reference, submission date and time, amount, currency, and a brief description of the issue. Do not include your full card number, security code, password, PIN, or one-time verification code."
+        },
+        {
+          "q": "Can I send a screenshot?",
+          "a": "Yes, if it helps explain the issue, but hide sensitive information first. Leave only the details needed to identify the problem, such as a transaction reference or error message."
+        },
+        {
+          "q": "Who should I contact about a payment that has taken more than 72 hours?",
+          "a": "Contact official support to check the submitted payment request. Your bank can separately explain any pending authorization or completed charge shown on your card account."
+        },
+        {
+          "q": "Who should I contact if my card has been compromised?",
+          "a": "Contact your bank immediately to secure the card and report unauthorized transactions. Also contact account support if you suspect your financial account has been accessed or misused."
+        },
+        {
+          "q": "Who should I contact about account access, verification, or closure?",
+          "a": "Use the official account support channel. Your bank handles card-related issues, while account support handles the financial account and services provided through it."
+        }
+      ]
+    }
+  ]
+}

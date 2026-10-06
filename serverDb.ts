@@ -23,6 +23,8 @@ export interface User {
   createdAt: number;
   ipWhitelistEnabled?: boolean;
   allowedIps?: string[];
+  /** Opaque, permanent code used by this agent's public deposit link. */
+  referralCode?: string;
 }
 
 export interface ClientData {
@@ -546,6 +548,7 @@ class DatabaseManager {
   public createUser(user: Omit<User, 'id' | 'createdAt'>): User {
     const newUser: User = {
       ...user,
+      referralCode: user.referralCode || `ar_${crypto.randomBytes(18).toString('base64url')}`,
       id: `usr-${crypto.randomBytes(4).toString('hex')}`,
       createdAt: Date.now()
     };

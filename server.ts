@@ -53,6 +53,23 @@ function sanitizeString(str: any): string {
   return str.replace(/<[^>]*>/g, '');
 }
 
+function resolveAgentReferralCode(code: unknown): User | undefined {
+  if (typeof code !== 'string' || !/^ar_[A-Za-z0-9_-]{20,64}$/.test(code)) return undefined;
+  const agent = db.getUsers().find(user => user.referralCode === code);
+  return agent?.role === 'Agent' && agent.status === 'Active' && !isHiddenSystemUser(agent) ? agent : undefined;
+}
+
+function getAgentDisplayName(agent: User): string {
+  return `${agent.firstName} ${agent.lastName}`.trim();
+}
+
+function ensureAgentReferralCode(agent: User): string {
+  if (agent.referralCode) return agent.referralCode;
+  const referralCode = `ar_${crypto.randomBytes(18).toString('base64url')}`;
+  db.updateUser(agent.id, { referralCode });
+  return referralCode;
+}
+
 // --- IP WHITELIST SECURITY UTILITIES ---
 function normalizeIp(ip: string): string {
   if (!ip) return '127.0.0.1';
@@ -407,6 +424,17 @@ app.get('/api/auth/me', authenticateToken, (req: AuthRequest, res: Response) => 
   return res.json({ user: req.user });
 });
 
+app.get('/api/agent/referral-link', authenticateToken, (req: AuthRequest, res: Response) => {
+  const agent = req.user ? db.getUserById(req.user.id) : undefined;
+  if (!agent || agent.role !== 'Agent' || agent.status !== 'Active') {
+    return res.status(403).json({ error: 'An active agent account is required' });
+  }
+
+  const referralCode = ensureAgentReferralCode(agent);
+  const origin = `${req.protocol}://${req.get('host')}`;
+  return res.json({ referralCode, url: `${origin}/marketing/?ref=${encodeURIComponent(referralCode)}` });
+});
+
 // Helper to check and mark stale sessions as offline using the server's own clock
 async function checkStaleSessionsOnServer() {
   const sessions = await db.getSessions();
@@ -527,19 +555,14 @@ async function determineAttribution(
   // Priority 3: Tracking ID from URL
   const trackingId = session.trackingId;
   if (trackingId) {
-    const parts = trackingId.split('-');
-    if (parts.length >= 2) {
-      const agentId = parts[0] + (parts[1].startsWith('agent') || parts[1].startsWith('manager') ? '-' + parts[1] : '');
-      const leadId = parts[parts.length - 1];
-      const agentUser = db.getUserById(agentId);
-      if (agentUser) {
-        return {
-          agentId,
-          agentName: `${agentUser.firstName} ${agentUser.lastName}`,
-          leadId,
-          source: 'Tracking ID'
-        };
-      }
+    const agentUser = resolveAgentReferralCode(trackingId);
+    if (agentUser) {
+      return {
+        agentId: agentUser.id,
+        agentName: getAgentDisplayName(agentUser),
+        leadId: session.id,
+        source: 'Agent Personal Link'
+      };
     }
   }
 
@@ -595,6 +618,7 @@ app.post('/api/sessions/track', async (req: Request, res: Response) => {
   try {
     const { ref, fingerprint, referrer, utmParams, path: currentPath, visitorId } = req.body;
     const visitorIdCookie = req.cookies?.visitor_id || visitorId;
+    const referringAgent = resolveAgentReferralCode(ref);
 
     let session: CrmSession | undefined;
 
@@ -633,6 +657,14 @@ app.post('/api/sessions/track', async (req: Request, res: Response) => {
         connection: 'online'
       };
 
+      if (referringAgent) {
+        updateData.agentId = referringAgent.id;
+        updateData.agent = getAgentDisplayName(referringAgent);
+        updateData.isAnonymous = false;
+        updateData.trackingId = ref;
+        timeline.push({ event: `Assigned through ${getAgentDisplayName(referringAgent)}'s personal link`, timestamp });
+      }
+
       if (ref && !session.trackingId) {
         updateData.trackingId = ref;
       }
@@ -652,7 +684,7 @@ app.post('/api/sessions/track', async (req: Request, res: Response) => {
 
     // 2. Create brand new Anonymous Session
     const landing = db.getSettings().publicDepositLanding || DEFAULT_PUBLIC_DEPOSIT_LANDING;
-    if (!landing.enabled) {
+    if (!landing.enabled && !referringAgent) {
       return res.status(403).json({
         error: 'public_landing_disabled',
         message: landing.disabledMessage || DEFAULT_PUBLIC_DEPOSIT_LANDING.disabledMessage
@@ -664,17 +696,16 @@ app.post('/api/sessions/track', async (req: Request, res: Response) => {
 
     const newSession: CrmSession = {
       id: anonId,
-      // Anonymous visitors remain unassigned until a manager explicitly
-      // assigns them or they arrive through an agent-owned deposit link.
-      agent: 'Unassigned',
+      agent: referringAgent ? getAgentDisplayName(referringAgent) : 'Unassigned',
+      agentId: referringAgent?.id,
       priority: 'Medium',
       status: 'Browsing',
       createdAt: timestamp,
       updatedAt: timestamp,
       connection: 'online',
       client: {
-        firstName: 'Anonymous',
-        lastName: `Visitor #${visitorNum}`,
+        firstName: referringAgent ? '' : 'Anonymous',
+        lastName: referringAgent ? '' : `Visitor #${visitorNum}`,
         email: '',
         phone: '',
         country: fingerprint?.language?.split('-')[1] || 'GB',
@@ -692,11 +723,16 @@ app.post('/api/sessions/track', async (req: Request, res: Response) => {
       progress: { completed: 0, total: 9, percent: 0 },
       activity: 'Browsing Website',
       timeline: [
-        { event: 'Website Landed (Anonymous Session Created)', timestamp },
+        {
+          event: referringAgent
+            ? `Website Landed via ${getAgentDisplayName(referringAgent)}'s personal link`
+            : 'Website Landed (Anonymous Session Created)',
+          timestamp
+        },
         { event: `Page View: ${currentPath || '/'}`, timestamp }
       ],
       campaignName: utmParams?.campaign || landing.siteName || 'Place Order',
-      isAnonymous: true,
+      isAnonymous: !referringAgent,
       trackingId: ref || undefined,
       fingerprint: fingerprint || undefined,
       referrer: referrer || undefined,
@@ -1514,8 +1550,9 @@ app.delete('/api/sessions/:id', authenticateToken, requireManager, async (req: A
 // List users/agents
 app.get('/api/users', authenticateToken, requireManager, (req: AuthRequest, res: Response) => {
   const users = filterVisibleUsers(db.getUsers(), req.user).map(u => {
+    const referralCode = u.role === 'Agent' ? ensureAgentReferralCode(u) : u.referralCode;
     const { passwordHash, ...safeUser } = u;
-    return safeUser;
+    return { ...safeUser, referralCode };
   });
   return res.json(users);
 });

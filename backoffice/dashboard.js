@@ -5,7 +5,7 @@
  */
 
 import { initThemeToggle, $, $all, openModal } from '../js/core/ui.js';
-import { formatTimeAgo, playNotificationSound } from '../js/utils/helpers.js';
+import { formatTimeAgo, playNotificationSound, copyToClipboard } from '../js/utils/helpers.js';
 import { formatCurrency, formatDateTime } from '../js/utils/formatters.js';
 import { SESSION_STATUS, PRIORITY, COUNTRIES, CONFIG } from '../js/utils/constants.js';
 import { sessionService } from '../js/services/sessionService.js';
@@ -1575,6 +1575,7 @@ async function loadSettingsTab() {
                     <th style="padding: var(--spacing-md); font-weight: 700; font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">Role</th>
                     <th style="padding: var(--spacing-md); font-weight: 700; font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">Workload</th>
                     <th style="padding: var(--spacing-md); font-weight: 700; font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">Status</th>
+                    <th style="padding: var(--spacing-md); font-weight: 700; font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase;">Personal Link</th>
                     <th style="padding: var(--spacing-md); font-weight: 700; font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; text-align: center;">Actions</th>
                   </tr>
                 </thead>
@@ -1596,6 +1597,11 @@ async function loadSettingsTab() {
                         <td style="padding: var(--spacing-md);"><span class="badge ${u.role === 'Manager' ? 'badge-primary' : 'badge-gray'}">${u.role}</span></td>
                         <td style="padding: var(--spacing-md);"><span class="mono" style="font-weight: 600;">${workloadCount} Active</span></td>
                         <td style="padding: var(--spacing-md);"><span class="badge ${statusClass}">${u.status.toUpperCase()}</span></td>
+                        <td style="padding: var(--spacing-md);">
+                          ${u.role === 'Agent' && u.referralCode ? `
+                            <button class="btn btn-secondary btn-sm copy-agent-link-btn" data-referral-code="${u.referralCode}" data-name="${fullName}" style="padding: 4px 8px; font-size: 0.75rem; font-weight: 600; white-space: nowrap;">Copy Link</button>
+                          ` : '<span class="text-tertiary">—</span>'}
+                        </td>
                         <td style="padding: var(--spacing-md); text-align: center;">
                           <div class="flex justify-center gap-xs">
                             <button class="btn btn-secondary btn-sm toggle-user-btn" data-id="${u.id}" data-status="${u.status}" style="padding: 4px 8px; font-size: 0.75rem; font-weight: 600;">Toggle</button>
@@ -1814,6 +1820,18 @@ async function loadSettingsTab() {
     container.innerHTML = teamHtml + securityHtml;
 
     bindFloatingLabelsIn(container);
+
+    container.querySelectorAll('.copy-agent-link-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const link = `${window.location.origin}/marketing/?ref=${encodeURIComponent(btn.dataset.referralCode || '')}`;
+        const copied = await copyToClipboard(link);
+        notificationService.showToast(
+          copied ? 'Agent Link Copied' : 'Copy Failed',
+          copied ? `${btn.dataset.name}'s personal marketing link is ready to share.` : 'Could not copy the agent link.',
+          copied ? 'success' : 'danger'
+        );
+      });
+    });
 
     // Form reset helper
     function resetForm() {

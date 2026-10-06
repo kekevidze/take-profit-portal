@@ -129,6 +129,11 @@ async function loadAgentProfile() {
       // Rerender list of sessions once the agent's name is loaded
       renderAgentSessions();
 
+      if (user.role === 'Agent') {
+        $('#agent-referral-card')?.classList.remove('hidden');
+        await loadPersonalReferralLink();
+      }
+
       // Pre-select Assigned Agent dropdown if option exists
       const agentDropdown = $('#assignedAgent');
       if (agentDropdown) {
@@ -152,6 +157,28 @@ async function loadAgentProfile() {
     }
   } catch (error) {
     console.error('Failed to load agent profile:', error);
+  }
+}
+
+async function loadPersonalReferralLink() {
+  const input = $('#agent-referral-url');
+  const copyButton = $('#copy-referral-link-btn');
+  const status = $('#agent-referral-status');
+  if (!input || !copyButton) return;
+
+  try {
+    const response = await fetch('/api/agent/referral-link');
+    const data = await response.json();
+    if (!response.ok || !data.url) throw new Error(data.error || 'Personal link unavailable');
+    input.value = data.url;
+    copyButton.addEventListener('click', async () => {
+      const copied = await copyToClipboard(input.value);
+      if (status) status.textContent = copied ? 'Link copied. New visitors will be assigned to you.' : 'Could not copy the link.';
+    });
+  } catch (error) {
+    input.placeholder = 'Personal link unavailable';
+    copyButton.disabled = true;
+    if (status) status.textContent = error.message || 'Could not load your personal link.';
   }
 }
 

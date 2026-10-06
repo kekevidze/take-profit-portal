@@ -54,6 +54,20 @@
       
       <!-- LEFT COLUMN: REGISTRATION AND ACTIVE SESSIONS -->
       <div class="flex-col gap-lg" style="flex: 1; min-width: 0;">
+        <section class="card agent-referral-card hidden" id="agent-referral-card">
+          <div class="card-header">
+            <div class="flex-col">
+              <h2 class="card-title">Your Personal Deposit Link</h2>
+              <span class="card-subtitle">Every client who opens this link is assigned to you automatically.</span>
+            </div>
+          </div>
+          <div class="link-input-group">
+            <input type="text" id="agent-referral-url" class="form-input mono" readonly placeholder="Loading your link…" />
+            <button type="button" class="btn btn-primary" id="copy-referral-link-btn">Copy Link</button>
+          </div>
+          <p class="agent-referral-note" id="agent-referral-status">This permanent link can be shared with any new client.</p>
+        </section>
+
         <!-- LEFT PANE: LEAD REGISTRATION FORM -->
         <section class="card">
           <div class="card-header">
