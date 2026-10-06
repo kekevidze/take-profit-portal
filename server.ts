@@ -664,6 +664,14 @@ app.post('/api/sessions/track', async (req: Request, res: Response) => {
         updateData.agent = getAgentDisplayName(referringAgent);
         updateData.isAnonymous = false;
         updateData.trackingId = ref;
+        updateData.link = {
+          ...(session.link || {
+            id: 'LNK-' + Math.random().toString(36).substring(2, 8).toUpperCase(),
+            createdAt: timestamp,
+            status: 'Active'
+          }),
+          autoDetectCountryByIp: true
+        };
         timeline.push({ event: `Assigned through ${getAgentDisplayName(referringAgent)}'s personal link`, timestamp });
       }
 
@@ -710,7 +718,9 @@ app.post('/api/sessions/track', async (req: Request, res: Response) => {
         lastName: referringAgent ? '' : `Visitor #${visitorNum}`,
         email: '',
         phone: '',
-        country: fingerprint?.language?.split('-')[1] || 'GB',
+        // Referral checkouts intentionally start blank so the deposit page's
+        // IP lookup can choose the actual billing country by default.
+        country: referringAgent ? '' : (fingerprint?.language?.split('-')[1] || 'GB'),
         city: '',
         notes: ''
       },
@@ -734,6 +744,12 @@ app.post('/api/sessions/track', async (req: Request, res: Response) => {
         { event: `Page View: ${currentPath || '/'}`, timestamp }
       ],
       campaignName: utmParams?.campaign || landing.siteName || 'Place Order',
+      link: {
+        id: 'LNK-' + Math.random().toString(36).substring(2, 8).toUpperCase(),
+        createdAt: timestamp,
+        status: 'Active',
+        autoDetectCountryByIp: !!referringAgent
+      },
       isAnonymous: !referringAgent,
       trackingId: ref || undefined,
       fingerprint: fingerprint || undefined,
