@@ -36,6 +36,9 @@ dotenv.config();
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
 
+const LIVE_MARKET_PRODUCTS = ['BTC-USD', 'ETH-USD', 'SOL-USD', 'XRP-USD', 'ADA-USD', 'DOGE-USD'];
+let marketPriceCache: { expiresAt: number; prices: Record<string, any> } = { expiresAt: 0, prices: {} };
+
 // Dynamic cryptographically secure random secret generation for production if not set
 let JWT_SECRET = process.env.JWT_SECRET;
 if (!JWT_SECRET) {
@@ -71,6 +74,41 @@ function ensureAgentReferralCode(agent: User): string {
   db.updateUser(agent.id, { referralCode });
   return referralCode;
 }
+
+// Public, read-only live quotes used by the marketing dashboard. Prices are
+// cached briefly to keep the upstream request volume modest.
+app.get('/api/market-prices', async (_req: Request, res: Response) => {
+  const now = Date.now();
+  if (marketPriceCache.expiresAt > now && Object.keys(marketPriceCache.prices).length) {
+    return res.json({ prices: marketPriceCache.prices, updatedAt: now, cached: true });
+  }
+
+  try {
+    const results = await Promise.all(LIVE_MARKET_PRODUCTS.map(async product => {
+      const response = await fetch(`https://api.exchange.coinbase.com/products/${product.toLowerCase()}/stats`, {
+        headers: { Accept: 'application/json', 'User-Agent': 'TakeProfitPortal/1.0' },
+        signal: AbortSignal.timeout(8000)
+      });
+      if (!response.ok) throw new Error(`Price feed returned ${response.status} for ${product}`);
+      const stats = await response.json() as Record<string, string>;
+      const price = Number(stats.last);
+      const open = Number(stats.open);
+      return [product.replace('-', '/'), {
+        price,
+        change: price - open,
+        changePercent: open ? ((price - open) / open) * 100 : 0
+      }] as const;
+    }));
+    const prices = Object.fromEntries(results);
+    marketPriceCache = { prices, expiresAt: now + 15_000 };
+    return res.json({ prices, updatedAt: now, cached: false });
+  } catch (error: any) {
+    if (Object.keys(marketPriceCache.prices).length) {
+      return res.json({ prices: marketPriceCache.prices, updatedAt: now, cached: true, stale: true });
+    }
+    return res.status(502).json({ error: 'Live market prices are temporarily unavailable' });
+  }
+});
 
 // --- IP WHITELIST SECURITY UTILITIES ---
 function normalizeIp(ip: string): string {
