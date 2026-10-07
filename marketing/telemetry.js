@@ -81,11 +81,13 @@ async function startTelemetry() {
       language: navigator.language || 'en-US'
     }
   });
-  if (!response?.ok) return;
+  if (!response?.ok) return '';
   const session = await response.json();
   visitorId = session.id;
+  window.marketingVisitorId = visitorId;
   localStorage.setItem(VISITOR_STORAGE_KEY, visitorId);
   observeSections();
+  return visitorId;
 }
 
 function reportSection(name) {
@@ -137,4 +139,4 @@ document.addEventListener('visibilitychange', () => {
   }, true);
 });
 
-startTelemetry();
+window.marketingSessionReady = startTelemetry();

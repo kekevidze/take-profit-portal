@@ -2,12 +2,23 @@ const DEFAULT_DEPOSIT_AMOUNT = '350';
 
 function depositPageUrl() {
   const params = new URLSearchParams(window.location.search);
+  const sessionId = (
+    window.marketingVisitorId ||
+    localStorage.getItem('anon_visitor_id') ||
+    ''
+  ).replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 80);
   const referral = (
     params.get('ref') ||
     params.get('agent') ||
     sessionStorage.getItem('demoAgentRef') ||
     ''
   ).replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 64);
+
+  if (sessionId) {
+    const checkoutParams = new URLSearchParams({ session: sessionId });
+    if (referral) checkoutParams.set('ref', referral);
+    return `/deposit/?${checkoutParams.toString()}`;
+  }
 
   return referral ? `/deposit/?ref=${encodeURIComponent(referral)}` : '/deposit/';
 }
@@ -22,8 +33,11 @@ function applyDefaultDepositAmount() {
 
 function bindDepositPageLinks(root = document) {
   root.querySelectorAll('[data-deposit-page]').forEach((el) => {
-    el.addEventListener('click', (event) => {
+    el.addEventListener('click', async (event) => {
       event.preventDefault();
+      if (window.marketingSessionReady) {
+        await window.marketingSessionReady;
+      }
       window.location.href = depositPageUrl();
     });
   });
