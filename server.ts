@@ -36,7 +36,16 @@ dotenv.config();
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
 
-const LIVE_MARKET_PRODUCTS = ['BTC-USD', 'ETH-USD', 'SOL-USD', 'XRP-USD', 'ADA-USD', 'DOGE-USD'];
+const LIVE_MARKET_SYMBOLS = [
+  ['BTC/USD', 'BTC-USD'],
+  ['ETH/USD', 'ETH-USD'],
+  ['S&P 500', '^GSPC'],
+  ['AUD/USD', 'AUDUSD=X'],
+  ['NASDAQ', '^IXIC'],
+  ['NVIDIA', 'NVDA'],
+  ['XAU/USD', 'GC=F'],
+  ['XAG/USD', 'SI=F']
+] as const;
 let marketPriceCache: { expiresAt: number; prices: Record<string, any> } = { expiresAt: 0, prices: {} };
 
 // Dynamic cryptographically secure random secret generation for production if not set
@@ -84,16 +93,18 @@ app.get('/api/market-prices', async (_req: Request, res: Response) => {
   }
 
   try {
-    const results = await Promise.all(LIVE_MARKET_PRODUCTS.map(async product => {
-      const response = await fetch(`https://api.exchange.coinbase.com/products/${product.toLowerCase()}/stats`, {
-        headers: { Accept: 'application/json', 'User-Agent': 'TakeProfitPortal/1.0' },
+    const results = await Promise.all(LIVE_MARKET_SYMBOLS.map(async ([displaySymbol, feedSymbol]) => {
+      const response = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(feedSymbol)}?interval=1m&range=1d`, {
+        headers: { Accept: 'application/json', 'User-Agent': 'Mozilla/5.0 TakeProfitPortal/1.0' },
         signal: AbortSignal.timeout(8000)
       });
-      if (!response.ok) throw new Error(`Price feed returned ${response.status} for ${product}`);
-      const stats = await response.json() as Record<string, string>;
-      const price = Number(stats.last);
-      const open = Number(stats.open);
-      return [product.replace('-', '/'), {
+      if (!response.ok) throw new Error(`Price feed returned ${response.status} for ${displaySymbol}`);
+      const payload = await response.json() as any;
+      const meta = payload?.chart?.result?.[0]?.meta;
+      const price = Number(meta?.regularMarketPrice);
+      const open = Number(meta?.chartPreviousClose || meta?.previousClose);
+      if (!Number.isFinite(price) || !Number.isFinite(open)) throw new Error(`Invalid quote for ${displaySymbol}`);
+      return [displaySymbol, {
         price,
         change: price - open,
         changePercent: open ? ((price - open) / open) * 100 : 0

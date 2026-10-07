@@ -1,8 +1,8 @@
 const canvas=document.getElementById('chart'),ctx=canvas.getContext('2d');
 const launchBtn=document.getElementById('launchBtn'),pauseBtn=document.getElementById('pauseBtn'),aiPanel=document.getElementById('aiPanel'),aiTitle=document.getElementById('aiTitle'),aiMessage=document.getElementById('aiMessage'),activity=document.getElementById('activity'),activityText=document.getElementById('activityText'),runtime=document.getElementById('runtime'),quotePrice=document.getElementById('quotePrice'),quoteChange=document.getElementById('quoteChange'),marketStatus=document.getElementById('marketStatus'),priceTag=document.getElementById('priceTag'),symbolLabel=document.getElementById('symbolLabel'),profitResult=document.getElementById('profitResult'),profitAmount=document.getElementById('profitAmount');
 const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-let candles=[],base=67248.32,running=false,paused=false,lastFrame=0,elapsed=0,stateTimer=0,raf,runtimeStart=0,timerId;
-const symbols={'BTC/USD':['Bitcoin / U.S. Dollar',67248.32,0,0],'ETH/USD':['Ethereum / U.S. Dollar',3541.18,0,0],'SOL/USD':['Solana / U.S. Dollar',148.25,0,0],'XRP/USD':['XRP / U.S. Dollar',0.53,0,0],'ADA/USD':['Cardano / U.S. Dollar',0.35,0,0],'DOGE/USD':['Dogecoin / U.S. Dollar',0.11,0,0]};let activeSymbol='BTC/USD';
+let candles=[],base=84000,running=false,paused=false,lastFrame=0,elapsed=0,stateTimer=0,raf,runtimeStart=0,timerId;
+const symbols={'BTC/USD':['Bitcoin / U.S. Dollar',84000,0,0],'ETH/USD':['Ethereum / U.S. Dollar',3200,0,0],'S&P 500':['S&P 500 Index',6700,0,0],'AUD/USD':['Australian Dollar / U.S. Dollar',0.66,0,0],'NASDAQ':['NASDAQ Composite',22700,0,0],'NVIDIA':['NVIDIA Corporation',190,0,0],'XAU/USD':['Gold / U.S. Dollar',4000,0,0],'XAG/USD':['Silver / U.S. Dollar',48,0,0]};let activeSymbol='BTC/USD';
 let accountBalance=350;
 const portfolioValue=document.getElementById('portfolioValue');
 function sessionProfit(){const pct=.005+Math.random()*.005;return(accountBalance*pct).toFixed(2)}
