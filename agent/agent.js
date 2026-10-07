@@ -26,7 +26,6 @@ let selectedCountry = null;
 let activeIndex = -1;
 let currentUser = null;
 let allSessions = [];
-let sessionSourceFilter = 'regular';
 
 document.addEventListener('DOMContentLoaded', () => {
   // Load standard light/dark theme preference
@@ -50,18 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Primary Action Button Bind
   $('#generate-btn').addEventListener('click', handleGenerateLink);
-
-  $all('.session-source-option').forEach(button => {
-    button.addEventListener('click', () => {
-      sessionSourceFilter = button.dataset.sessionSource || 'regular';
-      $all('.session-source-option').forEach(option => {
-        const isActive = option.dataset.sessionSource === sessionSourceFilter;
-        option.classList.toggle('active', isActive);
-        option.setAttribute('aria-pressed', String(isActive));
-      });
-      renderAgentSessions();
-    });
-  });
 
   // Copy the generated client onboarding link.
   const copyBtn = $('#copy-link-btn');
@@ -714,40 +701,24 @@ function renderAgentSessions() {
     return false;
   });
 
-  const isMarketingSession = session => {
-    if (session.acquisitionSource === 'marketing') return true;
-    return (session.pageViews || []).some(view =>
-      typeof view.path === 'string' && view.path.startsWith('/marketing')
-    );
-  };
-
-  const regularSessions = mySessions.filter(session => !isMarketingSession(session));
-  const marketingSessions = mySessions.filter(isMarketingSession);
-  const regularCount = $('#regular-session-count');
-  const marketingCount = $('#marketing-session-count');
-  if (regularCount) regularCount.textContent = String(regularSessions.length);
-  if (marketingCount) marketingCount.textContent = String(marketingSessions.length);
-
-  const visibleSessions = sessionSourceFilter === 'marketing' ? marketingSessions : regularSessions;
-
   // Sort sessions: online clients first, then latest updated first
-  visibleSessions.sort((a, b) => {
+  mySessions.sort((a, b) => {
     if (a.connection === 'online' && b.connection !== 'online') return -1;
     if (a.connection !== 'online' && b.connection === 'online') return 1;
     return b.updatedAt - a.updatedAt;
   });
 
-  if (visibleSessions.length === 0) {
+  if (mySessions.length === 0) {
     listEl.innerHTML = `
       <div class="text-center text-tertiary" style="padding: var(--spacing-lg) 0; font-size: 0.85rem;">
-        No ${sessionSourceFilter} clients found.
+        No active sessions found. Register a client above to begin.
       </div>
     `;
     return;
   }
 
   listEl.innerHTML = '';
-  visibleSessions.forEach(session => {
+  mySessions.forEach(session => {
     const isActive = session.id === activeSessionId;
     const cardHtml = SessionCard.renderHTML(session, isActive);
     

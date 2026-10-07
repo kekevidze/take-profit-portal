@@ -171,6 +171,13 @@
                     <span id="sessions-date-summary" class="queue-date-summary"></span>
                   </div>
                   <div class="queue-status-filter">
+                    <span class="queue-filter-label">Client source</span>
+                    <div class="filter-segments" role="tablist" aria-label="Filter clients by source">
+                      <button type="button" class="filter-tag source-filter-tag active" data-source-filter="regular" aria-pressed="true">Regular <span id="manager-regular-count">0</span></button>
+                      <button type="button" class="filter-tag source-filter-tag" data-source-filter="marketing" aria-pressed="false">Marketing <span id="manager-marketing-count">0</span></button>
+                    </div>
+                  </div>
+                  <div class="queue-status-filter">
                     <span class="queue-filter-label">Status</span>
                     <div class="filter-segments" role="tablist" aria-label="Filter sessions">
                       <button type="button" class="filter-tag active" data-filter="all">All</button>

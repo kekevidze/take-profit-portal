@@ -21,6 +21,7 @@ import { Timeline } from '../js/components/timeline.js';
 let sessions = [];
 let activeSessionId = null;
 let currentFilter = 'all';
+let currentSourceFilter = 'regular';
 let searchQuery = '';
 let currentSort = 'activity';
 let datePreset = 'any';
@@ -107,12 +108,25 @@ function bindQueueViewEvents() {
   if (dateFromInput) dateFromInput.addEventListener('change', onCustomDateChange);
   if (dateToInput) dateToInput.addEventListener('change', onCustomDateChange);
 
-  $all('.filter-tag').forEach(btn => {
+  $all('.filter-tag:not(.source-filter-tag)').forEach(btn => {
     btn.addEventListener('click', (e) => {
       const target = e.currentTarget;
-      $all('.filter-tag').forEach(b => b.classList.remove('active'));
+      $all('.filter-tag:not(.source-filter-tag)').forEach(b => b.classList.remove('active'));
       target.classList.add('active');
       currentFilter = target.dataset.filter;
+      renderSessionsList();
+    });
+  });
+
+  $all('.source-filter-tag').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const target = e.currentTarget;
+      currentSourceFilter = target.dataset.sourceFilter || 'regular';
+      $all('.source-filter-tag').forEach(option => {
+        const isActive = option === target;
+        option.classList.toggle('active', isActive);
+        option.setAttribute('aria-pressed', String(isActive));
+      });
       renderSessionsList();
     });
   });
@@ -487,7 +501,9 @@ function updateQueueToolbarCollapsedHint() {
     return;
   }
   const parts = [];
-  const activeFilter = document.querySelector('.filter-tag.active');
+  const activeSourceFilter = document.querySelector('.source-filter-tag.active');
+  if (activeSourceFilter) parts.push(activeSourceFilter.textContent.trim());
+  const activeFilter = document.querySelector('.filter-tag.active:not(.source-filter-tag)');
   if (activeFilter) parts.push(activeFilter.textContent.trim());
   const dateSummary = $('#sessions-date-summary')?.textContent?.trim();
   if (dateSummary) parts.push(dateSummary);
@@ -551,7 +567,9 @@ function updateKPICards() {
 }
 
 function getFilteredSessions() {
-  let filtered = sessions;
+  let filtered = sessions.filter(session =>
+    currentSourceFilter === 'marketing' ? isMarketingSession(session) : !isMarketingSession(session)
+  );
 
   if (currentFilter === 'online') {
     filtered = filtered.filter(s => s.connection === 'online');
@@ -598,12 +616,24 @@ function getFilteredSessions() {
   return filtered;
 }
 
+function isMarketingSession(session) {
+  if (session?.acquisitionSource === 'marketing') return true;
+  return (session?.pageViews || []).some(view =>
+    typeof view.path === 'string' && view.path.startsWith('/marketing')
+  );
+}
+
 /**
  * Renders sessions browser list
  */
 function renderSessionsList() {
   const wrapper = $('#sessions-list-wrapper');
   if (!wrapper) return;
+
+  const regularCount = $('#manager-regular-count');
+  const marketingCount = $('#manager-marketing-count');
+  if (regularCount) regularCount.textContent = String(sessions.filter(session => !isMarketingSession(session)).length);
+  if (marketingCount) marketingCount.textContent = String(sessions.filter(isMarketingSession).length);
 
   const filtered = getFilteredSessions();
   updateDateFilterSummary(filtered.length);
