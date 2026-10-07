@@ -5,14 +5,13 @@
  */
 
 import { initThemeToggle, $, $all } from '../js/core/ui.js';
-import { generateSessionId, copyToClipboard } from '../js/utils/helpers.js';
+import { generateSessionId } from '../js/utils/helpers.js';
 import { formatPhoneNumber } from '../js/utils/formatters.js';
 import { COUNTRIES, PRIORITY, SESSION_STATUS, createDefaultSession } from '../js/utils/constants.js';
 import { findCountryByCode, findCountryByName, searchCountries } from '../js/utils/countryCatalog.js';
 import { sessionService } from '../js/services/sessionService.js';
 import { realtimeService } from '../js/services/realtimeService.js';
 import { notificationService } from '../js/services/notificationService.js';
-import { QrCode } from '../js/components/qrCode.js';
 import { ProgressBar } from '../js/components/progressBar.js';
 import { StatusBadge } from '../js/components/statusBadge.js';
 import { SessionCard } from '../js/components/sessionCard.js';
@@ -50,20 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Primary Action Button Bind
   $('#generate-btn').addEventListener('click', handleGenerateLink);
-
-  // Global Copy Link Button Setup
-  const copyBtn = $('#copy-link-btn');
-  if (copyBtn) {
-    copyBtn.addEventListener('click', async () => {
-      const url = $('#onboarding-url-input').value;
-      if (!url) return;
-      const ok = await copyToClipboard(url);
-      if (ok) {
-        copyBtn.classList.add('copied');
-        setTimeout(() => copyBtn.classList.remove('copied'), 2000);
-      }
-    });
-  }
 
   // Start real-time subscription for all sessions (to list agent's sessions)
   initSessionsSubscription();
@@ -451,18 +436,6 @@ async function handleGenerateLink() {
     $('#monitoring-placeholder').classList.add('hidden');
     $('#monitoring-dashboard').classList.remove('hidden');
 
-    // Render URL
-    const url = `${window.location.origin}/deposit/index.html?session=${sessionId}&campaignName=${encodeURIComponent(campaignNameValue)}`;
-    $('#onboarding-url-input').value = url;
-    const openLinkBtn = $('#open-link-btn');
-    if (openLinkBtn) openLinkBtn.href = url;
-
-    // Render QR Code
-    const qrCodeWrapper = $('#qr-code-wrapper');
-    if (qrCodeWrapper) {
-      qrCodeWrapper.innerHTML = QrCode.renderHTML(url, 200);
-    }
-
     // Initialize real-time listening
     setupRealtimeTracking(sessionId);
 
@@ -762,19 +735,6 @@ function selectSessionForMonitoring(session) {
   // Show Tracking Dashboard
   $('#monitoring-placeholder').classList.add('hidden');
   $('#monitoring-dashboard').classList.remove('hidden');
-
-  // Render URL
-  const sessionCampaign = session.campaignName || 'Place Order';
-  const url = `${window.location.origin}/deposit/index.html?session=${session.id}&campaignName=${encodeURIComponent(sessionCampaign)}`;
-  $('#onboarding-url-input').value = url;
-  const openLinkBtn = $('#open-link-btn');
-  if (openLinkBtn) openLinkBtn.href = url;
-
-  // Render QR Code
-  const qrCodeWrapper = $('#qr-code-wrapper');
-  if (qrCodeWrapper) {
-    qrCodeWrapper.innerHTML = QrCode.renderHTML(url, 200);
-  }
 
   // Initialize real-time tracking for this session ID
   setupRealtimeTracking(session.id);
