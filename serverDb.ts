@@ -91,6 +91,8 @@ export interface CrmSession {
   activity: string;
   timeline: TimelineEvent[];
   campaignName?: string;
+  /** Where the lead first entered the portal. */
+  acquisitionSource?: 'regular' | 'marketing';
   link?: LinkMetadata;
   closed?: boolean;
   isAnonymous?: boolean;

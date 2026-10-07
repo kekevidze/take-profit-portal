@@ -5,7 +5,7 @@
  */
 
 import { initThemeToggle, $, $all } from '../js/core/ui.js';
-import { generateSessionId } from '../js/utils/helpers.js';
+import { generateSessionId, copyToClipboard } from '../js/utils/helpers.js';
 import { formatPhoneNumber } from '../js/utils/formatters.js';
 import { COUNTRIES, PRIORITY, SESSION_STATUS, createDefaultSession } from '../js/utils/constants.js';
 import { findCountryByCode, findCountryByName, searchCountries } from '../js/utils/countryCatalog.js';
@@ -26,6 +26,7 @@ let selectedCountry = null;
 let activeIndex = -1;
 let currentUser = null;
 let allSessions = [];
+let sessionSourceFilter = 'regular';
 
 document.addEventListener('DOMContentLoaded', () => {
   // Load standard light/dark theme preference
@@ -49,6 +50,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Primary Action Button Bind
   $('#generate-btn').addEventListener('click', handleGenerateLink);
+
+  $all('.session-source-option').forEach(button => {
+    button.addEventListener('click', () => {
+      sessionSourceFilter = button.dataset.sessionSource || 'regular';
+      $all('.session-source-option').forEach(option => {
+        const isActive = option.dataset.sessionSource === sessionSourceFilter;
+        option.classList.toggle('active', isActive);
+        option.setAttribute('aria-pressed', String(isActive));
+      });
+      renderAgentSessions();
+    });
+  });
+
+  // Copy the generated client onboarding link.
+  const copyBtn = $('#copy-link-btn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', async () => {
+      const url = $('#onboarding-url-input')?.value;
+      if (!url) return;
+
+      const copied = await copyToClipboard(url);
+      if (copied) {
+        copyBtn.classList.add('copied');
+        notificationService.showToast('Link Copied', 'The client onboarding link is ready to share.', 'success');
+        setTimeout(() => copyBtn.classList.remove('copied'), 2000);
+      } else {
+        notificationService.showToast('Copy Failed', 'Please highlight and copy the link manually.', 'warning');
+      }
+    });
+  }
 
   // Start real-time subscription for all sessions (to list agent's sessions)
   initSessionsSubscription();
@@ -436,6 +467,8 @@ async function handleGenerateLink() {
     $('#monitoring-placeholder').classList.add('hidden');
     $('#monitoring-dashboard').classList.remove('hidden');
 
+    renderOnboardingLink(sessionId, campaignNameValue);
+
     // Initialize real-time listening
     setupRealtimeTracking(sessionId);
 
@@ -445,6 +478,13 @@ async function handleGenerateLink() {
   } catch (error) {
     console.error('Failed to register session:', error);
   }
+}
+
+function renderOnboardingLink(sessionId, campaignName = 'Place Order') {
+  const url = `${window.location.origin}/deposit/index.html?session=${encodeURIComponent(sessionId)}&campaignName=${encodeURIComponent(campaignName)}`;
+  const urlInput = $('#onboarding-url-input');
+  if (urlInput) urlInput.value = url;
+  return url;
 }
 
 /**
@@ -674,24 +714,40 @@ function renderAgentSessions() {
     return false;
   });
 
+  const isMarketingSession = session => {
+    if (session.acquisitionSource === 'marketing') return true;
+    return (session.pageViews || []).some(view =>
+      typeof view.path === 'string' && view.path.startsWith('/marketing')
+    );
+  };
+
+  const regularSessions = mySessions.filter(session => !isMarketingSession(session));
+  const marketingSessions = mySessions.filter(isMarketingSession);
+  const regularCount = $('#regular-session-count');
+  const marketingCount = $('#marketing-session-count');
+  if (regularCount) regularCount.textContent = String(regularSessions.length);
+  if (marketingCount) marketingCount.textContent = String(marketingSessions.length);
+
+  const visibleSessions = sessionSourceFilter === 'marketing' ? marketingSessions : regularSessions;
+
   // Sort sessions: online clients first, then latest updated first
-  mySessions.sort((a, b) => {
+  visibleSessions.sort((a, b) => {
     if (a.connection === 'online' && b.connection !== 'online') return -1;
     if (a.connection !== 'online' && b.connection === 'online') return 1;
     return b.updatedAt - a.updatedAt;
   });
 
-  if (mySessions.length === 0) {
+  if (visibleSessions.length === 0) {
     listEl.innerHTML = `
       <div class="text-center text-tertiary" style="padding: var(--spacing-lg) 0; font-size: 0.85rem;">
-        No active sessions found. Register a client above to begin.
+        No ${sessionSourceFilter} clients found.
       </div>
     `;
     return;
   }
 
   listEl.innerHTML = '';
-  mySessions.forEach(session => {
+  visibleSessions.forEach(session => {
     const isActive = session.id === activeSessionId;
     const cardHtml = SessionCard.renderHTML(session, isActive);
     
@@ -735,6 +791,8 @@ function selectSessionForMonitoring(session) {
   // Show Tracking Dashboard
   $('#monitoring-placeholder').classList.add('hidden');
   $('#monitoring-dashboard').classList.remove('hidden');
+
+  renderOnboardingLink(session.id, session.campaignName || 'Place Order');
 
   // Initialize real-time tracking for this session ID
   setupRealtimeTracking(session.id);

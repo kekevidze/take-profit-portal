@@ -135,8 +135,16 @@
           <div class="card-header" style="border-bottom: 1px solid var(--border); padding-bottom: var(--spacing-sm); margin-bottom: 0;">
             <div class="flex-col">
               <h2 class="card-title">Your Onboarding Sessions</h2>
-              <span class="card-subtitle">Select a session to resume active monitoring or copy its link</span>
+              <span class="card-subtitle">Regular and marketing clients are kept in separate views.</span>
             </div>
+          </div>
+          <div class="session-source-toggle" id="session-source-toggle" role="group" aria-label="Client source filter">
+            <button type="button" class="session-source-option active" data-session-source="regular" aria-pressed="true">
+              Regular <span class="session-source-count" id="regular-session-count">0</span>
+            </button>
+            <button type="button" class="session-source-option" data-session-source="marketing" aria-pressed="false">
+              Marketing <span class="session-source-count" id="marketing-session-count">0</span>
+            </button>
           </div>
           <div class="flex-col gap-md" id="agent-sessions-list" style="max-height: 400px; overflow-y: auto; padding-right: var(--spacing-xs);">
             <div class="text-center text-tertiary" style="padding: var(--spacing-lg) 0; font-size: 0.85rem;">
@@ -168,6 +176,16 @@
             </div>
             <div class="agent-monitor-hero-badge" id="live-status-badge">
               <span class="badge badge-gray">WAITING</span>
+            </div>
+          </div>
+
+          <div class="agent-monitor-block">
+            <h4 class="agent-monitor-label">Client onboarding link</h4>
+            <div class="link-input-group">
+              <input type="text" id="onboarding-url-input" class="form-input mono agent-monitor-url-input" readonly aria-label="Client onboarding link" />
+              <button type="button" class="btn btn-secondary btn-icon btn-copy" id="copy-link-btn" title="Copy client link" aria-label="Copy client link">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+              </button>
             </div>
           </div>
 

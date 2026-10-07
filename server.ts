@@ -708,6 +708,10 @@ app.post('/api/sessions/track', async (req: Request, res: Response) => {
         connection: 'online'
       };
 
+      if (typeof currentPath === 'string' && currentPath.startsWith('/marketing')) {
+        updateData.acquisitionSource = 'marketing';
+      }
+
       if (referringAgent) {
         updateData.agentId = referringAgent.id;
         updateData.agent = getAgentDisplayName(referringAgent);
@@ -794,6 +798,7 @@ app.post('/api/sessions/track', async (req: Request, res: Response) => {
         { event: `Page View: ${currentPath || '/'}`, timestamp }
       ],
       campaignName: utmParams?.campaign || landing.siteName || 'Place Order',
+      acquisitionSource: isMarketingPage ? 'marketing' : 'regular',
       link: {
         id: 'LNK-' + Math.random().toString(36).substring(2, 8).toUpperCase(),
         createdAt: timestamp,
