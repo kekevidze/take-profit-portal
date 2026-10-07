@@ -18,7 +18,7 @@ Promise.resolve(window.marketingSessionReady).then(() => {
   const grid = document.getElementById('bankPartnerGrid');
   if (grid) {
     grid.innerHTML = ukBanks.map(([file, name]) =>
-      `<div><img src="/assets/europe-bank-logos/United%20Kingdom/${file}" alt="${name}"></div>`
+      `<div class="uk-bank-card"><img src="/assets/europe-bank-logos/United%20Kingdom/${file}" alt="${name}"><span>${name}</span></div>`
     ).join('');
     grid.setAttribute('aria-label', 'UK bank partner logos');
   }
