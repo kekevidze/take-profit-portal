@@ -11,7 +11,7 @@ Promise.resolve(window.marketingSessionReady).then(() => {
     ['natwest.svg', 'NatWest'],
     ['hsbc-uk.svg', 'HSBC UK'],
     ['santander-uk.svg', 'Santander UK'],
-    ['nationwide.svg', 'Nationwide'],
+    ['royal-bank-of-scotland.svg', 'Royal Bank of Scotland'],
     ['monzo.svg', 'Monzo'],
     ['starling-bank.svg', 'Starling Bank']
   ];

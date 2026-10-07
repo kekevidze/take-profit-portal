@@ -17,6 +17,44 @@ const NAME_KEY = 'aiTradingLocalCommentName';
 
 let remoteData = commentsData;
 
+function ukCommentData(data) {
+  const replacements = [
+    [/Sydney/g, 'London'],
+    [/Melbourne/g, 'Manchester'],
+    [/Brisbane/g, 'Birmingham'],
+    [/Perth/g, 'Leeds'],
+    [/Adelaide/g, 'Liverpool'],
+    [/Canberra/g, 'Edinburgh'],
+    [/Gold Coast/g, 'Bristol'],
+    [/Hobart/g, 'Glasgow'],
+    [/\$250/g, '£186'],
+    [/\$72/g, '£54'],
+    [/\$118/g, '£89'],
+    [/\$140-210/g, '£105-158'],
+    [/\$520/g, '£390'],
+    [/\$500-900/g, '£375-675'],
+    [/\$550-700/g, '£413-525'],
+    [/\$450-800/g, '£338-600'],
+    [/\$450/g, '£338'],
+    [/\$650/g, '£488'],
+    [/\$15k/g, '£11k'],
+    [/\$160-250/g, '£120-186'],
+    [/Opal card/g, 'Oyster card'],
+    [/CommBank app/g, 'Lloyds Bank app'],
+    [/ASIC-regulated/g, 'FCA-regulated'],
+    [/ASIC website/g, 'FCA register'],
+    [/under recognised financial market regulations/g, 'under UK financial-services regulations']
+  ];
+  const localize = item => ({
+    ...item,
+    text: replacements.reduce((text, [pattern, value]) => text.replace(pattern, value), item.text)
+  });
+  return {
+    comments: data.comments.map(localize),
+    replies: (data.replies || []).map(localize)
+  };
+}
+
 function resolveAvatarUrl(avatar) {
   const sourceKey = `./${String(avatar).replace(/^\.\//, '')}`;
   return commentAvatarUrls[sourceKey] || avatar;
@@ -119,4 +157,9 @@ textInput?.addEventListener('keydown', (event) => {
 sessionStorage.removeItem('aiTradingLocalComments');
 syncComposerAvatar();
 
-renderAll();
+Promise.resolve(window.marketingSessionReady).then(() => {
+  if (window.marketingCountry === 'GB' || window.marketingIsUk === true) {
+    remoteData = ukCommentData(commentsData);
+  }
+  renderAll();
+});
