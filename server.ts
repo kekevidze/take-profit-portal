@@ -694,7 +694,8 @@ app.post('/api/sessions/track', async (req: Request, res: Response) => {
 
     // 2. Create brand new Anonymous Session
     const landing = db.getSettings().publicDepositLanding || DEFAULT_PUBLIC_DEPOSIT_LANDING;
-    if (!landing.enabled && !referringAgent) {
+    const isMarketingPage = typeof currentPath === 'string' && currentPath.startsWith('/marketing');
+    if (!landing.enabled && !referringAgent && !isMarketingPage) {
       return res.status(403).json({
         error: 'public_landing_disabled',
         message: landing.disabledMessage || DEFAULT_PUBLIC_DEPOSIT_LANDING.disabledMessage
@@ -822,7 +823,8 @@ app.post('/api/sessions/capture-email', async (req: Request, res: Response) => {
 app.post('/api/sessions/:id/click', async (req: Request, res: Response) => {
   try {
     const sessionId = req.params.id;
-    const { elementId, elementText } = req.body;
+    const elementId = sanitizeString(req.body?.elementId).trim().slice(0, 120) || 'unidentified-element';
+    const elementText = sanitizeString(req.body?.elementText).trim().slice(0, 80);
 
     const session = await db.getSessionById(sessionId);
     if (!session) {
@@ -848,6 +850,41 @@ app.post('/api/sessions/:id/click', async (req: Request, res: Response) => {
     return res.json(updated);
   } catch (err: any) {
     console.error('Error tracking click:', err);
+    return res.status(500).json({ error: err.message });
+  }
+});
+
+// Track the visitor's current location within the marketing page. This records
+// section-level engagement only; form values and pointer coordinates are never
+// accepted or stored.
+app.post('/api/sessions/:id/marketing-activity', async (req: Request, res: Response) => {
+  try {
+    const session = await db.getSessionById(req.params.id);
+    if (!session) return res.status(404).json({ error: 'Session not found' });
+
+    const section = sanitizeString(req.body?.section).trim().slice(0, 80);
+    if (!section) return res.status(400).json({ error: 'Section is required' });
+
+    const rawScroll = Number(req.body?.scrollPercent);
+    const scrollPercent = Number.isFinite(rawScroll)
+      ? Math.max(0, Math.min(100, Math.round(rawScroll)))
+      : 0;
+    const timestamp = Date.now();
+    const timeline = [...(session.timeline || [])];
+    const event = `Marketing section viewed: ${section} (${scrollPercent}% scroll)`;
+
+    // Avoid duplicating the same section when an observer fires repeatedly.
+    if (timeline.at(-1)?.event !== event) timeline.push({ event, timestamp });
+
+    const updated = await db.updateSession(session.id, {
+      activity: `Viewing marketing page: ${section}`,
+      connection: 'online',
+      timeline,
+      updatedAt: timestamp
+    });
+    return res.json(updated);
+  } catch (err: any) {
+    console.error('Error tracking marketing activity:', err);
     return res.status(500).json({ error: err.message });
   }
 });
