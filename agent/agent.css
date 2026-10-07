@@ -147,26 +147,6 @@
   flex: 1;
 }
 
-.agent-referral-card {
-  border-color: color-mix(in srgb, var(--primary) 35%, var(--border));
-  background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 7%, var(--surface)) 0%, var(--surface) 70%);
-}
-
-.agent-referral-card .link-input-group {
-  align-items: stretch;
-}
-
-.agent-referral-card input {
-  min-width: 0;
-  font-size: 0.78rem;
-}
-
-.agent-referral-note {
-  margin: var(--spacing-sm) 0 0;
-  color: var(--text-secondary);
-  font-size: 0.78rem;
-}
-
 #toast-container {
   pointer-events: none;
 }
