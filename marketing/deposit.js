@@ -1,4 +1,5 @@
-const DEFAULT_DEPOSIT_AMOUNT = '350';
+let IS_UK = false;
+let DEFAULT_DEPOSIT_AMOUNT = '350';
 
 function depositPageUrl() {
   const params = new URLSearchParams(window.location.search);
@@ -28,6 +29,9 @@ window.depositPageUrl = depositPageUrl;
 function applyDefaultDepositAmount() {
   document.querySelectorAll('#amount').forEach((input) => {
     input.value = DEFAULT_DEPOSIT_AMOUNT;
+  });
+  document.querySelectorAll('.amount-field > span').forEach((symbol) => {
+    symbol.textContent = IS_UK ? '£' : '$';
   });
 }
 
@@ -73,6 +77,10 @@ function initDepositForm() {
   });
 }
 
-applyDefaultDepositAmount();
-bindDepositPageLinks();
-if (document.getElementById('depositForm')) initDepositForm();
+Promise.resolve(window.marketingSessionReady).then(() => {
+  IS_UK = window.marketingIsUk === true || window.marketingCountry === 'GB';
+  DEFAULT_DEPOSIT_AMOUNT = IS_UK ? '186' : '350';
+  applyDefaultDepositAmount();
+  bindDepositPageLinks();
+  if (document.getElementById('depositForm')) initDepositForm();
+});

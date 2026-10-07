@@ -34,12 +34,12 @@
     </section>
     <section class="institutions" aria-labelledby="institutions-title">
       <div class="section-intro"><p class="eyebrow">OUR PARTNERS</p><h2 id="institutions-title">Trusted by our Banking Partners</h2></div>
-      <div class="logo-grid logo-grid-banks" aria-label="Bank partner logos">
+      <div class="logo-grid logo-grid-banks" id="bankPartnerGrid" aria-label="Bank partner logos">
         <div><img src="assets/commbank.png" alt="CommBank"></div><div><img src="assets/nab.png" alt="NAB"></div><div><img src="assets/ing.png" alt="ING"></div><div><img src="assets/commsec.svg" alt="CommSec"></div>
         <div><img src="assets/anz.svg" alt="ANZ"></div><div><img src="assets/westpac.svg" alt="Westpac"></div><div><img src="assets/hsbc.svg" alt="HSBC"></div><div><img src="assets/bendigo.svg" alt="Bendigo Bank"></div>
       </div>
     </section>
-    <section class="editorial-image"><img src="assets/office.png" alt="Sydney Harbour, Opera House and Harbour Bridge"><div><span>OUR APPROACH</span><h2>Technology designed around clarity.</h2><p>Tools and guidance built to help you follow markets without the noise.</p></div></section>
+    <section class="editorial-image"><img id="regionalEditorialImage" src="assets/office.png" alt="Sydney Harbour, Opera House and Harbour Bridge"><div><span>OUR APPROACH</span><h2>Technology designed around clarity.</h2><p>Tools and guidance built to help you follow markets without the noise.</p></div></section>
     <section class="demo-shell" id="demo" aria-label="AI trading demo">
     <div class="section-intro demo-intro"><p class="eyebrow">INTERACTIVE DEMO</p><h2>Try the trading dashboard.</h2></div>
     <div class="dashboard-frame">
@@ -84,7 +84,7 @@
       </div>
     </section>
     <section class="comments-section" id="comments" aria-labelledby="comments-title">
-      <div class="section-intro"><p class="eyebrow">COMMUNITY</p><h2 id="comments-title">What people are saying.</h2><p>Recent discussion from members across Australia.</p></div>
+      <div class="section-intro"><p class="eyebrow">COMMUNITY</p><h2 id="comments-title">What people are saying.</h2><p id="communityRegionText">Recent discussion from members across Australia.</p></div>
       <div class="comments-card">
         <div class="comments-header"><strong>Comments</strong> <span class="comments-count" id="commentsCount">13 comments</span></div>
         <form class="comments-composer" id="commentComposer" autocomplete="off">
@@ -122,5 +122,5 @@
     <footer><span>AI TRADING SYSTEM</span><span>Not financial advice · Past performance is not indicative of future results</span></footer>
   </main>
   <dialog id="demoDialog" aria-labelledby="dialogTitle"><form method="dialog"><button class="dialog-close" value="close" aria-label="Close">×</button><div class="dialog-icon" id="dialogIcon">＋</div><h2 id="dialogTitle">Make deposit</h2><p id="dialogDescription">Enter the amount you would like to add to your trading balance.</p><div id="dialogDepositPanel"><div class="agent-reference" id="agentReference" hidden><span>Referral reference</span><strong id="agentCode"></strong></div><label for="amount">Amount</label><div class="amount-field"><span>$</span><input id="amount" inputmode="decimal" value="350" aria-describedby="amountHelp"></div><small id="amountHelp">Minimum deposit may apply depending on your region.</small></div><div id="dialogWithdrawPanel" hidden><div class="dialog-status-card"><span class="dialog-status-badge">Account inactive</span><p class="dialog-status-lead">Withdrawals are not available until your account has been activated.</p><ul class="dialog-checklist"><li>Complete your first deposit to start the account</li><li>Trading and withdrawal features unlock after activation</li><li>Verification may be required before funds can be withdrawn</li></ul></div></div><button class="btn btn-primary dialog-submit" value="confirm" id="dialogSubmit">Make deposit</button></form></dialog>
-  <div class="toast" id="toast" role="status" aria-live="polite"></div><script type="module" src="telemetry.js"></script><script type="module" src="deposit.js"></script><script type="module" src="app.js"></script><script type="module" src="faq.js"></script><script type="module" src="comments.js"></script>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div><script type="module" src="telemetry.js"></script><script type="module" src="localization.js"></script><script type="module" src="deposit.js"></script><script type="module" src="app.js"></script><script type="module" src="faq.js"></script><script type="module" src="comments.js"></script>
 </body></html>

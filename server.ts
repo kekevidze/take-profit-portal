@@ -667,7 +667,10 @@ async function determineAttribution(
 // Track Page Land & Create/Reconnect Anonymous Session
 app.post('/api/sessions/track', async (req: Request, res: Response) => {
   try {
-    const { ref, fingerprint, referrer, utmParams, path: currentPath, visitorId } = req.body;
+    const { ref, fingerprint, referrer, utmParams, path: currentPath, visitorId, ipCountry } = req.body;
+    const detectedCountry = typeof ipCountry === 'string' && /^[A-Za-z]{2}$/.test(ipCountry)
+      ? ipCountry.toUpperCase()
+      : '';
     const visitorIdCookie = req.cookies?.visitor_id || visitorId;
     const referringAgent = resolveAgentReferralCode(ref);
 
@@ -710,6 +713,9 @@ app.post('/api/sessions/track', async (req: Request, res: Response) => {
 
       if (typeof currentPath === 'string' && currentPath.startsWith('/marketing')) {
         updateData.acquisitionSource = 'marketing';
+        if (detectedCountry) {
+          updateData.client = { ...session.client, country: detectedCountry };
+        }
       }
 
       if (referringAgent) {
@@ -774,7 +780,7 @@ app.post('/api/sessions/track', async (req: Request, res: Response) => {
         phone: '',
         // Referral checkouts intentionally start blank so the deposit page's
         // IP lookup can choose the actual billing country by default.
-        country: referringAgent ? '' : (fingerprint?.language?.split('-')[1] || 'GB'),
+        country: detectedCountry || (referringAgent ? '' : (fingerprint?.language?.split('-')[1] || 'GB')),
         city: '',
         notes: ''
       },

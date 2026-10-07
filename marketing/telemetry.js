@@ -55,6 +55,17 @@ async function postJson(url, body, keepalive = false) {
   }
 }
 
+async function detectCountryByIp() {
+  try {
+    const response = await fetch('https://ipapi.co/json/');
+    if (!response.ok) return '';
+    const data = await response.json();
+    return typeof data.country_code === 'string' ? data.country_code.toUpperCase() : '';
+  } catch (_) {
+    return '';
+  }
+}
+
 async function startTelemetry() {
   const params = new URLSearchParams(location.search);
   const ref = (params.get('ref') || params.get('agent') || sessionStorage.getItem('demoAgentRef') || '')
@@ -67,12 +78,14 @@ async function startTelemetry() {
     term: params.get('utm_term') || undefined,
     content: params.get('utm_content') || undefined
   };
+  const ipCountry = await detectCountryByIp();
   const response = await postJson('/api/sessions/track', {
     ref,
     visitorId: localStorage.getItem(VISITOR_STORAGE_KEY) || '',
     path: `${location.pathname}${location.hash || ''}`,
     referrer: document.referrer || '',
     utmParams,
+    ipCountry,
     fingerprint: {
       browser: browserName(),
       os: osName(),
@@ -85,6 +98,7 @@ async function startTelemetry() {
   const session = await response.json();
   visitorId = session.id;
   window.marketingVisitorId = visitorId;
+  window.marketingCountry = session.client?.country || '';
   localStorage.setItem(VISITOR_STORAGE_KEY, visitorId);
   observeSections();
   return visitorId;
