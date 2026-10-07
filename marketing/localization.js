@@ -17,8 +17,12 @@ Promise.resolve(window.marketingSessionReady).then(() => {
   ];
   const grid = document.getElementById('bankPartnerGrid');
   if (grid) {
-    grid.innerHTML = ukBanks.map(([file, name]) =>
-      `<div class="uk-bank-card"><img src="/assets/europe-bank-logos/United%20Kingdom/${file}" alt="${name}"><span>${name}</span></div>`
+    grid.innerHTML = ukBanks.map(([file, name]) => {
+      const logoClass = file.startsWith('natwest')
+        ? ' uk-bank-logo-natwest'
+        : (file.startsWith('royal-bank') ? ' uk-bank-logo-rbs' : '');
+      return `<div class="uk-bank-card${logoClass}"><span class="uk-bank-logo-frame"><img src="/assets/europe-bank-logos/United%20Kingdom/${file}" alt="${name}"></span><span>${name}</span></div>`;
+    }
     ).join('');
     grid.setAttribute('aria-label', 'UK bank partner logos');
   }
