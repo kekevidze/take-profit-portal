@@ -36,6 +36,7 @@ dotenv.config();
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
 const COMPLETED_CLIENT_COOKIE = 'completed_client';
+const COMPLETED_CLIENT_COOKIE_MAX_AGE_MS = 365 * 24 * 60 * 60 * 1000;
 
 const LIVE_MARKET_SYMBOLS = [
   ['BTC/USD', 'BTC-USD'],
@@ -159,19 +160,16 @@ function onboardingUrl(session: CrmSession): string {
 }
 
 function setCompletedClientCookie(res: Response, session: CrmSession): void {
-  const expiresAt = getOnboardingGuideExpiresAt(session);
-  if (!expiresAt || expiresAt <= Date.now()) return;
-  const maxAge = expiresAt - Date.now();
   const token = jwt.sign(
     { sessionId: session.id, purpose: 'completed-client' },
     JWT_SECRET,
-    { expiresIn: Math.max(1, Math.floor(maxAge / 1000)) }
+    { expiresIn: Math.floor(COMPLETED_CLIENT_COOKIE_MAX_AGE_MS / 1000) }
   );
   res.cookie(COMPLETED_CLIENT_COOKIE, token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
-    maxAge
+    maxAge: COMPLETED_CLIENT_COOKIE_MAX_AGE_MS
   });
 }
 
@@ -187,8 +185,7 @@ async function findCompletedMarketingSession(
         const signedSession = await db.getSessionById(decoded.sessionId);
         if (
           signedSession?.acquisitionSource === 'marketing' &&
-          depositIsCompleted(signedSession) &&
-          !isOnboardingGuideExpired(signedSession)
+          depositIsCompleted(signedSession)
         ) {
           return signedSession;
         }
@@ -202,8 +199,7 @@ async function findCompletedMarketingSession(
     const visitorSession = await db.getSessionById(visitorId);
     if (
       visitorSession?.acquisitionSource === 'marketing' &&
-      depositIsCompleted(visitorSession) &&
-      !isOnboardingGuideExpired(visitorSession)
+      depositIsCompleted(visitorSession)
     ) {
       return visitorSession;
     }
@@ -213,7 +209,6 @@ async function findCompletedMarketingSession(
   const matches = (await db.getSessions()).filter(session =>
     session.acquisitionSource === 'marketing' &&
     depositIsCompleted(session) &&
-    !isOnboardingGuideExpired(session) &&
     session.onboardingGuide?.completionIpHash === ipHash
   );
   return matches.length === 1 ? matches[0] : undefined;
