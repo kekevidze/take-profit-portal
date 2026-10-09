@@ -96,6 +96,10 @@ async function startTelemetry() {
   });
   if (!response?.ok) return '';
   const session = await response.json();
+  if (session.redirectUrl) {
+    location.replace(session.redirectUrl);
+    return session.id || '';
+  }
   visitorId = session.id;
   window.marketingVisitorId = visitorId;
   window.marketingCountry = session.client?.country || '';

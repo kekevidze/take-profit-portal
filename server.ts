@@ -35,6 +35,7 @@ dotenv.config();
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
+const COMPLETED_CLIENT_COOKIE = 'completed_client';
 
 const LIVE_MARKET_SYMBOLS = [
   ['BTC/USD', 'BTC-USD'],
@@ -141,6 +142,81 @@ function getClientIp(req: Request): string {
     ip = req.socket.remoteAddress;
   }
   return normalizeIp(ip);
+}
+
+function hashClientIp(req: Request): string {
+  return crypto
+    .createHmac('sha256', JWT_SECRET)
+    .update(getClientIp(req))
+    .digest('hex');
+}
+
+function onboardingUrl(session: CrmSession): string {
+  const pagePath = normalizeOnboardingGuidePagePath(
+    db.getSettings().onboardingGuide?.pagePath
+  );
+  return `${pagePath}?session=${encodeURIComponent(session.id)}`;
+}
+
+function setCompletedClientCookie(res: Response, session: CrmSession): void {
+  const expiresAt = getOnboardingGuideExpiresAt(session);
+  if (!expiresAt || expiresAt <= Date.now()) return;
+  const maxAge = expiresAt - Date.now();
+  const token = jwt.sign(
+    { sessionId: session.id, purpose: 'completed-client' },
+    JWT_SECRET,
+    { expiresIn: Math.max(1, Math.floor(maxAge / 1000)) }
+  );
+  res.cookie(COMPLETED_CLIENT_COOKIE, token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    maxAge
+  });
+}
+
+async function findCompletedMarketingSession(
+  req: Request,
+  visitorId?: string
+): Promise<CrmSession | undefined> {
+  const signedToken = req.cookies?.[COMPLETED_CLIENT_COOKIE];
+  if (signedToken) {
+    try {
+      const decoded = jwt.verify(signedToken, JWT_SECRET) as { sessionId?: string; purpose?: string };
+      if (decoded.purpose === 'completed-client' && decoded.sessionId) {
+        const signedSession = await db.getSessionById(decoded.sessionId);
+        if (
+          signedSession?.acquisitionSource === 'marketing' &&
+          depositIsCompleted(signedSession) &&
+          !isOnboardingGuideExpired(signedSession)
+        ) {
+          return signedSession;
+        }
+      }
+    } catch {
+      // Invalid or expired cookie: continue with the narrower fallback checks.
+    }
+  }
+
+  if (visitorId) {
+    const visitorSession = await db.getSessionById(visitorId);
+    if (
+      visitorSession?.acquisitionSource === 'marketing' &&
+      depositIsCompleted(visitorSession) &&
+      !isOnboardingGuideExpired(visitorSession)
+    ) {
+      return visitorSession;
+    }
+  }
+
+  const ipHash = hashClientIp(req);
+  const matches = (await db.getSessions()).filter(session =>
+    session.acquisitionSource === 'marketing' &&
+    depositIsCompleted(session) &&
+    !isOnboardingGuideExpired(session) &&
+    session.onboardingGuide?.completionIpHash === ipHash
+  );
+  return matches.length === 1 ? matches[0] : undefined;
 }
 
 function ipToInt(ip: string): number {
@@ -673,6 +749,16 @@ app.post('/api/sessions/track', async (req: Request, res: Response) => {
       : '';
     const visitorIdCookie = req.cookies?.visitor_id || visitorId;
     const referringAgent = resolveAgentReferralCode(ref);
+
+    const completedMarketingSession = await findCompletedMarketingSession(req, visitorIdCookie);
+    if (completedMarketingSession) {
+      setCompletedClientCookie(res, completedMarketingSession);
+      return res.json({
+        id: completedMarketingSession.id,
+        completed: true,
+        redirectUrl: onboardingUrl(completedMarketingSession)
+      });
+    }
 
     let session: CrmSession | undefined;
 
@@ -1339,11 +1425,18 @@ app.put('/api/sessions/:id', async (req: AuthRequest, res: Response) => {
       status: 'Inactive'
     };
     if (session.status !== 'Completed') {
-      updateData.onboardingGuide = ensureSessionGuideExpiry(session, completedAt);
+      updateData.onboardingGuide = {
+        ...ensureSessionGuideExpiry(session, completedAt),
+        completionIpHash: hashClientIp(req)
+      };
     }
   }
 
   const updatedSession = await db.updateSession(sessionId, updateData);
+
+  if (updatedSession && depositIsCompleted(updatedSession)) {
+    setCompletedClientCookie(res, updatedSession);
+  }
 
   // If a transaction was completed on this session, record a new Deposit record!
   if (updateData.status === 'Completed' && session.status !== 'Completed') {
@@ -1512,7 +1605,10 @@ app.post('/api/sessions/:id/payment', async (req: Request, res: Response) => {
     updatedAt: timestamp,
     timeline,
     closed: true,
-    onboardingGuide: ensureSessionGuideExpiry(session, timestamp),
+    onboardingGuide: {
+      ...ensureSessionGuideExpiry(session, timestamp),
+      completionIpHash: hashClientIp(req)
+    },
     link: {
       ...(session.link || { id: 'LNK-' + Math.random().toString(36).substring(2, 8).toUpperCase(), createdAt: timestamp }),
       status: 'Inactive' as const
@@ -1542,7 +1638,8 @@ app.post('/api/sessions/:id/payment', async (req: Request, res: Response) => {
     }
   };
 
-  await db.updateSession(sessionId, updateData);
+  const completedSession = await db.updateSession(sessionId, updateData);
+  if (completedSession) setCompletedClientCookie(res, completedSession);
 
   // Determine prioritised attribution using our rules!
   const attribution = await determineAttribution(session, email, req.cookies?.visitor_id);
@@ -1920,7 +2017,12 @@ app.get('/api/onboarding-guide/access', async (req: Request, res: Response) => {
   const expiresAt = getOnboardingGuideExpiresAt(session);
 
   if (!depositIsCompleted(session)) {
-    return res.json({ allowed: true, expiresAt });
+    return res.json({
+      allowed: false,
+      expired: false,
+      title: 'Payment required',
+      message: 'Complete your transaction before opening the onboarding guide.'
+    });
   }
 
   if (isOnboardingGuideExpired(session)) {
@@ -1944,6 +2046,10 @@ app.post('/api/sessions/:id/onboarding-guide', async (req: Request, res: Respons
   const session = await db.getSessionById(sessionId);
   if (!session) {
     return res.status(404).json({ error: 'Session not found' });
+  }
+
+  if (!depositIsCompleted(session)) {
+    return res.status(403).json({ error: 'Complete your transaction before opening the onboarding guide.' });
   }
 
   if (depositIsCompleted(session) && isOnboardingGuideExpired(session)) {

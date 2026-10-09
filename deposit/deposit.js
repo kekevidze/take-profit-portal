@@ -203,6 +203,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
       if (response.ok) {
         const trackedSession = await response.json();
+        if (trackedSession.redirectUrl) {
+          window.location.replace(trackedSession.redirectUrl);
+          return;
+        }
         sessionId = trackedSession.id;
         currentSession = trackedSession;
         localStorage.setItem('anon_visitor_id', sessionId);

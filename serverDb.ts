@@ -125,6 +125,8 @@ export interface CrmSession {
     completedReadAt?: number;
     /** Unix ms — guide link stops working after this (24h from deposit completion). */
     guideExpiresAt?: number;
+    /** One-way server hash used only as a fallback when the signed browser cookie is unavailable. */
+    completionIpHash?: string;
   };
 }
 
