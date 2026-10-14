@@ -120,7 +120,25 @@
       </div>
     </section>
     <section class="final-cta"><h2>Ready to get started?</h2><p>Fund your account and launch your first AI-assisted session from the dashboard.</p><a href="/deposit/" class="btn btn-primary hero-primary" data-deposit-page>Make deposit <span>→</span></a></section>
-    <footer><span>AI TRADING SYSTEM</span><span>Not financial advice · Past performance is not indicative of future results</span></footer>
+    <footer class="marketing-footer">
+      <span>AI TRADING SYSTEM</span>
+      <div class="marketing-footer__regulatory">
+        <a
+          class="marketing-footer__asic"
+          href="https://abr.business.gov.au/ABN/View?abn=12696620998"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="View ABN 12 696 620 998 on the Australian Business Register"
+        ><img src="/assets/regulatory/asic.png" alt="Australian Securities and Investments Commission (ASIC)" width="360" height="96" loading="lazy" decoding="async"></a>
+        <a
+          class="marketing-footer__abn"
+          href="https://abr.business.gov.au/ABN/View?abn=12696620998"
+          target="_blank"
+          rel="noopener noreferrer"
+        >ABN 12 696 620 998</a>
+      </div>
+      <span>Not financial advice · Past performance is not indicative of future results</span>
+    </footer>
   </main>
   <dialog id="demoDialog" aria-labelledby="dialogTitle"><form method="dialog"><button class="dialog-close" value="close" aria-label="Close">×</button><div class="dialog-icon" id="dialogIcon">＋</div><h2 id="dialogTitle">Make deposit</h2><p id="dialogDescription">Enter the amount you would like to add to your trading balance.</p><div id="dialogDepositPanel"><div class="agent-reference" id="agentReference" hidden><span>Referral reference</span><strong id="agentCode"></strong></div><label for="amount">Amount</label><div class="amount-field"><span>$</span><input id="amount" inputmode="decimal" value="350" aria-describedby="amountHelp"></div><small id="amountHelp">Minimum deposit may apply depending on your region.</small></div><div id="dialogWithdrawPanel" hidden><div class="dialog-status-card"><span class="dialog-status-badge">Account inactive</span><p class="dialog-status-lead">Withdrawals are not available until your account has been activated.</p><ul class="dialog-checklist"><li>Complete your first deposit to start the account</li><li>Trading and withdrawal features unlock after activation</li><li>Verification may be required before funds can be withdrawn</li></ul></div></div><button class="btn btn-primary dialog-submit" value="confirm" id="dialogSubmit">Make deposit</button></form></dialog>
   <div class="toast" id="toast" role="status" aria-live="polite"></div><script type="module" src="telemetry.js"></script><script type="module" src="localization.js"></script><script type="module" src="daily-counter.js"></script><script type="module" src="deposit.js"></script><script type="module" src="app.js"></script><script type="module" src="faq.js"></script><script type="module" src="comments.js"></script>

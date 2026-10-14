@@ -193,6 +193,26 @@
   margin-inline: auto;
 }
 
+.site-footer__business-link {
+  display: block;
+  width: fit-content;
+  margin: 14px auto 0;
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.site-footer__business-link:hover {
+  color: var(--blue);
+}
+
+.site-footer__business-link:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.24);
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+
 .trust-badges-panel {
   background: linear-gradient(180deg, rgba(247, 248, 250, 0.9), rgba(247, 248, 250, 0.6));
   backdrop-filter: blur(6px);
