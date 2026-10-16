@@ -28,6 +28,37 @@ const REGULATORY_MARKS = {
   },
 };
 
+const BUSINESS_REGISTRATIONS = {
+  AU: {
+    href: 'https://abr.business.gov.au/ABN/View?abn=12696620998',
+    label: 'ABN 12 696 620 998',
+    ariaLabel: 'View ABN 12 696 620 998 on the Australian Business Register',
+  },
+  GB: {
+    href: 'https://find-and-update.company-information.service.gov.uk/company/09896045',
+    label: 'Company number 09896045',
+    ariaLabel: 'View company number 09896045 on Companies House',
+  },
+};
+
+function updateBusinessRegistration(countryCode) {
+  const code = countryCode?.trim().toUpperCase();
+  const registration = code === 'GB' ? BUSINESS_REGISTRATIONS.GB : BUSINESS_REGISTRATIONS.AU;
+  const logoLink = document.getElementById('regulatoryMarkLink');
+  const businessLink = document.getElementById('businessRegistrationLink');
+
+  if (logoLink) {
+    logoLink.href = registration.href;
+    logoLink.setAttribute('aria-label', registration.ariaLabel);
+  }
+
+  if (businessLink) {
+    businessLink.href = registration.href;
+    businessLink.textContent = registration.label;
+    businessLink.setAttribute('aria-label', registration.ariaLabel);
+  }
+}
+
 /**
  * @param {string | null | undefined} countryCode
  * @returns {{ src: string, alt: string } | null}
@@ -46,6 +77,8 @@ export function updateRegulatoryMark(countryCode) {
   const wrap = document.getElementById('regulatoryMarkWrap');
   const img = document.getElementById('regulatoryMarkImg');
   if (!wrap || !img) return;
+
+  updateBusinessRegistration(countryCode);
 
   const mark = resolveRegulatoryMark(countryCode);
   if (!mark) {

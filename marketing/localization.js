@@ -5,6 +5,41 @@ Promise.resolve(window.marketingSessionReady).then(() => {
   if (!isUk) return;
   document.documentElement.dataset.marketRegion = 'uk';
 
+  const companyUrl = 'https://find-and-update.company-information.service.gov.uk/company/09896045';
+  const companyLabel = 'Company number 09896045';
+  const companyAriaLabel = 'View company number 09896045 on Companies House';
+
+  const headerRegulatory = document.querySelector('.header-regulatory');
+  if (headerRegulatory) {
+    headerRegulatory.href = companyUrl;
+    headerRegulatory.setAttribute('aria-label', companyAriaLabel);
+    const logo = headerRegulatory.querySelector('img');
+    const label = headerRegulatory.querySelector('span');
+    if (logo) {
+      logo.src = '/assets/regulatory/fca.png';
+      logo.alt = 'Financial Conduct Authority (FCA)';
+    }
+    if (label) label.textContent = companyLabel;
+  }
+
+  const footerRegulatoryLogo = document.querySelector('.marketing-footer__asic');
+  if (footerRegulatoryLogo) {
+    footerRegulatoryLogo.href = companyUrl;
+    footerRegulatoryLogo.setAttribute('aria-label', companyAriaLabel);
+    const logo = footerRegulatoryLogo.querySelector('img');
+    if (logo) {
+      logo.src = '/assets/regulatory/fca.png';
+      logo.alt = 'Financial Conduct Authority (FCA)';
+    }
+  }
+
+  const footerCompanyLink = document.querySelector('.marketing-footer__abn');
+  if (footerCompanyLink) {
+    footerCompanyLink.href = companyUrl;
+    footerCompanyLink.textContent = companyLabel;
+    footerCompanyLink.setAttribute('aria-label', companyAriaLabel);
+  }
+
   const ukBanks = [
     ['barclays.svg', 'Barclays'],
     ['lloyds.svg', 'Lloyds Bank'],
